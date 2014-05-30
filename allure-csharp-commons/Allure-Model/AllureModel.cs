@@ -21,98 +21,98 @@ namespace allurecsharpcommons {
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute("test-suite-result", Namespace="urn:model.allure.qatools.yandex.ru")]
     [System.Xml.Serialization.XmlRootAttribute("test-suite", Namespace="urn:model.allure.qatools.yandex.ru", IsNullable=false)]
-    public partial class testsuiteresult {
+    public partial class TestSuiteResult {
         
-        private long startField;
+		private long _startField;
         
-        private long stopField;
+		private long _stopField;
         
-        private string nameField;
+		private string _nameField;
         
-        private string titleField;
+		private string _titleField;
         
-        private description descriptionField;
+		private Description _descriptionField;
         
-        private testcaseresult[] testcasesField;
+        private TestCaseResult[] _testcasesField;
         
-        private label[] labelsField1;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long start {
-            get {
-                return this.startField;
-            }
-            set {
-                this.startField = value;
-            }
-        }
+		private Label[] _labelsField1;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long stop {
+        public long Start {
             get {
-                return this.stopField;
+                return this._startField;
             }
             set {
-                this.stopField = value;
+                this._startField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
+        public long Stop {
+            get {
+                return this._stopField;
+            }
+            set {
+                this._stopField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string name {
+        public string Name {
             get {
-                return this.nameField;
+                return this._nameField;
             }
             set {
-                this.nameField = value;
+                this._nameField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string title {
+        public string Title {
             get {
-                return this.titleField;
+                return this._titleField;
             }
             set {
-                this.titleField = value;
+                this._titleField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public description description {
+        public Description Description {
             get {
-                return this.descriptionField;
+                return this._descriptionField;
             }
             set {
-                this.descriptionField = value;
+                this._descriptionField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(ElementName="test-cases", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(ElementName="test-case", IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public testcaseresult[] testcases {
+        public TestCaseResult[] TestCases {
             get {
-                return this.testcasesField;
+				return this._testcasesField;
             }
             set {
-                this.testcasesField = value;
+                this._testcasesField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public label[] labels {
+        public Label[] Labels {
             get {
-                return this.labelsField1;
+                return this._labelsField1;
             }
             set {
-                this.labelsField1 = value;
+                this._labelsField1 = value;
             }
         }
     }
@@ -123,21 +123,21 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class description {
+    public partial class Description {
         
-        private descriptiontype typeField;
+		private DescriptionType _typeField;
         
-        private string valueField;
+		private string _valueField;
         
         /// <remarks/>
-        [System.ComponentModel.DefaultValue(descriptiontype.text)]
+        [System.ComponentModel.DefaultValue(DescriptionType.Text)]
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public descriptiontype type {
+        public DescriptionType Type {
             get {
-                return this.typeField;
+                return this._typeField;
             }
             set {
-                this.typeField = value;
+                this._typeField = value;
             }
         }
         
@@ -145,10 +145,10 @@ namespace allurecsharpcommons {
         [System.Xml.Serialization.XmlTextAttribute()]
         public string Value {
             get {
-                return this.valueField;
+                return this._valueField;
             }
             set {
-                this.valueField = value;
+                this._valueField = value;
             }
         }
     }
@@ -157,16 +157,16 @@ namespace allurecsharpcommons {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17020")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("description-type", Namespace="urn:model.allure.qatools.yandex.ru")]
-    public enum descriptiontype {
+    public enum DescriptionType {
         
         /// <remarks/>
-        markdown,
+        Markdown,
         
         /// <remarks/>
-        text,
+        Text,
         
         /// <remarks/>
-        html,
+        Html,
     }
     
     /// <remarks/>
@@ -175,112 +175,112 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute("test-case-result", Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class testcaseresult {
+    public partial class TestCaseResult {
         
-        private long startField1;
+		private long _startField1;
         
-        private long stopField1;
+		private long _stopField1;
         
-        private status statusField;
+		private Status _statusField;
         
-        private severitylevel severityField;
+		private SeverityLevel _severityField;
         
-        private string nameField1;
+		private string _nameField1;
         
-        private string titleField1;
+		private string _titleField1;
         
-        private description descriptionField1;
+		private Description _descriptionField1;
         
-        private failure failureField;
+        private Failure failureField;
         
-        private step[] stepsField;
+		private Step[] _stepsField;
         
-        private attachment[] attachmentsField1;
+		private Attachment[] _attachmentsField1;
         
-        private label[] labelsField;
+		private Label[] _labelsField;
         
-        private parameter[] parametersField;
-        
-        /// <remarks/>
-        [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long start {
-            get {
-                return this.startField1;
-            }
-            set {
-                this.startField1 = value;
-            }
-        }
+		private Parameter[] _parametersField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long stop {
+        public long Start {
             get {
-                return this.stopField1;
+                return this._startField1;
             }
             set {
-                this.stopField1 = value;
+                this._startField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public status status {
+        public long Stop {
             get {
-                return this.statusField;
+                return this._stopField1;
             }
             set {
-                this.statusField = value;
+                this._stopField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public severitylevel severity {
+        public Status Status {
             get {
-                return this.severityField;
+                return this._statusField;
             }
             set {
-                this.severityField = value;
+                this._statusField = value;
+            }
+        }
+        
+        /// <remarks/>
+        [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
+        public SeverityLevel Severity {
+            get {
+                return this._severityField;
+            }
+            set {
+                this._severityField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string name {
+        public string Name {
             get {
-                return this.nameField1;
+                return this._nameField1;
             }
             set {
-                this.nameField1 = value;
+                this._nameField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string title {
+        public string Title {
             get {
-                return this.titleField1;
+                return this._titleField1;
             }
             set {
-                this.titleField1 = value;
+                this._titleField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public description description {
+        public Description Description {
             get {
-                return this.descriptionField1;
+                return this._descriptionField1;
             }
             set {
-                this.descriptionField1 = value;
+                this._descriptionField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public failure failure {
+        public Failure Failure {
             get {
                 return this.failureField;
             }
@@ -292,48 +292,48 @@ namespace allurecsharpcommons {
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public step[] steps {
+        public Step[] Steps {
             get {
-                return this.stepsField;
+                return this._stepsField;
             }
             set {
-                this.stepsField = value;
+                this._stepsField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public attachment[] attachments {
+        public Attachment[] Attachments {
             get {
-                return this.attachmentsField1;
+                return this._attachmentsField1;
             }
             set {
-                this.attachmentsField1 = value;
+                this._attachmentsField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public label[] labels {
+        public Label[] Labels {
             get {
-                return this.labelsField;
+                return this._labelsField;
             }
             set {
-                this.labelsField = value;
+                this._labelsField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public parameter[] parameters {
+        public Parameter[] Parameters {
             get {
-                return this.parametersField;
+                return this._parametersField;
             }
             set {
-                this.parametersField = value;
+                this._parametersField = value;
             }
         }
     }
@@ -342,41 +342,41 @@ namespace allurecsharpcommons {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17020")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public enum status {
+    public enum Status {
         
         /// <remarks/>
-        failed,
+        Failed,
         
         /// <remarks/>
-        broken,
+        Broken,
         
         /// <remarks/>
-        passed,
+        Passed,
         
         /// <remarks/>
-        skipped,
+        Skipped,
     }
     
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17020")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("severity-level", Namespace="urn:model.allure.qatools.yandex.ru")]
-    public enum severitylevel {
+    public enum SeverityLevel {
         
         /// <remarks/>
-        blocker,
+        Blocker,
         
         /// <remarks/>
-        critical,
+        Critical,
         
         /// <remarks/>
-        normal,
+        Normal,
         
         /// <remarks/>
-        minor,
+        Minor,
         
         /// <remarks/>
-        trivial,
+        Trivial,
     }
     
     /// <remarks/>
@@ -385,31 +385,31 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class failure {
+    public partial class Failure {
         
-        private string messageField;
+		private string _messageField;
         
-        private string stacktraceField;
+		private string _stacktraceField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string message {
+        public string Message {
             get {
-                return this.messageField;
+                return this._messageField;
             }
             set {
-                this.messageField = value;
+                this._messageField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute("stack-trace", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string stacktrace {
+        public string Stacktrace {
             get {
-                return this.stacktraceField;
+                return this._stacktraceField;
             }
             set {
-                this.stacktraceField = value;
+                this._stacktraceField = value;
             }
         }
     }
@@ -420,98 +420,98 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class step {
+    public partial class Step {
         
-        private long startField2;
+		private long _startField2;
         
-        private long stopField2;
+		private long _stopField2;
         
-        private status statusField1;
+		private Status _statusField1;
         
-        private string nameField2;
+		private string _nameField2;
         
-        private string titleField2;
+		private string _titleField2;
         
-        private attachment[] attachmentsField;
+		private Attachment[] _attachmentsField;
         
-        private step[] stepsField1;
+		private Step[] _stepsField1;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long start {
+        public long Start {
             get {
-                return this.startField2;
+                return this._startField2;
             }
             set {
-                this.startField2 = value;
+                this._startField2 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public long stop {
+        public long Stop {
             get {
-                return this.stopField2;
+                return this._stopField2;
             }
             set {
-                this.stopField2 = value;
+                this._stopField2 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public status status {
+        public Status Status {
             get {
-                return this.statusField1;
+                return this._statusField1;
             }
             set {
-                this.statusField1 = value;
+                this._statusField1 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string name {
+        public string Name {
             get {
-                return this.nameField2;
+                return this._nameField2;
             }
             set {
-                this.nameField2 = value;
+                this._nameField2 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string title {
+        public string Title {
             get {
-                return this.titleField2;
+                return this._titleField2;
             }
             set {
-                this.titleField2 = value;
+                this._titleField2 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public attachment[] attachments {
+        public Attachment[] Attachments {
             get {
-                return this.attachmentsField;
+                return this._attachmentsField;
             }
             set {
-                this.attachmentsField = value;
+                this._attachmentsField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlArray(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
         [System.Xml.Serialization.XmlArrayItem(IsNullable=false, Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public step[] steps {
+        public Step[] Steps {
             get {
-                return this.stepsField1;
+                return this._stepsField1;
             }
             set {
-                this.stepsField1 = value;
+                this._stepsField1 = value;
             }
         }
     }
@@ -522,44 +522,44 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class attachment {
+    public partial class Attachment {
         
-        private string titleField3;
+		private string _titleField3;
         
-        private string sourceField;
+		private string _sourceField;
         
-        private attachmenttype typeField1;
+		private AttachmentType _typeField1;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string title {
+        public string Title {
             get {
-                return this.titleField3;
+                return this._titleField3;
             }
             set {
-                this.titleField3 = value;
+                this._titleField3 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string source {
+        public string Source {
             get {
-                return this.sourceField;
+                return this._sourceField;
             }
             set {
-                this.sourceField = value;
+                this._sourceField = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public attachmenttype type {
+        public AttachmentType Type {
             get {
-                return this.typeField1;
+                return this._typeField1;
             }
             set {
-                this.typeField1 = value;
+                this._typeField1 = value;
             }
         }
     }
@@ -568,28 +568,28 @@ namespace allurecsharpcommons {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17020")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("attachment-type", Namespace="urn:model.allure.qatools.yandex.ru")]
-    public enum attachmenttype {
+    public enum AttachmentType {
         
         /// <remarks/>
-        txt,
+        Txt,
         
         /// <remarks/>
-        html,
+        Html,
         
         /// <remarks/>
-        xml,
+        Xml,
         
         /// <remarks/>
-        png,
+        Png,
         
         /// <remarks/>
-        jpg,
+        Jpg,
         
         /// <remarks/>
-        json,
+        Json,
         
         /// <remarks/>
-        other,
+        Other,
     }
     
     /// <remarks/>
@@ -598,31 +598,31 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class label {
+    public partial class Label {
         
-        private string nameField3;
+		private string _nameField3;
         
-        private string valueField1;
+		private string _valueField1;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string name {
+        public string Name {
             get {
-                return this.nameField3;
+                return this._nameField3;
             }
             set {
-                this.nameField3 = value;
+                this._nameField3 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string value {
+        public string Value {
             get {
-                return this.valueField1;
+                return this._valueField1;
             }
             set {
-                this.valueField1 = value;
+                this._valueField1 = value;
             }
         }
     }
@@ -633,44 +633,44 @@ namespace allurecsharpcommons {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(Namespace="urn:model.allure.qatools.yandex.ru")]
-    public partial class parameter {
+    public partial class Parameter {
         
-        private string nameField4;
+		private string _nameField4;
         
-        private string valueField2;
+		private string _valueField2;
         
-        private parameterkind kindField;
+		private ParameterKind _kindField;
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string name {
+        public string Name {
             get {
-                return this.nameField4;
+                return this._nameField4;
             }
             set {
-                this.nameField4 = value;
+                this._nameField4 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public string value {
+        public string Value {
             get {
-                return this.valueField2;
+                return this._valueField2;
             }
             set {
-                this.valueField2 = value;
+                this._valueField2 = value;
             }
         }
         
         /// <remarks/>
         [System.Xml.Serialization.XmlAttributeAttribute(Namespace="")]
-        public parameterkind kind {
+        public ParameterKind Kind {
             get {
-                return this.kindField;
+                return this._kindField;
             }
             set {
-                this.kindField = value;
+                this._kindField = value;
             }
         }
     }
@@ -679,17 +679,17 @@ namespace allurecsharpcommons {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.0.30319.17020")]
     [System.SerializableAttribute()]
     [System.Xml.Serialization.XmlTypeAttribute("parameter-kind", Namespace="urn:model.allure.qatools.yandex.ru")]
-    public enum parameterkind {
+    public enum ParameterKind {
         
         /// <remarks/>
-        argument,
+        Argument,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("system-property")]
-        systemproperty,
+        SystemProperty,
         
         /// <remarks/>
         [System.Xml.Serialization.XmlEnumAttribute("environment-variable")]
-        environmentvariable,
+        EnvironmentVariable,
     }
 }

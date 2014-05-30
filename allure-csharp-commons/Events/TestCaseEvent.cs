@@ -2,7 +2,7 @@ using System;
 
 namespace allurecsharpcommons
 {
-	public interface TestCaseEvent : IEvent<testcaseresult>
+	public interface TestCaseEvent : IEvent<TestCaseResult>
 	{
 	}
 }
