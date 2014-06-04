@@ -1,4 +1,4 @@
-namespace AllureCSharpCommons.AbstractEvents
+namespace AllureCSharpCommons
 {
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.0.30319.17929")]

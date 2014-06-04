@@ -1,4 +1,4 @@
-namespace AllureCSharpCommons.Events
+namespace AllureCSharpCommons
 {
 	public interface IEvent<T>
 	{
