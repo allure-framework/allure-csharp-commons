@@ -1,5 +1,0 @@
-C:\Git\AllureCSharpCommons\AllureCSharpCommons\obj\Debug\AllureCSharpCommons.csprojResolveAssemblyReference.cache
-C:\Git\AllureCSharpCommons\AllureCSharpCommons\bin\Debug\AllureCSharpCommons.dll
-C:\Git\AllureCSharpCommons\AllureCSharpCommons\bin\Debug\AllureCSharpCommons.pdb
-C:\Git\AllureCSharpCommons\AllureCSharpCommons\obj\Debug\AllureCSharpCommons.dll
-C:\Git\AllureCSharpCommons\AllureCSharpCommons\obj\Debug\AllureCSharpCommons.pdb
