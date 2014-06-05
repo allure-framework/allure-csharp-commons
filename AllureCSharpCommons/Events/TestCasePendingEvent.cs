@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class TestCasePendingEvent : abstracttestcasestatuschangeevent
+	public class TestCasePendingEvent : AbstractTestCaseStatusChangeEvent
 	{
 		public TestCasePendingEvent ()
 		{
 		}
+
+	    public override void Process(testcaseresult context)
+	    {
+	    }
 	}
 }
 

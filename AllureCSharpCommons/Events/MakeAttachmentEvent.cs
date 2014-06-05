@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class MakeAttachmentEvent : abstractmakeattachmentevent 
+	public class MakeAttachmentEvent : AbstractMakeAttachmentEvent 
 	{
 		public MakeAttachmentEvent ()
 		{
 		}
+
+	    public override void Process(testcaseresult context)
+	    {
+	    }
 	}
 }
 

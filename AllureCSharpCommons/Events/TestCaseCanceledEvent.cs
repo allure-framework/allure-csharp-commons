@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class TestCaseCanceledEvent : abstracttestcasestatuschangeevent
+	public class TestCaseCanceledEvent : AbstractTestCaseStatusChangeEvent
 	{
 		public TestCaseCanceledEvent ()
 		{
 		}
+
+	    public override void Process(testcaseresult context)
+	    {
+	    }
 	}
 }
 

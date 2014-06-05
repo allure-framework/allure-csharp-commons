@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class StepFinishedEvent : abstractstepfinishedevent
+	public class StepFinishedEvent : AbstractStepFinishedEvent
 	{
 		public StepFinishedEvent ()
 		{
 		}
+
+	    public override void Process(step context)
+	    {
+	    }
 	}
 }
 

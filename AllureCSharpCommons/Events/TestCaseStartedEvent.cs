@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace allurecsharpcommons
+namespace AllureCSharpCommons.Events
 {
-	public class TestCaseStartedEvent : abstracttestcasestartedevent
+	public class TestCaseStartedEvent : AbstractTestCaseStartedEvent
 	{
 		public TestCaseStartedEvent ()
 		{
 		}
+
+	    public override void Process(testcaseresult context)
+	    {
+	    }
 	}
 }
 

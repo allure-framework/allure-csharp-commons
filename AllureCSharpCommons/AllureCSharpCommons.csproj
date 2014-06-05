@@ -33,24 +33,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractEvents\abstractmakeattachevent.cs" />
-    <Compile Include="AbstractEvents\abstractmakeattachmentevent.cs" />
-    <Compile Include="AbstractEvents\abstractremoveattachmentevent.cs" />
-    <Compile Include="AbstractEvents\abstractstepcanceledevent.cs" />
-    <Compile Include="AbstractEvents\abstractstepfailureevent.cs" />
-    <Compile Include="AbstractEvents\abstractstepfinishedevent.cs" />
-    <Compile Include="AbstractEvents\abstractstepstartedevent.cs" />
-    <Compile Include="AbstractEvents\abstracttestcaseaddparameterevent.cs" />
-    <Compile Include="AbstractEvents\abstracttestcasefinishedevent.cs" />
-    <Compile Include="AbstractEvents\abstracttestcasestartedevent.cs" />
-    <Compile Include="AbstractEvents\abstracttestcasestatuschangeevent.cs" />
-    <Compile Include="AbstractEvents\abstracttestsuitefinishedevent.cs" />
-    <Compile Include="AbstractEvents\clearstepstorageevent.cs" />
-    <Compile Include="AbstractEvents\clearteststorageevent.cs" />
-    <Compile Include="AbstractEvents\pattern.cs" />
-    <Compile Include="AbstractEvents\throwable.cs" />
-    <Compile Include="AllureModel\Allure.cs" />
-    <Compile Include="AbstractEvents\abstracttestsuitestartedevent.cs" />
+    <Compile Include="AbstractEvents\AbstractMakeAttachEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractMakeAttachmentEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractRemoveAttachmentEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractStepCanceledEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractStepFailureEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractStepFinishedEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractStepStartedEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractTestCaseAddParameterEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractTestCaseFinishedEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractTestCaseStartedEvent.cs" />
+    <Compile Include="AbstractEvents\AbstractTestSuiteFinishedEvent.cs" />
+    <Compile Include="AbstractEvents\ClearStepStorageEvent.cs" />
+    <Compile Include="AbstractEvents\ClearTestStorageEvent.cs" />
+    <Compile Include="AbstractEvents\Pattern.cs" />
+    <Compile Include="AbstractEvents\AbstractTestCaseStatusChangeEvent.cs" />
+    <Compile Include="Allure.cs" />
+    <Compile Include="AllureModel\AllureModel.cs" />
+    <Compile Include="AbstractEvents\AbstractTestSuiteStartedEvent.cs" />
+    <Compile Include="Events\TestSuiteFinishedEvent.cs" />
+    <Compile Include="Events\TestSuiteStartedEvent.cs" />
+    <Compile Include="Exceptions\AllureException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Events\IEvent.cs" />
     <Compile Include="Events\TestCaseStartedEvent.cs" />
@@ -69,6 +72,10 @@
     <Compile Include="Events\ITestCaseEvent.cs" />
     <Compile Include="Events\IStepEvent.cs" />
     <Compile Include="Events\AddParameterEvent.cs" />
+    <Compile Include="Storages\TestCaseStorage.cs" />
+    <Compile Include="Storages\TestSuiteStorage.cs" />
+    <Compile Include="Storages\StepStorage.cs" />
+    <Compile Include="Utils\AllureResultsUtils.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup />

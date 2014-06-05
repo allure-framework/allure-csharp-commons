@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class StepCanceledEvent : abstractstepcanceledevent
+	public class StepCanceledEvent : AbstractStepCanceledEvent
 	{
 		public StepCanceledEvent ()
 		{
 		}
+
+	    public override void Process(step context)
+	    {
+	    }
 	}
 }
 

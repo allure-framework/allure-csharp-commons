@@ -1,13 +1,17 @@
-using System;
-using AllureCSharpCommons;
+using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
-namespace AllureCSharpCommons
+namespace AllureCSharpCommons.Events
 {
-	public class RemoveAttachmentsEvent : abstractremoveattachmentevent
+	public class RemoveAttachmentsEvent : AbstractRemoveAttachmentEvent
 	{
 		public RemoveAttachmentsEvent ()
 		{
 		}
+
+	    public override void Process(step context)
+	    {
+	    }
 	}
 }
 
