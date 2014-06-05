@@ -167,14 +167,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static testsuiteresult Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((testsuiteresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((testsuiteresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -200,10 +200,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -244,10 +244,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -353,14 +353,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static description Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((description)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((description)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -386,10 +386,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -430,10 +430,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -556,14 +556,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static parameter Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((parameter)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((parameter)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -589,10 +589,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -633,10 +633,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -750,14 +750,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static label Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((label)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((label)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -783,10 +783,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -827,10 +827,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -941,14 +941,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static attachment Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((attachment)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((attachment)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -974,10 +974,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -1018,10 +1018,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -1209,14 +1209,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static step Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((step)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((step)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -1242,10 +1242,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -1286,10 +1286,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -1407,14 +1407,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static failure Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((failure)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((failure)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -1440,10 +1440,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -1484,10 +1484,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -1703,14 +1703,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static testcaseresult Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((testcaseresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((testcaseresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -1736,10 +1736,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -1780,10 +1780,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -1876,14 +1876,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static testcasesresult Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((testcasesresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((testcasesresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -1909,10 +1909,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -1953,10 +1953,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -2049,14 +2049,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static steps1 Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((steps1)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((steps1)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -2082,10 +2082,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -2126,10 +2126,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -2222,14 +2222,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static labels Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((labels)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((labels)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -2255,10 +2255,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -2299,10 +2299,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -2395,14 +2395,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static parameters Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((parameters)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((parameters)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -2428,10 +2428,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -2472,10 +2472,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {
@@ -2568,14 +2568,14 @@ namespace AllureCSharpCommons.AllureModel {
         }
         
         public static attachments Deserialize(string xml) {
-            System.IO.StringReader stringReader = null;
+            System.IO.StringReader StringReader = null;
             try {
-                stringReader = new System.IO.StringReader(xml);
-                return ((attachments)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
+                StringReader = new System.IO.StringReader(xml);
+                return ((attachments)(Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
             }
             finally {
-                if ((stringReader != null)) {
-                    stringReader.Dispose();
+                if ((StringReader != null)) {
+                    StringReader.Dispose();
                 }
             }
         }
@@ -2601,10 +2601,10 @@ namespace AllureCSharpCommons.AllureModel {
         public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
             try {
-                string xmlString = Serialize();
+                string xmlstring = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
+                streamWriter.WriteLine(xmlstring);
                 streamWriter.Close();
             }
             finally {
@@ -2645,10 +2645,10 @@ namespace AllureCSharpCommons.AllureModel {
             try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlString = sr.ReadToEnd();
+                string xmlstring = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlString);
+                return Deserialize(xmlstring);
             }
             finally {
                 if ((file != null)) {

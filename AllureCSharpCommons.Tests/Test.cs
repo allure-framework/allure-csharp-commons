@@ -1,5 +1,4 @@
-﻿using AllureCSharpCommons.AllureModel;
-using AllureCSharpCommons.Utils;
+﻿using AllureCSharpCommons.Events;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -10,8 +9,13 @@ namespace AllureCSharpCommons.Tests
         [Test]
         public void Test1()
         {
-            testsuiteresult testcaseresult = new testsuiteresult {name = "42"};
-            testcaseresult.SaveToFile(AllureResultsUtils.TestSuitePath);
+            Allure lifecycle = Allure.Lifecycle;
+            lifecycle.Fire(new TestSuiteStartedEvent("1", "2"));
+            lifecycle.Fire(new TestCaseStartedEvent("1", "2"));
+            lifecycle.Fire(new StepStartedEvent());
+            lifecycle.Fire(new StepFinishedEvent());
+            lifecycle.Fire(new TestCaseFinishedEvent());
+            lifecycle.Fire(new TestSuiteFinishedEvent("1"));
         }
     }
 }

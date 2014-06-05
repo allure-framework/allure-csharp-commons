@@ -1,13 +1,18 @@
-﻿using AllureCSharpCommons.AllureModel;
+﻿using AllureCSharpCommons.AbstractEvents;
+using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
 {
-    public class TestSuiteStartedEvent : ITestSuiteEvent
+    public class TestSuiteStartedEvent : AbstractTestSuiteStartedEvent
     {
-        public void Process(testsuiteresult context)
+        public TestSuiteStartedEvent(string uid, string name)
         {
+            Uid = uid;
+            Name = name;
         }
 
-        public string Uid { get; private set; }
+        public override void Process(testsuiteresult context)
+        {
+        }
     }
 }

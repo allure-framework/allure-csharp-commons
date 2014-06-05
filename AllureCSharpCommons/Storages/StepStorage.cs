@@ -51,5 +51,10 @@ namespace AllureCSharpCommons.Storages
             };
             return step;
         }
+
+        public void Remove()
+        {
+            Value = null;
+        }
     }
 }

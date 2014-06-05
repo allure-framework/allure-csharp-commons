@@ -4,7 +4,7 @@ namespace AllureCSharpCommons.Exceptions
 {
     public class AllureException : Exception
     {
-        public AllureException(String message)
+        public AllureException(string message)
             : base(message)
         {
         }

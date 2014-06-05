@@ -18,5 +18,10 @@ namespace AllureCSharpCommons.Storages
             }
             return Value = new testcaseresult();
         }
+
+        public void Remove()
+        {
+            Value = null;
+        }
     }
 }

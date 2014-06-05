@@ -60,26 +60,26 @@ namespace AllureCSharpCommons
             {
                 StepStorage.Get();
 
-                testcaseresult testcaseresult = TestCaseStorage.Value;
+                testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
 
                 TestSuiteStorage.Get(evt.SuiteUid).testcases.Add(testcaseresult);
             }
             else if (evt.GetType() == typeof(TestCaseFinishedEvent))
             {
-                testcaseresult testcaseresult = TestCaseStorage.Value;
+                testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
 
                 step root = StepStorage.PollLast();
 
                 testcaseresult.steps.AddRange(root.steps);
                 testcaseresult.attachments.AddRange(root.attachments);
-                StepStorage.Dispose();
-                TestCaseStorage.Dispose();
+                StepStorage.Remove();
+                TestCaseStorage.Remove();
             }
             else
             {
-                testcaseresult testcaseresult = TestCaseStorage.Value;
+                testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
             }
         }
@@ -88,7 +88,7 @@ namespace AllureCSharpCommons
         {
             if (evt.GetType() == typeof (TestSuiteFinishedEvent))
             {
-                String suiteUid = evt.Uid;
+                string suiteUid = evt.Uid;
                 testsuiteresult testsuiteresult = TestSuiteStorage.Get(suiteUid);
                 evt.Process(testsuiteresult);
                 TestSuiteStorage.Remove(suiteUid);

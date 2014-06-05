@@ -6,7 +6,7 @@ namespace AllureCSharpCommons.Storages
 {
     public class TestSuiteStorage
     {
-        private readonly Dictionary<String, testsuiteresult> _map = 
+        private readonly Dictionary<string, testsuiteresult> _map = 
             new Dictionary<string, testsuiteresult>();
 
         public testsuiteresult Get(string suiteUid)
