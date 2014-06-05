@@ -3,15 +3,14 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
 {
-	public class RemoveAttachmentsEvent : AbstractRemoveAttachmentEvent
-	{
-		public RemoveAttachmentsEvent ()
-		{
-		}
+    public class RemoveAttachmentsEvent : AbstractRemoveAttachmentEvent
+    {
+        public RemoveAttachmentsEvent()
+        {
+        }
 
-	    public override void Process(step context)
-	    {
-	    }
-	}
+        public override void Process(step context)
+        {
+        }
+    }
 }
-

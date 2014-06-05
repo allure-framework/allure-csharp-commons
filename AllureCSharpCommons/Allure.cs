@@ -56,7 +56,7 @@ namespace AllureCSharpCommons
 
         public void Fire(ITestCaseEvent evt)
         {
-            if (evt.GetType() == typeof(TestCaseStartedEvent))
+            if (evt.GetType() == typeof (TestCaseStartedEvent))
             {
                 StepStorage.Get();
 
@@ -65,7 +65,7 @@ namespace AllureCSharpCommons
 
                 TestSuiteStorage.Get(evt.SuiteUid).testcases.Add(testcaseresult);
             }
-            else if (evt.GetType() == typeof(TestCaseFinishedEvent))
+            else if (evt.GetType() == typeof (TestCaseFinishedEvent))
             {
                 testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
@@ -109,6 +109,6 @@ namespace AllureCSharpCommons
         public void Fire(ClearTestStorageEvent evt)
         {
             TestCaseStorage.Dispose();
-        }    
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
+using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons.Events
 {
@@ -12,6 +13,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testsuiteresult context)
         {
+            context.stop = AllureResultsUtils.TimeStamp;
         }
     }
 }

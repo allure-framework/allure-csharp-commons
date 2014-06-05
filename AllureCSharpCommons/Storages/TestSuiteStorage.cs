@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Storages
 {
     public class TestSuiteStorage
     {
-        private readonly Dictionary<string, testsuiteresult> _map = 
+        private readonly Dictionary<string, testsuiteresult> _map =
             new Dictionary<string, testsuiteresult>();
 
         public testsuiteresult Get(string suiteUid)

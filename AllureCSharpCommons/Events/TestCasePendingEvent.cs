@@ -1,17 +1,20 @@
-using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
 {
-	public class TestCasePendingEvent : AbstractTestCaseStatusChangeEvent
-	{
-		public TestCasePendingEvent ()
-		{
-		}
+    public class TestCasePendingEvent : TestCaseStatusChangedEvent
+    {
+        private string _message = "Test not implemented yet";
 
-	    public override void Process(testcaseresult context)
-	    {
-	    }
-	}
+        protected override status Status
+        {
+            get { return status.pending; }
+        }
+
+        protected override string Message
+        {
+            get { return _message; }
+            set { _message = value; }
+        }
+    }
 }
-

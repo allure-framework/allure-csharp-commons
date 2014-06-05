@@ -29,6 +29,9 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
+      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -51,6 +54,7 @@
     <Compile Include="Allure.cs" />
     <Compile Include="AllureModel\AllureModel.cs" />
     <Compile Include="AbstractEvents\AbstractTestSuiteStartedEvent.cs" />
+    <Compile Include="Events\TestCaseStatusChangedEvent.cs" />
     <Compile Include="Events\TestSuiteFinishedEvent.cs" />
     <Compile Include="Events\TestSuiteStartedEvent.cs" />
     <Compile Include="Exceptions\AllureException.cs" />
@@ -76,7 +80,10 @@
     <Compile Include="Storages\TestSuiteStorage.cs" />
     <Compile Include="Storages\StepStorage.cs" />
     <Compile Include="Utils\AllureResultsUtils.cs" />
+    <Compile Include="Utils\MimeTypes.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>

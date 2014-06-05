@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Threading;
 using AllureCSharpCommons.AllureModel;
+using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons.Storages
 {
@@ -16,7 +17,7 @@ namespace AllureCSharpCommons.Storages
                 return Value = queue;
             }
             return Value;
-        } 
+        }
 
         public void Put(step step)
         {
@@ -46,7 +47,7 @@ namespace AllureCSharpCommons.Storages
             {
                 name = "Root step",
                 title = "Allure step processing error: if you see this step something went wrong.",
-                start = (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds,
+                start = AllureResultsUtils.TimeStamp,
                 status = status.broken
             };
             return step;

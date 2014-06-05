@@ -9,6 +9,7 @@ namespace AllureCSharpCommons.AbstractEvents
         public Exception Throwable { get; set; }
 
         public abstract void Process(testcaseresult context);
+
         public string SuiteUid { get; set; }
     }
 }

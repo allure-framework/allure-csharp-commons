@@ -3,15 +3,14 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
 {
-	public class TestCaseCanceledEvent : AbstractTestCaseStatusChangeEvent
-	{
-		public TestCaseCanceledEvent ()
-		{
-		}
+    public class TestCaseCanceledEvent : AbstractTestCaseStatusChangeEvent
+    {
+        public TestCaseCanceledEvent()
+        {
+        }
 
-	    public override void Process(testcaseresult context)
-	    {
-	    }
-	}
+        public override void Process(testcaseresult context)
+        {
+        }
+    }
 }
-

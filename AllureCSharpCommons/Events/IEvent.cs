@@ -1,7 +1,7 @@
 namespace AllureCSharpCommons.Events
 {
-	public interface IEvent<in T>
-	{
-		void Process(T context);
-	}
+    public interface IEvent<in T>
+    {
+        void Process(T context);
+    }
 }
