@@ -4,4 +4,6 @@ install:
   - sudo apt-get install mono-devel mono-gmcs nunit-console
  
 script:
+  - mozroots --import --sync
+  - mono --runtime=v4.0 ./.nuget/nuget.exe restore
   - xbuild
