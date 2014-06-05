@@ -9,6 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>AllureCSharpCommons</RootNamespace>
     <AssemblyName>AllureCSharpCommons</AssemblyName>
+    <UseMSBuildEngine>False</UseMSBuildEngine>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -29,31 +30,15 @@
     <ConsolePause>false</ConsolePause>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="nunit.framework, Version=2.6.3.13283, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77, processorArchitecture=MSIL">
-      <HintPath>..\packages\NUnit.2.6.3\lib\nunit.framework.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Xml" />
+    <Reference Include="nunit.framework, Version=2.6.0.0, Culture=neutral, PublicKeyToken=96d09a1eb7f44a77">
+      <Private>False</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractEvents\AbstractMakeAttachEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractMakeAttachmentEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractRemoveAttachmentEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractStepCanceledEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractStepFailureEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractStepFinishedEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractStepStartedEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractTestCaseAddParameterEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractTestCaseFinishedEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractTestCaseStartedEvent.cs" />
-    <Compile Include="AbstractEvents\AbstractTestSuiteFinishedEvent.cs" />
-    <Compile Include="AbstractEvents\ClearStepStorageEvent.cs" />
-    <Compile Include="AbstractEvents\ClearTestStorageEvent.cs" />
-    <Compile Include="AbstractEvents\Pattern.cs" />
-    <Compile Include="AbstractEvents\AbstractTestCaseStatusChangeEvent.cs" />
     <Compile Include="Allure.cs" />
     <Compile Include="AllureModel\AllureModel.cs" />
-    <Compile Include="AbstractEvents\AbstractTestSuiteStartedEvent.cs" />
     <Compile Include="Events\TestCaseStatusChangedEvent.cs" />
     <Compile Include="Events\TestSuiteFinishedEvent.cs" />
     <Compile Include="Events\TestSuiteStartedEvent.cs" />
@@ -81,6 +66,22 @@
     <Compile Include="Storages\StepStorage.cs" />
     <Compile Include="Utils\AllureResultsUtils.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
+    <Compile Include="AbstractEvents\abstractmakeattachevent.cs" />
+    <Compile Include="AbstractEvents\abstractmakeattachmentevent.cs" />
+    <Compile Include="AbstractEvents\abstractremoveattachmentevent.cs" />
+    <Compile Include="AbstractEvents\abstractstepcanceledevent.cs" />
+    <Compile Include="AbstractEvents\abstractstepfailureevent.cs" />
+    <Compile Include="AbstractEvents\abstractstepfinishedevent.cs" />
+    <Compile Include="AbstractEvents\abstractstepstartedevent.cs" />
+    <Compile Include="AbstractEvents\abstracttestcaseaddparameterevent.cs" />
+    <Compile Include="AbstractEvents\abstracttestcasefinishedevent.cs" />
+    <Compile Include="AbstractEvents\abstracttestcasestartedevent.cs" />
+    <Compile Include="AbstractEvents\abstracttestsuitefinishedevent.cs" />
+    <Compile Include="AbstractEvents\clearstepstorageevent.cs" />
+    <Compile Include="AbstractEvents\clearteststorageevent.cs" />
+    <Compile Include="AbstractEvents\pattern.cs" />
+    <Compile Include="AbstractEvents\abstracttestcasestatuschangeevent.cs" />
+    <Compile Include="AbstractEvents\abstracttestsuitestartedevent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
