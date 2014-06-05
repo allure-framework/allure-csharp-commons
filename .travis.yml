@@ -7,3 +7,4 @@ script:
   - mozroots --import --sync
   - mono --runtime=v4.0 ./.nuget/nuget.exe restore
   - xbuild
+  - nunit-console ./AllureCSharpCommons.Tests/bin/Debug/AllureCSharpCommons.Tests.dll
