@@ -28,14 +28,46 @@ namespace AllureCSharpCommons.Utils
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
-        public static void AddRange<T>(this T[] array, T[] elements)
-        {
-            
-        }
+		public static void Add<T>(this T[] array, T element)
+		{
+			if (array == null || array.Length == 0)
+			{
+				array = new T[]{element};
+				return;
+			}
+			var buffer = new T[array.Length + 1];
+			for (int i = 0; i < array.Length; i++)
+			{
+				buffer[i] = array[i];
+			}
+			buffer[array.Length] = element;
+			array = buffer;
+		}
 
-        public static void Add<T>(this T[] array, T element)
+		public static void AddRange<T>(this T[] array, T[] elements)
         {
-            
+			if (array == null || array.Length == 0)
+			{
+				if (elements != null && elements.Length != 0)
+				{
+					array = new T[elements.Length];
+					for (int i = 0; i < array.Length; i++)
+					{
+						array[i] = elements[i];
+					}
+				}
+				return;
+			}
+			var buffer = new T[array.Length + elements.Length];
+			for (int i = 0; i < array.Length; i++)
+			{
+				buffer[i] = array[i];
+			}
+			for (int i = array.Length; i < array.Length + elements.Length; i++)
+			{
+				buffer[i] = elements[i - array.Length];
+			}
+			array = buffer;
         }
 
         private static System.Xml.Serialization.XmlSerializer _serializer;
