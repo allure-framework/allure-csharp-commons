@@ -1,6 +1,7 @@
 ﻿using System.IO;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Events;
+using AllureCSharpCommons.Utils;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -9,7 +10,7 @@ namespace AllureCSharpCommons.Tests
     public class AttachmentsTests
     {
         private Allure _lifecycle;
-        private const string Path = "TestData\\attachment";
+        private const string Path = "TestData/attachment";
 
         [TestFixtureSetUp]
         public void Init()
@@ -36,6 +37,13 @@ namespace AllureCSharpCommons.Tests
         {
             byte[] bytes = File.ReadAllBytes(Path + "." + extension);
             _lifecycle.Fire(new MakeAttachmentEvent(bytes, extension, mime));
+        }
+
+        [Test]
+        public void WriteAttachmentWithoutTypeTest()
+        {
+            byte[] bytes = File.ReadAllBytes(Path + ".txt");
+            AllureResultsUtils.WriteAttachment(bytes, "123");
         }
 
         [TestFixtureTearDown]

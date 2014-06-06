@@ -28,17 +28,17 @@ namespace AllureCSharpCommons.Utils
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
-        public static long TimeStamp
+        internal static long TimeStamp
         {
             get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }
         }
 
-        public static string GenerateUid()
+        internal static string GenerateUid()
         {
             return Guid.NewGuid().ToString();
         }
 
-        public static string GenerateSha256(byte[] data)
+        internal static string GenerateSha256(byte[] data)
         {
             SHA256Managed crypt = new SHA256Managed();
             string hash = String.Empty;
@@ -46,18 +46,27 @@ namespace AllureCSharpCommons.Utils
             return crypto.Aggregate(hash, (current, bit) => current + bit.ToString("x2"));
         }
 
-        public static string TestSuitePath
+        internal static string TestSuitePath
         {
             get { return ResultsPath + GenerateUid() + "-testsuite.xml"; }
         }
 
-        public static attachment WriteAttachmentSafely(byte[] attachment, string title, string type)
+        /// <summary>
+        ///     Writes attachments presented by byte array.
+        /// </summary>
+        /// <param name="attachment">Byte array presenting attachment</param>
+        /// <param name="title">Title for internal use</param>
+        /// <param name="type">Has to be valid MIME type of attachment</param>
+        /// <returns></returns>
+        internal static attachment WriteAttachmentSafely(byte[] attachment, string title, string type)
         {
             try
             {
-                return string.IsNullOrEmpty(type)
-                    ? WriteAttachment(attachment, title)
-                    : WriteAttachment(attachment, title, type);
+                //TODO:
+                //return string.IsNullOrEmpty(type)
+                //    ? WriteAttachment(attachment, title)
+                //    : WriteAttachment(attachment, title, type);
+                return WriteAttachment(attachment, title, type);
             }
             catch (Exception ex)
             {
@@ -65,12 +74,12 @@ namespace AllureCSharpCommons.Utils
             }
         }
 
-        public static attachment WriteAttachmentWithErrorMessage(Exception exception, string title)
+        internal static attachment WriteAttachmentWithErrorMessage(Exception exception, string title)
         {
             string message = exception.Message;
             try
             {
-                return WriteAttachment(Encoding.UTF8.GetBytes(message), title);
+                return WriteAttachment(Encoding.UTF8.GetBytes(message), title, "text/plain");
             }
             catch (Exception ex)
             {
@@ -79,11 +88,9 @@ namespace AllureCSharpCommons.Utils
             return new attachment();
         }
 
-        public static attachment WriteAttachment(byte[] attachment, string title, string type)
+        internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
             string path = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
-            attachmenttype atype;
-            Enum.TryParse(type, true, out atype);
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))
@@ -117,8 +124,9 @@ namespace AllureCSharpCommons.Utils
             };
         }
 
-        public static attachment WriteAttachment(byte[] attachment, string title)
+        internal static attachment WriteAttachment(byte[] attachment, string title)
         {
+            //TODO:
             return null;
         }
     }
