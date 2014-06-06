@@ -16,7 +16,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(step context)
         {
-            context.attachments.Add(Attach);
+            context.attachments = AllureResultsUtils.Add(context.attachments, Attach);
         }
     }
 }
