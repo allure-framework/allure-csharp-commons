@@ -19,6 +19,7 @@ namespace AllureCSharpCommons
 
         protected Allure()
         {
+            log4net.Config.XmlConfigurator.Configure();
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();

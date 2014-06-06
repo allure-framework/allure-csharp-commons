@@ -7,7 +7,7 @@ namespace AllureCSharpCommons.AbstractEvents
     {
         public string Title { get; set; }
 
-        public attachmenttype AttachmentType { get; set; }
+        public string AttachmentType { get; set; }
 
         public attachment Attach { get; set; }
 

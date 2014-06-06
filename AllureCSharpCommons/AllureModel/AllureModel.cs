@@ -4,9 +4,7 @@
 //    <NameSpace>AllureCSharpCommons.AllureModel</NameSpace><Collection>List</Collection><codeType>CSharp</codeType><EnableDataBinding>False</EnableDataBinding><EnableLazyLoading>False</EnableLazyLoading><TrackingChangesEnable>False</TrackingChangesEnable><GenTrackingClasses>False</GenTrackingClasses><HidePrivateFieldInIDE>False</HidePrivateFieldInIDE><EnableSummaryComment>False</EnableSummaryComment><VirtualProp>False</VirtualProp><IncludeSerializeMethod>True</IncludeSerializeMethod><UseBaseClass>False</UseBaseClass><GenBaseClass>False</GenBaseClass><GenerateCloneMethod>False</GenerateCloneMethod><GenerateDataContracts>False</GenerateDataContracts><CodeBaseTag>Net20</CodeBaseTag><SerializeMethodName>Serialize</SerializeMethodName><DeserializeMethodName>Deserialize</DeserializeMethodName><SaveToFileMethodName>SaveToFile</SaveToFileMethodName><LoadFromFileMethodName>LoadFromFile</LoadFromFileMethodName><GenerateXMLAttributes>False</GenerateXMLAttributes><OrderXMLAttrib>False</OrderXMLAttrib><EnableEncoding>False</EnableEncoding><AutomaticProperties>False</AutomaticProperties><GenerateShouldSerialize>False</GenerateShouldSerialize><DisableDebug>False</DisableDebug><PropNameSpecified>Default</PropNameSpecified><Encoder>UTF8</Encoder><CustomUsings></CustomUsings><ExcludeIncludedTypes>False</ExcludeIncludedTypes><EnableInitializeFields>True</EnableInitializeFields>
 //  </auto-generated>
 // ------------------------------------------------------------------------------
-
-namespace AllureCSharpCommons.AllureModel
-{
+namespace AllureCSharpCommons.AllureModel {
     using System;
     using System.Diagnostics;
     using System.Xml.Serialization;
@@ -16,124 +14,133 @@ namespace AllureCSharpCommons.AllureModel
     using System.IO;
     using System.Text;
     using System.Collections.Generic;
-
-
-    public partial class testsuiteresult
-    {
+    
+    
+    public partial class testsuiteresult {
+        
         private string nameField;
-
+        
         private string titleField;
-
+        
         private description descriptionField;
-
+        
         private List<testcaseresult> testcasesField;
-
+        
         private List<label> labelsField;
-
+        
         private long startField;
-
+        
         private long stopField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public testsuiteresult()
-        {
+        
+        public testsuiteresult() {
             this.labelsField = new List<label>();
             this.testcasesField = new List<testcaseresult>();
             this.descriptionField = new description();
         }
-
-        public string name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
+        
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
         }
-
-        public string title
-        {
-            get { return this.titleField; }
-            set { this.titleField = value; }
+        
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
         }
-
-        public description description
-        {
-            get { return this.descriptionField; }
-            set { this.descriptionField = value; }
+        
+        public description description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute("test-cases", Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute("test-case", Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<testcaseresult> testcases
-        {
-            get { return this.testcasesField; }
-            set { this.testcasesField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute("test-cases", Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute("test-case", Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<testcaseresult> testcases {
+            get {
+                return this.testcasesField;
+            }
+            set {
+                this.testcasesField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<label> labels
-        {
-            get { return this.labelsField; }
-            set { this.labelsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<label> labels {
+            get {
+                return this.labelsField;
+            }
+            set {
+                this.labelsField = value;
+            }
         }
-
-        public long start
-        {
-            get { return this.startField; }
-            set { this.startField = value; }
+        
+        public long start {
+            get {
+                return this.startField;
+            }
+            set {
+                this.startField = value;
+            }
         }
-
-        public long stop
-        {
-            get { return this.stopField; }
-            set { this.stopField = value; }
+        
+        public long stop {
+            get {
+                return this.stopField;
+            }
+            set {
+                this.stopField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (testsuiteresult));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(testsuiteresult));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current testsuiteresult object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an testsuiteresult object
         /// </summary>
@@ -141,86 +148,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testsuiteresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out testsuiteresult obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out testsuiteresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testsuiteresult);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out testsuiteresult obj)
-        {
+        
+        public static bool Deserialize(string xml, out testsuiteresult obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static testsuiteresult Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((testsuiteresult) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static testsuiteresult Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((testsuiteresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current testsuiteresult object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an testsuiteresult object
         /// </summary>
@@ -228,127 +220,113 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testsuiteresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out testsuiteresult obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out testsuiteresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testsuiteresult);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out testsuiteresult obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out testsuiteresult obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static testsuiteresult LoadFromFile(string fileName)
-        {
+        
+        public static testsuiteresult LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class description
-    {
+    
+    public partial class description {
+        
         private descriptiontype typeField;
-
+        
         private string valueField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public description()
-        {
+        
+        public description() {
             this.typeField = descriptiontype.text;
         }
-
+        
         [System.ComponentModel.DefaultValueAttribute(descriptiontype.text)]
-        public descriptiontype type
-        {
-            get { return this.typeField; }
-            set { this.typeField = value; }
+        public descriptiontype type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
         }
-
+        
         [System.Xml.Serialization.XmlTextAttribute()]
-        public string Value
-        {
-            get { return this.valueField; }
-            set { this.valueField = value; }
+        public string Value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (description));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(description));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current description object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an description object
         /// </summary>
@@ -356,86 +334,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output description object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out description obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out description obj, out System.Exception exception) {
             exception = null;
             obj = default(description);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out description obj)
-        {
+        
+        public static bool Deserialize(string xml, out description obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static description Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((description) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static description Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((description)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current description object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an description object
         /// </summary>
@@ -443,140 +406,130 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output description object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out description obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out description obj, out System.Exception exception) {
             exception = null;
             obj = default(description);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out description obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out description obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static description LoadFromFile(string fileName)
-        {
+        
+        public static description LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public enum descriptiontype
-    {
+    
+    public enum descriptiontype {
+        
         /// <remarks/>
         markdown,
-
+        
         /// <remarks/>
         text,
-
+        
         /// <remarks/>
         html,
     }
-
-    public partial class parameter
-    {
+    
+    public partial class parameter {
+        
         private string nameField;
-
+        
         private string valueField;
-
+        
         private parameterkind kindField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public string name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
+        
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
         }
-
-        public string value
-        {
-            get { return this.valueField; }
-            set { this.valueField = value; }
+        
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
         }
-
-        public parameterkind kind
-        {
-            get { return this.kindField; }
-            set { this.kindField = value; }
+        
+        public parameterkind kind {
+            get {
+                return this.kindField;
+            }
+            set {
+                this.kindField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (parameter));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(parameter));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current parameter object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an parameter object
         /// </summary>
@@ -584,86 +537,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output parameter object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out parameter obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out parameter obj, out System.Exception exception) {
             exception = null;
             obj = default(parameter);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out parameter obj)
-        {
+        
+        public static bool Deserialize(string xml, out parameter obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static parameter Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((parameter) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static parameter Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((parameter)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current parameter object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an parameter object
         /// </summary>
@@ -671,132 +609,121 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output parameter object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out parameter obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out parameter obj, out System.Exception exception) {
             exception = null;
             obj = default(parameter);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out parameter obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out parameter obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static parameter LoadFromFile(string fileName)
-        {
+        
+        public static parameter LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public enum parameterkind
-    {
+    
+    public enum parameterkind {
+        
         /// <remarks/>
         argument,
-
+        
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("system-property")] systemproperty,
-
+        [System.Xml.Serialization.XmlEnumAttribute("system-property")]
+        systemproperty,
+        
         /// <remarks/>
-        [System.Xml.Serialization.XmlEnumAttribute("environment-variable")] environmentvariable,
+        [System.Xml.Serialization.XmlEnumAttribute("environment-variable")]
+        environmentvariable,
     }
-
-    public partial class label
-    {
+    
+    public partial class label {
+        
         private string nameField;
-
+        
         private string valueField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public string name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
+        
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
         }
-
-        public string value
-        {
-            get { return this.valueField; }
-            set { this.valueField = value; }
+        
+        public string value {
+            get {
+                return this.valueField;
+            }
+            set {
+                this.valueField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (label));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(label));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current label object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an label object
         /// </summary>
@@ -804,86 +731,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output label object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out label obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out label obj, out System.Exception exception) {
             exception = null;
             obj = default(label);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out label obj)
-        {
+        
+        public static bool Deserialize(string xml, out label obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static label Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((label) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static label Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((label)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current label object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an label object
         /// </summary>
@@ -891,128 +803,141 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output label object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out label obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out label obj, out System.Exception exception) {
             exception = null;
             obj = default(label);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out label obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out label obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static label LoadFromFile(string fileName)
-        {
+        
+        public static label LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class attachment
-    {
+    
+    public partial class attachment {
+        
         private string titleField;
-
+        
         private string sourceField;
-
-        private attachmenttype typeField;
-
+        
+        private string typeField;
+        
+        private int sizeField;
+        
+        private bool sizeFieldSpecified;
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public string title
-        {
-            get { return this.titleField; }
-            set { this.titleField = value; }
+        
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
         }
-
-        public string source
-        {
-            get { return this.sourceField; }
-            set { this.sourceField = value; }
+        
+        public string source {
+            get {
+                return this.sourceField;
+            }
+            set {
+                this.sourceField = value;
+            }
         }
-
-        public attachmenttype type
-        {
-            get { return this.typeField; }
-            set { this.typeField = value; }
+        
+        public string type {
+            get {
+                return this.typeField;
+            }
+            set {
+                this.typeField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (attachment));
+        
+        public int size {
+            get {
+                return this.sizeField;
+            }
+            set {
+                this.sizeField = value;
+            }
+        }
+        
+        [System.Xml.Serialization.XmlIgnoreAttribute()]
+        public bool sizeSpecified {
+            get {
+                return this.sizeFieldSpecified;
+            }
+            set {
+                this.sizeFieldSpecified = value;
+            }
+        }
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(attachment));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current attachment object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an attachment object
         /// </summary>
@@ -1020,86 +945,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output attachment object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out attachment obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out attachment obj, out System.Exception exception) {
             exception = null;
             obj = default(attachment);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out attachment obj)
-        {
+        
+        public static bool Deserialize(string xml, out attachment obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static attachment Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((attachment) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static attachment Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((attachment)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current attachment object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an attachment object
         /// </summary>
@@ -1107,196 +1017,171 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output attachment object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out attachment obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out attachment obj, out System.Exception exception) {
             exception = null;
             obj = default(attachment);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out attachment obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out attachment obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static attachment LoadFromFile(string fileName)
-        {
+        
+        public static attachment LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public enum attachmenttype
-    {
-        /// <remarks/>
-        txt,
-
-        /// <remarks/>
-        html,
-
-        /// <remarks/>
-        xml,
-
-        /// <remarks/>
-        png,
-
-        /// <remarks/>
-        jpg,
-
-        /// <remarks/>
-        json,
-
-        /// <remarks/>
-        other,
-    }
-
-    public partial class step
-    {
+    
+    public partial class step {
+        
         private string nameField;
-
+        
         private string titleField;
-
+        
         private List<attachment> attachmentsField;
-
+        
         private List<step> stepsField;
-
+        
         private long startField;
-
+        
         private long stopField;
-
+        
         private status statusField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public step()
-        {
+        
+        public step() {
             this.stepsField = new List<step>();
             this.attachmentsField = new List<attachment>();
         }
-
-        public string name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
+        
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
         }
-
-        public string title
-        {
-            get { return this.titleField; }
-            set { this.titleField = value; }
+        
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<attachment> attachments
-        {
-            get { return this.attachmentsField; }
-            set { this.attachmentsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<attachment> attachments {
+            get {
+                return this.attachmentsField;
+            }
+            set {
+                this.attachmentsField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<step> steps
-        {
-            get { return this.stepsField; }
-            set { this.stepsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<step> steps {
+            get {
+                return this.stepsField;
+            }
+            set {
+                this.stepsField = value;
+            }
         }
-
-        public long start
-        {
-            get { return this.startField; }
-            set { this.startField = value; }
+        
+        public long start {
+            get {
+                return this.startField;
+            }
+            set {
+                this.startField = value;
+            }
         }
-
-        public long stop
-        {
-            get { return this.stopField; }
-            set { this.stopField = value; }
+        
+        public long stop {
+            get {
+                return this.stopField;
+            }
+            set {
+                this.stopField = value;
+            }
         }
-
-        public status status
-        {
-            get { return this.statusField; }
-            set { this.statusField = value; }
+        
+        public status status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (step));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(step));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current step object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an step object
         /// </summary>
@@ -1304,86 +1189,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output step object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out step obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out step obj, out System.Exception exception) {
             exception = null;
             obj = default(step);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out step obj)
-        {
+        
+        public static bool Deserialize(string xml, out step obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static step Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((step) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static step Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((step)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current step object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an step object
         /// </summary>
@@ -1391,138 +1261,125 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output step object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out step obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out step obj, out System.Exception exception) {
             exception = null;
             obj = default(step);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out step obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out step obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static step LoadFromFile(string fileName)
-        {
+        
+        public static step LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public enum status
-    {
+    
+    public enum status {
+        
         /// <remarks/>
         failed,
-
+        
         /// <remarks/>
         broken,
-
+        
         /// <remarks/>
         passed,
-
+        
         /// <remarks/>
         canceled,
-
+        
         /// <remarks/>
         pending,
     }
-
-    public partial class failure
-    {
+    
+    public partial class failure {
+        
         private string messageField;
-
+        
         private string stacktraceField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public string message
-        {
-            get { return this.messageField; }
-            set { this.messageField = value; }
+        
+        public string message {
+            get {
+                return this.messageField;
+            }
+            set {
+                this.messageField = value;
+            }
         }
-
-        public string stacktrace
-        {
-            get { return this.stacktraceField; }
-            set { this.stacktraceField = value; }
+        
+        public string stacktrace {
+            get {
+                return this.stacktraceField;
+            }
+            set {
+                this.stacktraceField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (failure));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(failure));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current failure object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an failure object
         /// </summary>
@@ -1530,86 +1387,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output failure object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out failure obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out failure obj, out System.Exception exception) {
             exception = null;
             obj = default(failure);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out failure obj)
-        {
+        
+        public static bool Deserialize(string xml, out failure obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static failure Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((failure) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static failure Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((failure)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current failure object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an failure object
         /// </summary>
@@ -1617,85 +1459,74 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output failure object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out failure obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out failure obj, out System.Exception exception) {
             exception = null;
             obj = default(failure);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out failure obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out failure obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static failure LoadFromFile(string fileName)
-        {
+        
+        public static failure LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class testcaseresult
-    {
+    
+    public partial class testcaseresult {
+        
         private string nameField;
-
+        
         private string titleField;
-
+        
         private description descriptionField;
-
+        
         private failure failureField;
-
+        
         private List<step> stepsField;
-
+        
         private List<attachment> attachmentsField;
-
+        
         private List<label> labelsField;
-
+        
         private List<parameter> parametersField;
-
+        
         private long startField;
-
+        
         private long stopField;
-
+        
         private status statusField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public testcaseresult()
-        {
+        
+        public testcaseresult() {
             this.parametersField = new List<parameter>();
             this.labelsField = new List<label>();
             this.attachmentsField = new List<attachment>();
@@ -1703,128 +1534,148 @@ namespace AllureCSharpCommons.AllureModel
             this.failureField = new failure();
             this.descriptionField = new description();
         }
-
-        public string name
-        {
-            get { return this.nameField; }
-            set { this.nameField = value; }
+        
+        public string name {
+            get {
+                return this.nameField;
+            }
+            set {
+                this.nameField = value;
+            }
         }
-
-        public string title
-        {
-            get { return this.titleField; }
-            set { this.titleField = value; }
+        
+        public string title {
+            get {
+                return this.titleField;
+            }
+            set {
+                this.titleField = value;
+            }
         }
-
-        public description description
-        {
-            get { return this.descriptionField; }
-            set { this.descriptionField = value; }
+        
+        public description description {
+            get {
+                return this.descriptionField;
+            }
+            set {
+                this.descriptionField = value;
+            }
         }
-
-        public failure failure
-        {
-            get { return this.failureField; }
-            set { this.failureField = value; }
+        
+        public failure failure {
+            get {
+                return this.failureField;
+            }
+            set {
+                this.failureField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<step> steps
-        {
-            get { return this.stepsField; }
-            set { this.stepsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<step> steps {
+            get {
+                return this.stepsField;
+            }
+            set {
+                this.stepsField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<attachment> attachments
-        {
-            get { return this.attachmentsField; }
-            set { this.attachmentsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<attachment> attachments {
+            get {
+                return this.attachmentsField;
+            }
+            set {
+                this.attachmentsField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<label> labels
-        {
-            get { return this.labelsField; }
-            set { this.labelsField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<label> labels {
+            get {
+                return this.labelsField;
+            }
+            set {
+                this.labelsField = value;
+            }
         }
-
-        [System.Xml.Serialization.XmlArrayAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        [System.Xml.Serialization.XmlArrayItemAttribute(Form = System.Xml.Schema.XmlSchemaForm.Unqualified,
-            IsNullable = false)]
-        public List<parameter> parameters
-        {
-            get { return this.parametersField; }
-            set { this.parametersField = value; }
+        
+        [System.Xml.Serialization.XmlArrayAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        [System.Xml.Serialization.XmlArrayItemAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified, IsNullable=false)]
+        public List<parameter> parameters {
+            get {
+                return this.parametersField;
+            }
+            set {
+                this.parametersField = value;
+            }
         }
-
-        public long start
-        {
-            get { return this.startField; }
-            set { this.startField = value; }
+        
+        public long start {
+            get {
+                return this.startField;
+            }
+            set {
+                this.startField = value;
+            }
         }
-
-        public long stop
-        {
-            get { return this.stopField; }
-            set { this.stopField = value; }
+        
+        public long stop {
+            get {
+                return this.stopField;
+            }
+            set {
+                this.stopField = value;
+            }
         }
-
-        public status status
-        {
-            get { return this.statusField; }
-            set { this.statusField = value; }
+        
+        public status status {
+            get {
+                return this.statusField;
+            }
+            set {
+                this.statusField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (testcaseresult));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(testcaseresult));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current testcaseresult object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an testcaseresult object
         /// </summary>
@@ -1832,86 +1683,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testcaseresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out testcaseresult obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out testcaseresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testcaseresult);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out testcaseresult obj)
-        {
+        
+        public static bool Deserialize(string xml, out testcaseresult obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static testcaseresult Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((testcaseresult) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static testcaseresult Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((testcaseresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current testcaseresult object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an testcaseresult object
         /// </summary>
@@ -1919,117 +1755,100 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testcaseresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out testcaseresult obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out testcaseresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testcaseresult);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out testcaseresult obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out testcaseresult obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static testcaseresult LoadFromFile(string fileName)
-        {
+        
+        public static testcaseresult LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class testcasesresult
-    {
+    
+    public partial class testcasesresult {
+        
         private List<testcaseresult> testcaseField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public testcasesresult()
-        {
+        
+        public testcasesresult() {
             this.testcaseField = new List<testcaseresult>();
         }
-
-        public List<testcaseresult> testcase
-        {
-            get { return this.testcaseField; }
-            set { this.testcaseField = value; }
+        
+        public List<testcaseresult> testcase {
+            get {
+                return this.testcaseField;
+            }
+            set {
+                this.testcaseField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (testcasesresult));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(testcasesresult));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current testcasesresult object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an testcasesresult object
         /// </summary>
@@ -2037,86 +1856,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testcasesresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out testcasesresult obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out testcasesresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testcasesresult);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out testcasesresult obj)
-        {
+        
+        public static bool Deserialize(string xml, out testcasesresult obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static testcasesresult Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((testcasesresult) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static testcasesresult Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((testcasesresult)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current testcasesresult object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an testcasesresult object
         /// </summary>
@@ -2124,117 +1928,100 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output testcasesresult object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out testcasesresult obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out testcasesresult obj, out System.Exception exception) {
             exception = null;
             obj = default(testcasesresult);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out testcasesresult obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out testcasesresult obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static testcasesresult LoadFromFile(string fileName)
-        {
+        
+        public static testcasesresult LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class steps1
-    {
+    
+    public partial class steps1 {
+        
         private List<step> stepField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public steps1()
-        {
+        
+        public steps1() {
             this.stepField = new List<step>();
         }
-
-        public List<step> step
-        {
-            get { return this.stepField; }
-            set { this.stepField = value; }
+        
+        public List<step> step {
+            get {
+                return this.stepField;
+            }
+            set {
+                this.stepField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (steps1));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(steps1));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current steps1 object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an steps1 object
         /// </summary>
@@ -2242,86 +2029,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output steps1 object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out steps1 obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out steps1 obj, out System.Exception exception) {
             exception = null;
             obj = default(steps1);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out steps1 obj)
-        {
+        
+        public static bool Deserialize(string xml, out steps1 obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static steps1 Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((steps1) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static steps1 Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((steps1)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current steps1 object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an steps1 object
         /// </summary>
@@ -2329,117 +2101,100 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output steps1 object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out steps1 obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out steps1 obj, out System.Exception exception) {
             exception = null;
             obj = default(steps1);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out steps1 obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out steps1 obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static steps1 LoadFromFile(string fileName)
-        {
+        
+        public static steps1 LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class labels
-    {
+    
+    public partial class labels {
+        
         private List<label> labelField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public labels()
-        {
+        
+        public labels() {
             this.labelField = new List<label>();
         }
-
-        public List<label> label
-        {
-            get { return this.labelField; }
-            set { this.labelField = value; }
+        
+        public List<label> label {
+            get {
+                return this.labelField;
+            }
+            set {
+                this.labelField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (labels));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(labels));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current labels object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an labels object
         /// </summary>
@@ -2447,86 +2202,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output labels object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out labels obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out labels obj, out System.Exception exception) {
             exception = null;
             obj = default(labels);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out labels obj)
-        {
+        
+        public static bool Deserialize(string xml, out labels obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static labels Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((labels) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static labels Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((labels)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current labels object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an labels object
         /// </summary>
@@ -2534,117 +2274,100 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output labels object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out labels obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out labels obj, out System.Exception exception) {
             exception = null;
             obj = default(labels);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out labels obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out labels obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static labels LoadFromFile(string fileName)
-        {
+        
+        public static labels LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class parameters
-    {
+    
+    public partial class parameters {
+        
         private List<parameter> parameterField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public parameters()
-        {
+        
+        public parameters() {
             this.parameterField = new List<parameter>();
         }
-
-        public List<parameter> parameter
-        {
-            get { return this.parameterField; }
-            set { this.parameterField = value; }
+        
+        public List<parameter> parameter {
+            get {
+                return this.parameterField;
+            }
+            set {
+                this.parameterField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (parameters));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(parameters));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current parameters object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an parameters object
         /// </summary>
@@ -2652,86 +2375,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output parameters object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out parameters obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out parameters obj, out System.Exception exception) {
             exception = null;
             obj = default(parameters);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out parameters obj)
-        {
+        
+        public static bool Deserialize(string xml, out parameters obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static parameters Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((parameters) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static parameters Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((parameters)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current parameters object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an parameters object
         /// </summary>
@@ -2739,117 +2447,100 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output parameters object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out parameters obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out parameters obj, out System.Exception exception) {
             exception = null;
             obj = default(parameters);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out parameters obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out parameters obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static parameters LoadFromFile(string fileName)
-        {
+        
+        public static parameters LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public partial class attachments
-    {
+    
+    public partial class attachments {
+        
         private List<attachment> attachmentField;
-
+        
         private static System.Xml.Serialization.XmlSerializer serializer;
-
-        public attachments()
-        {
+        
+        public attachments() {
             this.attachmentField = new List<attachment>();
         }
-
-        public List<attachment> attachment
-        {
-            get { return this.attachmentField; }
-            set { this.attachmentField = value; }
+        
+        public List<attachment> attachment {
+            get {
+                return this.attachmentField;
+            }
+            set {
+                this.attachmentField = value;
+            }
         }
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((serializer == null))
-                {
-                    serializer = new System.Xml.Serialization.XmlSerializer(typeof (attachments));
+        
+        private static System.Xml.Serialization.XmlSerializer Serializer {
+            get {
+                if ((serializer == null)) {
+                    serializer = new System.Xml.Serialization.XmlSerializer(typeof(attachments));
                 }
                 return serializer;
             }
         }
-
+        
         #region Serialize/Deserialize
-
         /// <summary>
         /// Serializes current attachments object into an XML document
         /// </summary>
         /// <returns>string XML value</returns>
-        public virtual string Serialize()
-        {
+        public virtual string Serialize() {
             System.IO.StreamReader streamReader = null;
             System.IO.MemoryStream memoryStream = null;
-            try
-            {
+            try {
                 memoryStream = new System.IO.MemoryStream();
                 Serializer.Serialize(memoryStream, this);
                 memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
                 streamReader = new System.IO.StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
-            finally
-            {
-                if ((streamReader != null))
-                {
+            finally {
+                if ((streamReader != null)) {
                     streamReader.Dispose();
                 }
-                if ((memoryStream != null))
-                {
+                if ((memoryStream != null)) {
                     memoryStream.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes workflow markup into an attachments object
         /// </summary>
@@ -2857,86 +2548,71 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output attachments object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool Deserialize(string xml, out attachments obj, out System.Exception exception)
-        {
+        public static bool Deserialize(string xml, out attachments obj, out System.Exception exception) {
             exception = null;
             obj = default(attachments);
-            try
-            {
+            try {
                 obj = Deserialize(xml);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool Deserialize(string xml, out attachments obj)
-        {
+        
+        public static bool Deserialize(string xml, out attachments obj) {
             System.Exception exception = null;
             return Deserialize(xml, out obj, out exception);
         }
-
-        public static attachments Deserialize(string xml)
-        {
-            System.IO.StringReader StringReader = null;
-            try
-            {
-                StringReader = new System.IO.StringReader(xml);
-                return ((attachments) (Serializer.Deserialize(System.Xml.XmlReader.Create(StringReader))));
+        
+        public static attachments Deserialize(string xml) {
+            System.IO.StringReader stringReader = null;
+            try {
+                stringReader = new System.IO.StringReader(xml);
+                return ((attachments)(Serializer.Deserialize(System.Xml.XmlReader.Create(stringReader))));
             }
-            finally
-            {
-                if ((StringReader != null))
-                {
-                    StringReader.Dispose();
+            finally {
+                if ((stringReader != null)) {
+                    stringReader.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Serializes current attachments object into file
         /// </summary>
         /// <param name="fileName">full path of outupt xml file</param>
         /// <param name="exception">output Exception value if failed</param>
         /// <returns>true if can serialize and save into file; otherwise, false</returns>
-        public virtual bool SaveToFile(string fileName, out System.Exception exception)
-        {
+        public virtual bool SaveToFile(string fileName, out System.Exception exception) {
             exception = null;
-            try
-            {
+            try {
                 SaveToFile(fileName);
                 return true;
             }
-            catch (System.Exception e)
-            {
+            catch (System.Exception e) {
                 exception = e;
                 return false;
             }
         }
-
-        public virtual void SaveToFile(string fileName)
-        {
+        
+        public virtual void SaveToFile(string fileName) {
             System.IO.StreamWriter streamWriter = null;
-            try
-            {
-                string xmlstring = Serialize();
+            try {
+                string xmlString = Serialize();
                 System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlstring);
+                streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
             }
-            finally
-            {
-                if ((streamWriter != null))
-                {
+            finally {
+                if ((streamWriter != null)) {
                     streamWriter.Dispose();
                 }
             }
         }
-
+        
         /// <summary>
         /// Deserializes xml markup from file into an attachments object
         /// </summary>
@@ -2944,83 +2620,97 @@ namespace AllureCSharpCommons.AllureModel
         /// <param name="obj">Output attachments object</param>
         /// <param name="exception">output Exception value if deserialize failed</param>
         /// <returns>true if this XmlSerializer can deserialize the object; otherwise, false</returns>
-        public static bool LoadFromFile(string fileName, out attachments obj, out System.Exception exception)
-        {
+        public static bool LoadFromFile(string fileName, out attachments obj, out System.Exception exception) {
             exception = null;
             obj = default(attachments);
-            try
-            {
+            try {
                 obj = LoadFromFile(fileName);
                 return true;
             }
-            catch (System.Exception ex)
-            {
+            catch (System.Exception ex) {
                 exception = ex;
                 return false;
             }
         }
-
-        public static bool LoadFromFile(string fileName, out attachments obj)
-        {
+        
+        public static bool LoadFromFile(string fileName, out attachments obj) {
             System.Exception exception = null;
             return LoadFromFile(fileName, out obj, out exception);
         }
-
-        public static attachments LoadFromFile(string fileName)
-        {
+        
+        public static attachments LoadFromFile(string fileName) {
             System.IO.FileStream file = null;
             System.IO.StreamReader sr = null;
-            try
-            {
+            try {
                 file = new System.IO.FileStream(fileName, FileMode.Open, FileAccess.Read);
                 sr = new System.IO.StreamReader(file);
-                string xmlstring = sr.ReadToEnd();
+                string xmlString = sr.ReadToEnd();
                 sr.Close();
                 file.Close();
-                return Deserialize(xmlstring);
+                return Deserialize(xmlString);
             }
-            finally
-            {
-                if ((file != null))
-                {
+            finally {
+                if ((file != null)) {
                     file.Dispose();
                 }
-                if ((sr != null))
-                {
+                if ((sr != null)) {
                     sr.Dispose();
                 }
             }
         }
-
         #endregion
     }
-
-    public enum labelname
-    {
+    
+    public enum attachmenttype {
+        
+        /// <remarks/>
+        txt,
+        
+        /// <remarks/>
+        html,
+        
+        /// <remarks/>
+        xml,
+        
+        /// <remarks/>
+        png,
+        
+        /// <remarks/>
+        jpg,
+        
+        /// <remarks/>
+        json,
+        
+        /// <remarks/>
+        other,
+    }
+    
+    public enum labelname {
+        
         /// <remarks/>
         feature,
-
+        
         /// <remarks/>
         story,
-
+        
         /// <remarks/>
         severity,
     }
-
-    public enum severitylevel
-    {
+    
+    public enum severitylevel {
+        
         /// <remarks/>
         blocker,
-
+        
         /// <remarks/>
         critical,
-
+        
         /// <remarks/>
         normal,
-
+        
         /// <remarks/>
         minor,
-
+        
         /// <remarks/>
         trivial,
     }

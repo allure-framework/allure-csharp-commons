@@ -9,10 +9,8 @@ namespace AllureCSharpCommons.Events
     {
         public MakeAttachEvent(byte[] attachment, string title, string type)
         {
-            attachmenttype atype;
-            Enum.TryParse(type, true, out atype);
             Title = title;
-            AttachmentType = atype;
+            AttachmentType = type;
             Attach = AllureResultsUtils.WriteAttachmentSafely(attachment, title, type);
         }
 

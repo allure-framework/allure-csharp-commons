@@ -1,16 +1,32 @@
 ﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using AllureCSharpCommons.AllureModel;
+using log4net;
 
 namespace AllureCSharpCommons.Utils
 {
     public static class AllureResultsUtils
     {
-        private const string ResultsPath = "";
+        private static string _resultsPath;
+
+        public static string ResultsPath
+        {
+            get
+            {
+                return _resultsPath ?? (_resultsPath = "allure-results\"");
+            }
+            set
+            {
+                _resultsPath = value;
+            }
+        }
+
         private static readonly Object AttachmentsLock = new Object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
         public static long TimeStamp
         {
@@ -58,7 +74,7 @@ namespace AllureCSharpCommons.Utils
             }
             catch (Exception ex)
             {
-                //TODO:
+                Log.Error(String.Format("Can't write attachment {0}", title), ex);
             }
             return new attachment();
         }
@@ -70,11 +86,25 @@ namespace AllureCSharpCommons.Utils
             Enum.TryParse(type, true, out atype);
             if (!File.Exists(path))
             {
-                using (StreamWriter writer = File.AppendText(path))
+                if (!type.Contains("image"))
                 {
-                    lock (AttachmentsLock)
+                    using (StreamWriter writer = File.AppendText(path))
                     {
-                        writer.Write(Encoding.UTF8.GetString(attachment));
+                        lock (AttachmentsLock)
+                        {
+                            writer.Write(Encoding.UTF8.GetString(attachment));
+                        }
+                    }
+                }
+                else
+                {
+                    using (MemoryStream ms = new MemoryStream(attachment))
+                    {
+                        Image image = Image.FromStream(ms);
+                        lock (AttachmentsLock)
+                        {
+                            image.Save(path);
+                        }
                     }
                 } 
             }
@@ -82,8 +112,8 @@ namespace AllureCSharpCommons.Utils
             {
                 title = title,
                 source = path,
-                type = atype,
-                //TODO: size??
+                type = type,
+                size = attachment.Length
             };
         }
 
