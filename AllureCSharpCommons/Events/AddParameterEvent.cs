@@ -1,5 +1,6 @@
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
+using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons.Events
 {

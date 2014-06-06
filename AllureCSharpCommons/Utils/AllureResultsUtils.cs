@@ -28,6 +28,75 @@ namespace AllureCSharpCommons.Utils
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
+        public static void AddRange<T>(this T[] array, T[] elements)
+        {
+            
+        }
+
+        public static void Add<T>(this T[] array, T element)
+        {
+            
+        }
+
+        private static System.Xml.Serialization.XmlSerializer _serializer;
+
+        private static System.Xml.Serialization.XmlSerializer Serializer
+        {
+            get
+            {
+                if ((_serializer == null))
+                {
+                    _serializer = new System.Xml.Serialization.XmlSerializer(typeof(testsuiteresult));
+                }
+                return _serializer;
+            }
+        }
+
+        public static string Serialize(this testsuiteresult testsuiteresult)
+        {
+            System.IO.StreamReader streamReader = null;
+            System.IO.MemoryStream memoryStream = null;
+            try
+            {
+                memoryStream = new System.IO.MemoryStream();
+                Serializer.Serialize(memoryStream, testsuiteresult);
+                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
+                streamReader = new System.IO.StreamReader(memoryStream);
+                return streamReader.ReadToEnd();
+            }
+            finally
+            {
+                if ((streamReader != null))
+                {
+                    streamReader.Dispose();
+                }
+                if ((memoryStream != null))
+                {
+                    memoryStream.Dispose();
+                }
+            }
+        }
+
+        public static void SaveToFile(this testsuiteresult testsuiteresult, string fileName)
+        {
+            System.IO.StreamWriter streamWriter = null;
+            try
+            {
+                string xmlString = testsuiteresult.Serialize();
+                System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
+                streamWriter = xmlFile.CreateText();
+                streamWriter.WriteLine(xmlString);
+                streamWriter.Close();
+            }
+            finally
+            {
+                if ((streamWriter != null))
+                {
+                    streamWriter.Dispose();
+                }
+            }
+        }
+
         internal static long TimeStamp
         {
             get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }

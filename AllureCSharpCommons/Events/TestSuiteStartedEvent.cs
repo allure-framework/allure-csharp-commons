@@ -19,7 +19,7 @@ namespace AllureCSharpCommons.Events
             context.name = Name;
             context.title = Title;
             context.description = Description;
-            context.labels = Labels.ToList();
+            context.labels = Labels;
         }
     }
 }
