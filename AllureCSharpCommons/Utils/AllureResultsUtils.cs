@@ -17,7 +17,7 @@ namespace AllureCSharpCommons.Utils
         {
             get
             {
-                return _resultsPath ?? (_resultsPath = "allure-results\"");
+                return _resultsPath ?? (_resultsPath = "");
             }
             set
             {
@@ -119,7 +119,6 @@ namespace AllureCSharpCommons.Utils
 
         public static attachment WriteAttachment(byte[] attachment, string title)
         {
-            //TODO: detect mime and convert to attachment
             return null;
         }
     }
