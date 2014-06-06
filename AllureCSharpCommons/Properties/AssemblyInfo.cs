@@ -1,8 +1,7 @@
 using System.Reflection;
-using System.Runtime.CompilerServices;
-
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
+using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("AllureCSharpCommons")]
 [assembly: AssemblyDescription("")]
@@ -21,3 +20,5 @@ using System.Runtime.CompilerServices;
 // if desired. See the Mono documentation for more information about signing.
 //[assembly: AssemblyDelaySign(false)]
 //[assembly: AssemblyKeyFile("")]
+
+[assembly: InternalsVisibleTo("AllureCSharpCommons.Tests")]

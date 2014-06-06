@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons.Storages
 {
-    public class StepStorage : ThreadLocal<LinkedList<step>>
+    public class StepStorage
     {
+        private readonly ThreadLocal<LinkedList<step>> _threadLocal = 
+            new ThreadLocal<LinkedList<step>>();
+
         public LinkedList<step> Get()
         {
-            if (Value == null)
+            if (_threadLocal.Value == null)
             {
                 LinkedList<step> queue = new LinkedList<step>();
                 queue.AddFirst(CreateRootStep());
-                return Value = queue;
+                return _threadLocal.Value = queue;
             }
-            return Value;
+            return _threadLocal.Value;
         }
 
         public void Put(step step)
         {
-            Get().AddFirst(step);
+            Get().AddLast(step);
         }
 
         public step Last
@@ -36,7 +38,7 @@ namespace AllureCSharpCommons.Storages
             queue.RemoveLast();
             if (queue.Count == 0)
             {
-                queue.AddFirst(CreateRootStep());
+                queue.AddLast(CreateRootStep());
             }
             return last;
         }
@@ -55,7 +57,7 @@ namespace AllureCSharpCommons.Storages
 
         public void Remove()
         {
-            Value = null;
+            _threadLocal.Value = null;
         }
     }
 }

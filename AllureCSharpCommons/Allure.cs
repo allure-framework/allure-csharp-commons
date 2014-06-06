@@ -11,9 +11,11 @@ namespace AllureCSharpCommons
     {
         private static Allure _lifecycle;
 
-        public StepStorage StepStorage { get; private set; }
-        public TestCaseStorage TestCaseStorage { get; private set; }
-        public TestSuiteStorage TestSuiteStorage { get; private set; }
+        private static readonly Object TestSuiteAddChildLock = new Object();
+
+        internal StepStorage StepStorage { get; private set; }
+        internal TestCaseStorage TestCaseStorage { get; private set; }
+        internal TestSuiteStorage TestSuiteStorage { get; private set; }
 
         protected Allure()
         {
@@ -33,24 +35,21 @@ namespace AllureCSharpCommons
             get { return _lifecycle = new Allure(); }
         }
 
-        public void Fire(IStepEvent evt)
+        public void Fire(ITestSuiteEvent evt)
         {
-            if (evt.GetType() == typeof (StepStartedEvent))
+            if (evt.GetType() == typeof(TestSuiteFinishedEvent))
             {
-                step step = new step();
-                evt.Process(step);
-                StepStorage.Put(step);
-            }
-            else if (evt.GetType() == typeof (StepFinishedEvent))
-            {
-                step step = StepStorage.PollLast();
-                evt.Process(step);
-                StepStorage.Last.steps.Add(step);
+                string suiteUid = evt.Uid;
+                testsuiteresult testsuiteresult = TestSuiteStorage.Get(suiteUid);
+                evt.Process(testsuiteresult);
+                TestSuiteStorage.Remove(suiteUid);
+                testsuiteresult.SaveToFile(AllureResultsUtils.TestSuitePath);
             }
             else
             {
-                step step = StepStorage.Last;
-                evt.Process(step);
+                TestSuiteStorage.Put(evt.Uid);
+                testsuiteresult testsuiteresult = TestSuiteStorage.Get(evt.Uid);
+                evt.Process(testsuiteresult);
             }
         }
 
@@ -63,7 +62,11 @@ namespace AllureCSharpCommons
                 testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
 
-                TestSuiteStorage.Get(evt.SuiteUid).testcases.Add(testcaseresult);
+                lock (TestSuiteAddChildLock)
+                {
+                    TestSuiteStorage.Put(evt.SuiteUid);
+                    TestSuiteStorage.Get(evt.SuiteUid).testcases.Add(testcaseresult); 
+                }
             }
             else if (evt.GetType() == typeof (TestCaseFinishedEvent))
             {
@@ -84,31 +87,35 @@ namespace AllureCSharpCommons
             }
         }
 
-        public void Fire(ITestSuiteEvent evt)
+        public void Fire(IStepEvent evt)
         {
-            if (evt.GetType() == typeof (TestSuiteFinishedEvent))
+            if (evt.GetType() == typeof(StepStartedEvent))
             {
-                string suiteUid = evt.Uid;
-                testsuiteresult testsuiteresult = TestSuiteStorage.Get(suiteUid);
-                evt.Process(testsuiteresult);
-                TestSuiteStorage.Remove(suiteUid);
-                testsuiteresult.SaveToFile(AllureResultsUtils.TestSuitePath);
+                step step = new step();
+                evt.Process(step);
+                StepStorage.Put(step);
+            }
+            else if (evt.GetType() == typeof(StepFinishedEvent))
+            {
+                step step = StepStorage.PollLast();
+                evt.Process(step);
+                StepStorage.Last.steps.Add(step);
             }
             else
             {
-                testsuiteresult testsuiteresult = TestSuiteStorage.Get(evt.Uid);
-                evt.Process(testsuiteresult);
+                step step = StepStorage.Last;
+                evt.Process(step);
             }
         }
 
         public void Fire(ClearStepStorageEvent evt)
         {
-            StepStorage.Dispose();
+            StepStorage.Remove();
         }
 
         public void Fire(ClearTestStorageEvent evt)
         {
-            TestCaseStorage.Dispose();
+            TestCaseStorage.Remove();
         }
     }
 }
