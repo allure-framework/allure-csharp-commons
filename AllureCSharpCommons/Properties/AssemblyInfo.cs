@@ -22,3 +22,4 @@ using System.Runtime.CompilerServices;
 //[assembly: AssemblyKeyFile("")]
 
 [assembly: InternalsVisibleTo("AllureCSharpCommons.Tests")]
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
