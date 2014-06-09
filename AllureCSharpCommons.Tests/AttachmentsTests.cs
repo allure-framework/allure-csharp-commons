@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using AllureCSharpCommons.AllureModel;
+using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
 using AllureCSharpCommons.Utils;
 using NUnit.Framework;
@@ -27,6 +28,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new StepStartedEvent("1"));
         }
 
+        [AllureTestSuite]
         [TestCase("txt", "text/plain")]
         [TestCase("xml", "application/xml")]
         [TestCase("html", "text/html")]

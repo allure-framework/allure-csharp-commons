@@ -45,6 +45,8 @@
   <ItemGroup>
     <Compile Include="Allure.cs" />
     <Compile Include="AllureModel\AllureModel.cs" />
+    <Compile Include="Attributes\AllureTestCaseAttribute.cs" />
+    <Compile Include="Attributes\AllureTestSuiteAttribute.cs" />
     <Compile Include="Events\TestCaseStatusChangedEvent.cs" />
     <Compile Include="Events\TestSuiteFinishedEvent.cs" />
     <Compile Include="Events\TestSuiteStartedEvent.cs" />
@@ -71,6 +73,7 @@
     <Compile Include="Storages\TestSuiteStorage.cs" />
     <Compile Include="Storages\StepStorage.cs" />
     <Compile Include="Utils\AllureResultsUtils.cs" />
+    <Compile Include="Utils\AttributeManager.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
     <Compile Include="AbstractEvents\abstractmakeattachevent.cs" />
     <Compile Include="AbstractEvents\abstractmakeattachmentevent.cs" />
