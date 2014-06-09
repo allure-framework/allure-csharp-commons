@@ -5,10 +5,6 @@ namespace AllureCSharpCommons.Events
 {
     public class RemoveAttachmentsEvent : AbstractRemoveAttachmentEvent
     {
-        public RemoveAttachmentsEvent()
-        {
-        }
-
         public override void Process(step context)
         {
         }

@@ -6,6 +6,16 @@ namespace AllureCSharpCommons.Utils
 {
     public class MimeTypes
     {
+        private static readonly Dictionary<string, string> _mimeTypes = new Dictionary<string, string>
+        {
+            {"txt", "text/plain"},
+            {"xml", "application/xml"},
+            {"html", "text/html"},
+            {"png", "image/png"},
+            {"jpg", "image/jpeg"},
+            {"json", "application/json"},
+        };
+
         public static string ToMime(string extension)
         {
             if (_mimeTypes.ContainsKey(extension))
@@ -24,15 +34,5 @@ namespace AllureCSharpCommons.Utils
             }
             throw new ArgumentException("mime");
         }
-
-        private static readonly Dictionary<string, string> _mimeTypes = new Dictionary<string, string>
-        {
-            {"txt", "text/plain"},
-            {"xml", "application/xml"},
-            {"html", "text/html"},
-            {"png", "image/png"},
-            {"jpg", "image/jpeg"},
-            {"json", "application/json"},
-        };
     }
 }

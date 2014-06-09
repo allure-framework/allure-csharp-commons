@@ -1,4 +1,3 @@
-using System.Linq;
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Utils;

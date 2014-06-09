@@ -15,12 +15,12 @@ namespace AllureCSharpCommons.Events
             context.status = Status;
             if (Throwable != null)
                 context.failure = Throwable == null
-                    ? new failure()
+                    ? new failure
                     {
                         message = Throwable.Message,
                         stacktrace = Throwable.StackTrace
                     }
-                    : new failure()
+                    : new failure
                     {
                         message = Throwable.Message,
                         stacktrace = "There is no stack trace"

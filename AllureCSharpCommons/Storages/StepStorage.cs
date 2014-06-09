@@ -7,14 +7,19 @@ namespace AllureCSharpCommons.Storages
 {
     public class StepStorage
     {
-        private readonly ThreadLocal<LinkedList<step>> _threadLocal = 
+        private readonly ThreadLocal<LinkedList<step>> _threadLocal =
             new ThreadLocal<LinkedList<step>>();
+
+        public step Last
+        {
+            get { return Get().Last.Value; }
+        }
 
         public LinkedList<step> Get()
         {
             if (_threadLocal.Value == null)
             {
-                LinkedList<step> queue = new LinkedList<step>();
+                var queue = new LinkedList<step>();
                 queue.AddFirst(CreateRootStep());
                 return _threadLocal.Value = queue;
             }
@@ -24,11 +29,6 @@ namespace AllureCSharpCommons.Storages
         public void Put(step step)
         {
             Get().AddLast(step);
-        }
-
-        public step Last
-        {
-            get { return Get().Last.Value; }
         }
 
         public step PollLast()
@@ -45,7 +45,7 @@ namespace AllureCSharpCommons.Storages
 
         public step CreateRootStep()
         {
-            step step = new step
+            var step = new step
             {
                 name = "Root step",
                 title = "Allure step processing error: if you see this step something went wrong.",

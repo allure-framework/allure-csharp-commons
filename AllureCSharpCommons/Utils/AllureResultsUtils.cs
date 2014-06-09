@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Xml.Serialization;
 using AllureCSharpCommons.AllureModel;
 using log4net;
 
@@ -13,20 +14,38 @@ namespace AllureCSharpCommons.Utils
     {
         private static string _resultsPath;
 
+        private static readonly Object AttachmentsLock = new Object();
+        private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
+
+        private static XmlSerializer _serializer;
+
         public static string ResultsPath
+        {
+            get { return _resultsPath ?? (_resultsPath = ""); }
+            set { _resultsPath = value; }
+        }
+
+        private static XmlSerializer Serializer
         {
             get
             {
-                return _resultsPath ?? (_resultsPath = "");
-            }
-            set
-            {
-                _resultsPath = value;
+                if ((_serializer == null))
+                {
+                    _serializer = new XmlSerializer(typeof (testsuiteresult));
+                }
+                return _serializer;
             }
         }
 
-        private static readonly Object AttachmentsLock = new Object();
-        private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
+        internal static long TimeStamp
+        {
+            get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }
+        }
+
+        internal static string TestSuitePath
+        {
+            get { return ResultsPath + GenerateUid() + "-testsuite.xml"; }
+        }
 
         public static T[] Add<T>(T[] array, T element)
         {
@@ -34,7 +53,7 @@ namespace AllureCSharpCommons.Utils
             {
                 if (array == null || array.Length == 0)
                 {
-                    array = new T[] { element };
+                    array = new[] {element};
                     return array;
                 }
                 var buffer = new T[array.Length + 1];
@@ -45,16 +64,16 @@ namespace AllureCSharpCommons.Utils
                 buffer[array.Length] = element;
                 array = buffer;
             }
-            return array; 
+            return array;
         }
 
-		public static T[] AddRange<T>(T[] array, T[] elements)
+        public static T[] AddRange<T>(T[] array, T[] elements)
         {
             if (elements != null && elements.Length != 0)
             {
                 if (array == null || array.Length == 0)
                 {
-                array = new T[elements.Length];
+                    array = new T[elements.Length];
                     for (int i = 0; i < array.Length; i++)
                     {
                         array[i] = elements[i];
@@ -70,35 +89,21 @@ namespace AllureCSharpCommons.Utils
                 {
                     buffer[i] = elements[i - array.Length];
                 }
-                array = buffer; 
+                array = buffer;
             }
-		    return array;
-        }
-
-        private static System.Xml.Serialization.XmlSerializer _serializer;
-
-        private static System.Xml.Serialization.XmlSerializer Serializer
-        {
-            get
-            {
-                if ((_serializer == null))
-                {
-                    _serializer = new System.Xml.Serialization.XmlSerializer(typeof(testsuiteresult));
-                }
-                return _serializer;
-            }
+            return array;
         }
 
         public static string Serialize(this testsuiteresult testsuiteresult)
         {
-            System.IO.StreamReader streamReader = null;
-            System.IO.MemoryStream memoryStream = null;
+            StreamReader streamReader = null;
+            MemoryStream memoryStream = null;
             try
             {
-                memoryStream = new System.IO.MemoryStream();
+                memoryStream = new MemoryStream();
                 Serializer.Serialize(memoryStream, testsuiteresult);
-                memoryStream.Seek(0, System.IO.SeekOrigin.Begin);
-                streamReader = new System.IO.StreamReader(memoryStream);
+                memoryStream.Seek(0, SeekOrigin.Begin);
+                streamReader = new StreamReader(memoryStream);
                 return streamReader.ReadToEnd();
             }
             finally
@@ -116,11 +121,11 @@ namespace AllureCSharpCommons.Utils
 
         public static void SaveToFile(this testsuiteresult testsuiteresult, string fileName)
         {
-            System.IO.StreamWriter streamWriter = null;
+            StreamWriter streamWriter = null;
             try
             {
                 string xmlString = testsuiteresult.Serialize();
-                System.IO.FileInfo xmlFile = new System.IO.FileInfo(fileName);
+                var xmlFile = new FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
                 streamWriter.WriteLine(xmlString);
                 streamWriter.Close();
@@ -134,11 +139,6 @@ namespace AllureCSharpCommons.Utils
             }
         }
 
-        internal static long TimeStamp
-        {
-            get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }
-        }
-
         internal static string GenerateUid()
         {
             return Guid.NewGuid().ToString();
@@ -146,15 +146,10 @@ namespace AllureCSharpCommons.Utils
 
         internal static string GenerateSha256(byte[] data)
         {
-            SHA256Managed crypt = new SHA256Managed();
+            var crypt = new SHA256Managed();
             string hash = String.Empty;
             byte[] crypto = crypt.ComputeHash(data);
             return crypto.Aggregate(hash, (current, bit) => current + bit.ToString("x2"));
-        }
-
-        internal static string TestSuitePath
-        {
-            get { return ResultsPath + GenerateUid() + "-testsuite.xml"; }
         }
 
         /// <summary>
@@ -211,7 +206,7 @@ namespace AllureCSharpCommons.Utils
                 }
                 else
                 {
-                    using (MemoryStream ms = new MemoryStream(attachment))
+                    using (var ms = new MemoryStream(attachment))
                     {
                         Image image = Image.FromStream(ms);
                         lock (AttachmentsLock)
@@ -219,9 +214,9 @@ namespace AllureCSharpCommons.Utils
                             image.Save(path);
                         }
                     }
-                } 
+                }
             }
-            return new attachment()
+            return new attachment
             {
                 title = title,
                 source = path,

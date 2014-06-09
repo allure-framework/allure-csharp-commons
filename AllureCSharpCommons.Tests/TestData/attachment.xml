@@ -1,13 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ErrorInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="Katharsis.Diagnostics">
+
+<ErrorInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+           xmlns="Katharsis.Diagnostics">
   <Exceptions>
     <Exception
       Type="System.Net.WebException"
       TargetSiteType="System.Net.HttpWebRequest"
       TargetSiteMember="EndGetResponse">
       <Message>Удаленный сервер возвратил ошибку: (500) Внутренняя ошибка сервера.</Message>
-      <StackTrace>   в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
-   в System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelAsyncRequest.CompleteGetResponse(IAsyncResult result)</StackTrace>
+      <StackTrace>
+        в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+        в System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelAsyncRequest.CompleteGetResponse(IAsyncResult result)
+      </StackTrace>
       <Data />
     </Exception>
   </Exceptions>

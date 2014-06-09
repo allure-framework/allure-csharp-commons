@@ -24,10 +24,7 @@ namespace AllureCSharpCommons.Events
                     ? "Test failed with unknown reason"
                     : "Test broken with unknown reason";
             }
-            set
-            {
-                throw new InvalidOperationException("Message");
-            }
+            set { throw new InvalidOperationException("Message"); }
         }
     }
 }

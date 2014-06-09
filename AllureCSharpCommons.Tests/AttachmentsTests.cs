@@ -18,11 +18,11 @@ namespace AllureCSharpCommons.Tests
             _lifecycle = Allure.Lifecycle;
             _lifecycle.Fire(new TestSuiteStartedEvent("1", "2")
             {
-                Labels = new[] { new label() { name = "1", value = "1" } }
+                Labels = new[] {new label {name = "1", value = "1"}}
             });
             _lifecycle.Fire(new TestCaseStartedEvent("1", "2")
             {
-                Labels = new[] { new label() { name = "1", value = "1" } }
+                Labels = new[] {new label {name = "1", value = "1"}}
             });
             _lifecycle.Fire(new StepStartedEvent("1"));
         }
@@ -39,19 +39,19 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new MakeAttachmentEvent(bytes, extension, mime));
         }
 
-        [Test]
-        public void WriteAttachmentWithoutTypeTest()
-        {
-            byte[] bytes = File.ReadAllBytes(Path + ".txt");
-            AllureResultsUtils.WriteAttachment(bytes, "123");
-        }
-
         [TestFixtureTearDown]
         public void ShutDown()
         {
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
             _lifecycle.Fire(new TestSuiteFinishedEvent("1"));
+        }
+
+        [Test]
+        public void WriteAttachmentWithoutTypeTest()
+        {
+            byte[] bytes = File.ReadAllBytes(Path + ".txt");
+            AllureResultsUtils.WriteAttachment(bytes, "123");
         }
     }
 }

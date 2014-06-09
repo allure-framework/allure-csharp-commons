@@ -4,6 +4,7 @@ using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Events;
 using AllureCSharpCommons.Storages;
 using AllureCSharpCommons.Utils;
+using log4net.Config;
 
 namespace AllureCSharpCommons
 {
@@ -13,17 +14,17 @@ namespace AllureCSharpCommons
 
         private static readonly Object TestSuiteAddChildLock = new Object();
 
-        internal StepStorage StepStorage { get; private set; }
-        internal TestCaseStorage TestCaseStorage { get; private set; }
-        internal TestSuiteStorage TestSuiteStorage { get; private set; }
-
         protected Allure()
         {
-            log4net.Config.XmlConfigurator.Configure();
+            XmlConfigurator.Configure();
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();
         }
+
+        internal StepStorage StepStorage { get; private set; }
+        internal TestCaseStorage TestCaseStorage { get; private set; }
+        internal TestSuiteStorage TestSuiteStorage { get; private set; }
 
         public static Allure Lifecycle
         {
@@ -38,7 +39,7 @@ namespace AllureCSharpCommons
 
         public void Fire(ITestSuiteEvent evt)
         {
-            if (evt.GetType() == typeof(TestSuiteFinishedEvent))
+            if (evt.GetType() == typeof (TestSuiteFinishedEvent))
             {
                 string suiteUid = evt.Uid;
                 testsuiteresult testsuiteresult = TestSuiteStorage.Get(suiteUid);
@@ -66,7 +67,8 @@ namespace AllureCSharpCommons
                 lock (TestSuiteAddChildLock)
                 {
                     TestSuiteStorage.Put(evt.SuiteUid);
-                    TestSuiteStorage.Get(evt.SuiteUid).testcases = AllureResultsUtils.Add(TestSuiteStorage.Get(evt.SuiteUid).testcases,testcaseresult); 
+                    TestSuiteStorage.Get(evt.SuiteUid).testcases =
+                        AllureResultsUtils.Add(TestSuiteStorage.Get(evt.SuiteUid).testcases, testcaseresult);
                 }
             }
             else if (evt.GetType() == typeof (TestCaseFinishedEvent))
@@ -90,13 +92,13 @@ namespace AllureCSharpCommons
 
         public void Fire(IStepEvent evt)
         {
-            if (evt.GetType() == typeof(StepStartedEvent))
+            if (evt.GetType() == typeof (StepStartedEvent))
             {
-                step step = new step();
+                var step = new step();
                 evt.Process(step);
                 StepStorage.Put(step);
             }
-            else if (evt.GetType() == typeof(StepFinishedEvent))
+            else if (evt.GetType() == typeof (StepFinishedEvent))
             {
                 step step = StepStorage.PollLast();
                 evt.Process(step);
