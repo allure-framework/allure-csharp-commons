@@ -21,7 +21,23 @@ namespace AllureCSharpCommons.Utils
 
         public static string ResultsPath
         {
-            get { return _resultsPath ?? (_resultsPath = ""); }
+            get
+            {
+                if (_resultsPath == null)
+                {
+                    _resultsPath = Directory.GetCurrentDirectory() 
+                    + Path.DirectorySeparatorChar
+                    +"AllureResults"
+                    + Path.DirectorySeparatorChar;
+                }
+
+                if (!File.Exists(_resultsPath))
+                {
+                    Directory.CreateDirectory(_resultsPath);
+                }
+
+                return _resultsPath;
+            }
             set { _resultsPath = value; }
         }
 
@@ -163,10 +179,6 @@ namespace AllureCSharpCommons.Utils
         {
             try
             {
-                //TODO:
-                //return string.IsNullOrEmpty(type)
-                //    ? WriteAttachment(attachment, title)
-                //    : WriteAttachment(attachment, title, type);
                 return WriteAttachment(attachment, title, type);
             }
             catch (Exception ex)
@@ -191,7 +203,7 @@ namespace AllureCSharpCommons.Utils
 
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
-            string path = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
+            string path = ResultsPath + GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))
@@ -223,12 +235,6 @@ namespace AllureCSharpCommons.Utils
                 type = type,
                 size = attachment.Length
             };
-        }
-
-        internal static attachment WriteAttachment(byte[] attachment, string title)
-        {
-            //TODO:
-            return null;
         }
     }
 }

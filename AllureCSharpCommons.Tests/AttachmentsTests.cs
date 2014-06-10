@@ -2,7 +2,6 @@
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
-using AllureCSharpCommons.Utils;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -28,14 +27,16 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new StepStartedEvent("1"));
         }
 
-        [AllureTestSuite]
+        [AllureTitle("asd")]
+        [AllureDescription("123", descriptiontype.text)]
+        [AllureSeverity("123")]
         [TestCase("txt", "text/plain")]
         [TestCase("xml", "application/xml")]
         [TestCase("html", "text/html")]
         [TestCase("png", "image/png")]
         [TestCase("jpg", "image/jpeg")]
         [TestCase("json", "application/json")]
-        public void XmlTest(string extension, string mime)
+        public void AttachmentsTest(string extension, string mime)
         {
             byte[] bytes = File.ReadAllBytes(Path + "." + extension);
             _lifecycle.Fire(new MakeAttachmentEvent(bytes, extension, mime));
@@ -47,13 +48,6 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
             _lifecycle.Fire(new TestSuiteFinishedEvent("1"));
-        }
-
-        [Test]
-        public void WriteAttachmentWithoutTypeTest()
-        {
-            byte[] bytes = File.ReadAllBytes(Path + ".txt");
-            AllureResultsUtils.WriteAttachment(bytes, "123");
         }
     }
 }

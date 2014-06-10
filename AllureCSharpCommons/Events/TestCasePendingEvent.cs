@@ -1,3 +1,4 @@
+using System;
 using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
@@ -15,6 +16,18 @@ namespace AllureCSharpCommons.Events
         {
             get { return _message; }
             set { _message = value; }
+        }
+
+        public TestCasePendingEvent WithMessage(string message)
+        {
+            Message = message;
+            return this;
+        }
+
+        public TestCasePendingEvent WithThrowable(Exception throwable)
+        {
+            Throwable = throwable;
+            return this;
         }
     }
 }

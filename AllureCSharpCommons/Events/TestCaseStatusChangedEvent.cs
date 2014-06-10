@@ -27,7 +27,10 @@ namespace AllureCSharpCommons.Events
                     };
             else
             {
-                throw new ArgumentNullException("context");
+                context.failure = new failure()
+                {
+                    message = Message
+                };
             }
         }
     }

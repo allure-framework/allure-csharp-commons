@@ -10,9 +10,10 @@ namespace AllureCSharpCommons.Events
         {
             get
             {
-                return Throwable.GetType() == typeof (AssertionException)
-                    ? status.failed
-                    : status.broken;
+                return (Throwable == null
+                    || Throwable.GetType() != typeof(AssertionException))
+                    ? status.broken
+                    : status.failed;
             }
         }
 
@@ -25,6 +26,12 @@ namespace AllureCSharpCommons.Events
                     : "Test broken with unknown reason";
             }
             set { throw new InvalidOperationException("Message"); }
+        }
+
+        public TestCaseFailureEvent WithThrowable(Exception throwable)
+        {
+            Throwable = throwable;
+            return this;
         }
     }
 }

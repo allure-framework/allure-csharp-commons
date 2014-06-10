@@ -19,11 +19,15 @@ namespace AllureCSharpCommons.Utils
         {
             _attributes.ForEach(x =>
             {
-                if (x.GetType() == typeof (AllureTestSuiteAttribute))
+                if (x.GetType() == typeof (AllureTitleAttribute))
                 {
-                    var attr = (AllureTestSuiteAttribute) x;
-                    evt.Title = attr.Title;
-                    evt.Description = attr.Description;
+                    var attr = (AllureTitleAttribute)x;
+                    evt.Title = attr.Value;
+                }
+                else if (x.GetType() == typeof (AllureDescriptionAttribute))
+                {
+                    var attr = (AllureDescriptionAttribute) x;
+                    evt.Description = attr.Value;
                 }
             });
         }
@@ -32,16 +36,24 @@ namespace AllureCSharpCommons.Utils
         {
             _attributes.ForEach(x =>
             {
-                if (x.GetType() == typeof(AllureTestCaseAttribute))
+                if (x.GetType() == typeof(AllureTitleAttribute))
                 {
-                    var attr = (AllureTestCaseAttribute) x;
-                    evt.Title = attr.Title;
-                    evt.Description = attr.Description;
-                    evt.Labels = AllureResultsUtils.Add(evt.Labels, 
-                        new label()
-                        {
-                            name = "Severity", value = attr.Severity
-                        });
+                    var attr = (AllureTitleAttribute)x;
+                    evt.Title = attr.Value;
+                }
+                else if (x.GetType() == typeof(AllureDescriptionAttribute))
+                {
+                    var attr = (AllureDescriptionAttribute)x;
+                    evt.Description = attr.Value;
+                }
+                else if (x.GetType() == typeof(AllureSeverityAttribute))
+                {
+                    var attr = (AllureSeverityAttribute) x;
+                    evt.Labels = AllureResultsUtils.Add(evt.Labels, new label()
+                    {
+                        name = "Severity", 
+                        value = attr.Value
+                    });
                 }
             });
         }
