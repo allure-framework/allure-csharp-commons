@@ -110,7 +110,7 @@ namespace AllureCSharpCommons
             }
             else if (evt.GetType() == typeof (StepFinishedEvent))
             {
-                Log.InfoFormat("StepStartedEvent: ");
+                Log.InfoFormat("StepFinishedEvent: ");
                 step step = StepStorage.PollLast();
                 evt.Process(step);
                 StepStorage.Last.steps = AllureResultsUtils.Add(StepStorage.Last.steps, step);

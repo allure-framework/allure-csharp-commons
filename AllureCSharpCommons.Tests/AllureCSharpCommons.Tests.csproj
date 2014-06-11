@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttachmentsTests.cs" />
+    <Compile Include="IntegrationTests.cs" />
     <Compile Include="StepEventTests.cs" />
     <Compile Include="TestCaseEventTests.cs" />
     <Compile Include="TestSuiteEventTests.cs" />

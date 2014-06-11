@@ -27,11 +27,5 @@ namespace AllureCSharpCommons.Events
             }
             set { throw new InvalidOperationException("Message"); }
         }
-
-        public TestCaseFailureEvent WithThrowable(Exception throwable)
-        {
-            Throwable = throwable;
-            return this;
-        }
     }
 }

@@ -19,12 +19,12 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tsevt);
             TestCaseStartedEvent evt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestCaseStorage.IsValueCreated, true);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name, "test name");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.passed);
+            Assert.AreEqual(true, _lifecycle.TestCaseStorage.IsValueCreated);
+            Assert.AreEqual("test name", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name);
+            Assert.AreEqual(status.passed, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
             Assert.IsNull(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].start, 0);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop, 0);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].start);
+            Assert.AreEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop);
         }
 
         [Test]
@@ -37,8 +37,8 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tcsevt);
             TestCaseCanceledEvent evt = new TestCaseCanceledEvent();
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.canceled);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "Test skipped with unknown reason");
+            Assert.AreEqual(status.canceled, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("Test skipped with unknown reason", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
         }
 
         [Test]
@@ -51,8 +51,8 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tcsevt);
             TestCasePendingEvent evt = new TestCasePendingEvent();
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.pending);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "Test not implemented yet");
+            Assert.AreEqual(status.pending, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("Test not implemented yet", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
             Assert.IsNull(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.stacktrace);
         }
 
@@ -65,11 +65,13 @@ namespace AllureCSharpCommons.Tests
             TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
             TestCasePendingEvent evt = new TestCasePendingEvent()
-                .WithThrowable(new Exception("exception"));
+            {
+                Throwable = new Exception("exception")
+            };
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.pending);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "exception");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.stacktrace, "There is no stack trace");
+            Assert.AreEqual(status.pending, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("exception", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
+            Assert.AreEqual("There is no stack trace", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.stacktrace);
         }
 
         [Test]
@@ -81,10 +83,12 @@ namespace AllureCSharpCommons.Tests
             TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
             TestCaseFailureEvent evt = new TestCaseFailureEvent()
-                .WithThrowable(new AssertionException("assertion exception"));
+            {
+                Throwable = new AssertionException("assertion exception")
+            };
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.failed);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "assertion exception");
+            Assert.AreEqual(status.failed, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("assertion exception", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
         }
 
         [Test]
@@ -96,10 +100,12 @@ namespace AllureCSharpCommons.Tests
             TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
             TestCaseFailureEvent evt = new TestCaseFailureEvent()
-                .WithThrowable(new NullReferenceException("null reference exception"));
+            {
+                Throwable = new NullReferenceException("null reference exception")
+            };
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.broken);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "null reference exception");
+            Assert.AreEqual(status.broken, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("null reference exception", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
         }
 
         [Test]
@@ -112,8 +118,8 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tcsevt);
             TestCaseFailureEvent evt = new TestCaseFailureEvent();
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.broken);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "Test broken with unknown reason");
+            Assert.AreEqual(status.broken, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("Test broken with unknown reason", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
         }
 
         [Test]
@@ -127,12 +133,12 @@ namespace AllureCSharpCommons.Tests
             TestCaseFinishedEvent evt = new TestCaseFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length, 1);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name, "test name");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps, null);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop, 0);
+            Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
+            Assert.AreEqual("test name", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop);
         }
 
         [Test]
@@ -142,13 +148,13 @@ namespace AllureCSharpCommons.Tests
             TestCaseFinishedEvent evt = new TestCaseFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length, 1);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name, "test name");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.canceled);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "Test skipped with unknown reason");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps, null);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop, 0);
+            Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
+            Assert.AreEqual("test name", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name);
+            Assert.AreEqual(status.canceled, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("Test skipped with unknown reason", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop);
         }
 
         [Test]
@@ -164,13 +170,13 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new TestCaseFinishedEvent());
 
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length, 1);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name, "test name1");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status, status.canceled);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message, "Test skipped with unknown reason");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps, null);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop, 0);
+            Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
+            Assert.AreEqual("test name1", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name);
+            Assert.AreEqual(status.canceled, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("Test skipped with unknown reason", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].attachments);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop);
 
             TestCaseStartedEvent evt1 = new TestCaseStartedEvent(SuiteUid, "test name2");
             _lifecycle.Fire(evt1);
@@ -178,13 +184,13 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new TestCaseFinishedEvent());
 
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length, 2);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].name, "test name2");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].status, status.pending);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].failure.message, "Test not implemented yet");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].attachments, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].steps, null);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].stop, 0);
+            Assert.AreEqual(2, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
+            Assert.AreEqual("test name2", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].name);
+            Assert.AreEqual(status.pending, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].status);
+            Assert.AreEqual("Test not implemented yet", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].failure.message);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].attachments);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].steps);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].stop);
 
             TestCaseStartedEvent evt2 = new TestCaseStartedEvent(SuiteUid, "test name3");
             _lifecycle.Fire(evt2);
@@ -192,13 +198,13 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new TestCaseFinishedEvent());
 
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length, 3);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].name, "test name3");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].status, status.broken);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].failure.message, "Test broken with unknown reason");
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].attachments, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].steps, null);
-            Assert.AreNotEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].stop, 0);
+            Assert.AreEqual(3, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
+            Assert.AreEqual("test name3", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].name);
+            Assert.AreEqual(status.broken, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].status);
+            Assert.AreEqual("Test broken with unknown reason", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].failure.message);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].attachments);
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].steps);
+            Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[2].stop);
         }
     }
 }
