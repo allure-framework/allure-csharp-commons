@@ -1,7 +1,9 @@
 // Information about this assembly is defined by the following attributes.
 // Change them to the values specific to your project.
+
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using log4net.Config;
 
 [assembly: AssemblyTitle("AllureCSharpCommons")]
 [assembly: AssemblyDescription("")]
@@ -22,4 +24,4 @@ using System.Runtime.CompilerServices;
 //[assembly: AssemblyKeyFile("")]
 
 [assembly: InternalsVisibleTo("AllureCSharpCommons.Tests")]
-[assembly: log4net.Config.XmlConfigurator(Watch = true)]
+[assembly: XmlConfigurator(Watch = true)]

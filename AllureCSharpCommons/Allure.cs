@@ -15,7 +15,7 @@ namespace AllureCSharpCommons
 
         private static readonly Object TestSuiteAddChildLock = new Object();
 
-        private static readonly ILog Log = LogManager.GetLogger(typeof(Allure));
+        private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
         protected Allure()
         {
@@ -26,9 +26,21 @@ namespace AllureCSharpCommons
             Log.Info("Allure instance instantiated.");
         }
 
-        internal StepStorage StepStorage { get; private set; }
-        internal TestCaseStorage TestCaseStorage { get; private set; }
-        internal TestSuiteStorage TestSuiteStorage { get; private set; }
+        /// <summary>
+        /// Don't use this!
+        /// This is public only because of Mono compiler errors.
+        /// </summary>
+        public StepStorage StepStorage { get; private set; }
+        /// <summary>
+        /// Don't use this!
+        /// This is public only because of Mono compiler errors.
+        /// </summary>
+        public TestCaseStorage TestCaseStorage { get; private set; }
+        /// <summary>
+        /// Don't use this!
+        /// This is public only because of Mono compiler errors.
+        /// </summary>
+        public TestSuiteStorage TestSuiteStorage { get; private set; }
 
         public static Allure Lifecycle
         {
@@ -103,7 +115,7 @@ namespace AllureCSharpCommons
         {
             if (evt.GetType() == typeof (StepStartedEvent))
             {
-                Log.InfoFormat("StepStartedEvent: {0}", ((StepStartedEvent)evt).Name);
+                Log.InfoFormat("StepStartedEvent: {0}", ((StepStartedEvent) evt).Name);
                 var step = new step();
                 evt.Process(step);
                 StepStorage.Put(step);

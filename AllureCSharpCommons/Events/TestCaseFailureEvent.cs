@@ -11,7 +11,7 @@ namespace AllureCSharpCommons.Events
             get
             {
                 return (Throwable == null
-                    || Throwable.GetType() != typeof(AssertionException))
+                        || Throwable.GetType() != typeof (AssertionException))
                     ? status.broken
                     : status.failed;
             }

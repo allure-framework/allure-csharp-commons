@@ -25,10 +25,10 @@ namespace AllureCSharpCommons.Utils
             {
                 if (_resultsPath == null)
                 {
-                    _resultsPath = Directory.GetCurrentDirectory() 
-                    + Path.DirectorySeparatorChar
-                    +"AllureResults"
-                    + Path.DirectorySeparatorChar;
+                    _resultsPath = Directory.GetCurrentDirectory()
+                                   + Path.DirectorySeparatorChar
+                                   + "AllureResults"
+                                   + Path.DirectorySeparatorChar;
                 }
 
                 if (!File.Exists(_resultsPath))

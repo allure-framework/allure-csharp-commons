@@ -9,7 +9,7 @@ namespace AllureCSharpCommons.Utils
     public class AttributeManager
     {
         private readonly List<Attribute> _attributes;
- 
+
         public AttributeManager(List<Attribute> attributes)
         {
             _attributes = attributes;
@@ -21,7 +21,7 @@ namespace AllureCSharpCommons.Utils
             {
                 if (x.GetType() == typeof (AllureTitleAttribute))
                 {
-                    var attr = (AllureTitleAttribute)x;
+                    var attr = (AllureTitleAttribute) x;
                     evt.Title = attr.Value;
                 }
                 else if (x.GetType() == typeof (AllureDescriptionAttribute))
@@ -36,22 +36,22 @@ namespace AllureCSharpCommons.Utils
         {
             _attributes.ForEach(x =>
             {
-                if (x.GetType() == typeof(AllureTitleAttribute))
+                if (x.GetType() == typeof (AllureTitleAttribute))
                 {
-                    var attr = (AllureTitleAttribute)x;
+                    var attr = (AllureTitleAttribute) x;
                     evt.Title = attr.Value;
                 }
-                else if (x.GetType() == typeof(AllureDescriptionAttribute))
+                else if (x.GetType() == typeof (AllureDescriptionAttribute))
                 {
-                    var attr = (AllureDescriptionAttribute)x;
+                    var attr = (AllureDescriptionAttribute) x;
                     evt.Description = attr.Value;
                 }
-                else if (x.GetType() == typeof(AllureSeverityAttribute))
+                else if (x.GetType() == typeof (AllureSeverityAttribute))
                 {
                     var attr = (AllureSeverityAttribute) x;
-                    evt.Labels = AllureResultsUtils.Add(evt.Labels, new label()
+                    evt.Labels = AllureResultsUtils.Add(evt.Labels, new label
                     {
-                        name = "Severity", 
+                        name = "Severity",
                         value = attr.Value
                     });
                 }

@@ -1,4 +1,3 @@
-using System;
 using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
