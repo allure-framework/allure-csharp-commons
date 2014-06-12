@@ -12,14 +12,8 @@ namespace AllureCSharpCommons.Events
 
         protected override string Message
         {
-            get
-            {
-                return "Test skipped with unknown reason";
-            }
-            set
-            {
-                throw new InvalidOperationException("Don't set message here");
-            }
+            get { return "Test skipped with unknown reason"; }
+            set { throw new InvalidOperationException("Don't set message here"); }
         }
     }
 }

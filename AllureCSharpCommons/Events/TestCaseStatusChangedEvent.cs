@@ -1,5 +1,4 @@
-﻿using System;
-using AllureCSharpCommons.AbstractEvents;
+﻿using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Events
@@ -27,7 +26,7 @@ namespace AllureCSharpCommons.Events
                     };
             else
             {
-                context.failure = new failure()
+                context.failure = new failure
                 {
                     message = Message
                 };
