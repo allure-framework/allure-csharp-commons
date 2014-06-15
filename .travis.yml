@@ -1,10 +1,13 @@
 language: c
  
 install:
+  - sudo add-apt-repository -y ppa:directhex/monoxide 
+  - sudo apt-get update
   - sudo apt-get install mono-devel mono-gmcs nunit-console
  
 script:
   - mozroots --import --sync
-  - mono --runtime=v4.0 ./.nuget/nuget.exe restore
+  - wget http://nuget.org/nuget.exe
+  - mono --runtime=v4.0 ./nuget.exe restore
   - xbuild
   - nunit-console ./AllureCSharpCommons.Tests/bin/Debug/AllureCSharpCommons.Tests.dll
