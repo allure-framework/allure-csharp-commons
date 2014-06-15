@@ -1,4 +1,9 @@
-﻿using System;
+﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
+// E-mail: murz42@gmail.com
+// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
+// Date: 2014.06.09
+
+using System;
 using System.Collections.Generic;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;

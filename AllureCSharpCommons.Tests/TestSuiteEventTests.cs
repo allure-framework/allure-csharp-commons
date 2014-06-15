@@ -1,4 +1,9 @@
-﻿using AllureCSharpCommons.Events;
+﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
+// E-mail: murz42@gmail.com
+// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
+// Date: 2014.06.10
+
+using AllureCSharpCommons.Events;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -10,18 +15,6 @@ namespace AllureCSharpCommons.Tests
         private const string SuiteUid = "suiteUid";
 
         [Test]
-        public void SuiteStartedEventTest()
-        {
-            _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent evt = new TestSuiteStartedEvent(SuiteUid, "suite42");
-            _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 1);
-            Assert.True(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).name, "suite42");
-        }
-
-        [Test]
         public void SuiteFinishedTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
@@ -31,6 +24,18 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tfevt);
             Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 0);
             Assert.False(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
+        }
+
+        [Test]
+        public void SuiteStartedEventTest()
+        {
+            _lifecycle = Allure.DefaultLifecycle;
+            TestSuiteStartedEvent evt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            _lifecycle.Fire(evt);
+            Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 1);
+            Assert.True(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
+            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases, null);
+            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).name, "suite42");
         }
     }
 }
