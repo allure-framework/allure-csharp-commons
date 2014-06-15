@@ -174,6 +174,7 @@ namespace AllureCSharpCommons.Utils
         /// <param name="attachment">Byte array presenting attachment</param>
         /// <param name="title">Title for internal use</param>
         /// <param name="type">Has to be valid MIME type of attachment</param>
+        /// <see cref="MimeTypes"/>
         /// <returns></returns>
         internal static attachment WriteAttachmentSafely(byte[] attachment, string title, string type)
         {
@@ -196,7 +197,7 @@ namespace AllureCSharpCommons.Utils
             }
             catch (Exception ex)
             {
-                Log.Error(String.Format("Can't write attachment {0}", title), ex);
+                Log.ErrorFormat("Can't write attachment {0}, exception: {1}", title, ex);
             }
             return new attachment();
         }

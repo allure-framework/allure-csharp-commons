@@ -23,24 +23,11 @@ namespace AllureCSharpCommons
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();
-            Log.Info("Allure instance instantiated.");
         }
 
-        /// <summary>
-        /// Don't use this!
-        /// This is public only because of Mono compiler errors.
-        /// </summary>
-        public StepStorage StepStorage { get; private set; }
-        /// <summary>
-        /// Don't use this!
-        /// This is public only because of Mono compiler errors.
-        /// </summary>
-        public TestCaseStorage TestCaseStorage { get; private set; }
-        /// <summary>
-        /// Don't use this!
-        /// This is public only because of Mono compiler errors.
-        /// </summary>
-        public TestSuiteStorage TestSuiteStorage { get; private set; }
+        internal StepStorage StepStorage { get; private set; }
+        internal TestCaseStorage TestCaseStorage { get; private set; }
+        internal TestSuiteStorage TestSuiteStorage { get; private set; }
 
         public static Allure Lifecycle
         {
@@ -57,7 +44,6 @@ namespace AllureCSharpCommons
         {
             if (evt.GetType() == typeof (TestSuiteFinishedEvent))
             {
-                Log.InfoFormat("TestSuiteFinishedEvent: {0}", evt.Uid);
                 string suiteUid = evt.Uid;
                 testsuiteresult testsuiteresult = TestSuiteStorage.Get(suiteUid);
                 evt.Process(testsuiteresult);
@@ -66,7 +52,6 @@ namespace AllureCSharpCommons
             }
             else
             {
-                Log.InfoFormat("{0}: {1}", evt.GetType(), evt.Uid);
                 TestSuiteStorage.Put(evt.Uid);
                 testsuiteresult testsuiteresult = TestSuiteStorage.Get(evt.Uid);
                 evt.Process(testsuiteresult);
@@ -77,7 +62,6 @@ namespace AllureCSharpCommons
         {
             if (evt.GetType() == typeof (TestCaseStartedEvent))
             {
-                Log.InfoFormat("TestCaseStartedEvent: {0}", evt.SuiteUid);
                 StepStorage.Get();
 
                 testcaseresult testcaseresult = TestCaseStorage.Get();
@@ -92,7 +76,6 @@ namespace AllureCSharpCommons
             }
             else if (evt.GetType() == typeof (TestCaseFinishedEvent))
             {
-                Log.InfoFormat("TestCaseFinishedEvent: {0}", evt.SuiteUid);
                 testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
 
@@ -105,7 +88,6 @@ namespace AllureCSharpCommons
             }
             else
             {
-                Log.InfoFormat("{0}: {1}", evt.GetType(), evt.SuiteUid);
                 testcaseresult testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
             }
@@ -115,14 +97,12 @@ namespace AllureCSharpCommons
         {
             if (evt.GetType() == typeof (StepStartedEvent))
             {
-                Log.InfoFormat("StepStartedEvent: {0}", ((StepStartedEvent) evt).Name);
                 var step = new step();
                 evt.Process(step);
                 StepStorage.Put(step);
             }
             else if (evt.GetType() == typeof (StepFinishedEvent))
             {
-                Log.InfoFormat("StepFinishedEvent: ");
                 step step = StepStorage.PollLast();
                 evt.Process(step);
                 StepStorage.Last.steps = AllureResultsUtils.Add(StepStorage.Last.steps, step);
