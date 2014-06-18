@@ -39,6 +39,7 @@
       <HintPath>..\packages\NUnit.2.6.0.12054\lib\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
   </ItemGroup>
@@ -73,6 +74,7 @@
     <Compile Include="Storages\TestCaseStorage.cs" />
     <Compile Include="Storages\TestSuiteStorage.cs" />
     <Compile Include="Storages\StepStorage.cs" />
+    <Compile Include="Utils\AllureConfig.cs" />
     <Compile Include="Utils\AllureResultsUtils.cs" />
     <Compile Include="Utils\AttributeManager.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
@@ -95,7 +97,6 @@
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
 </Project>

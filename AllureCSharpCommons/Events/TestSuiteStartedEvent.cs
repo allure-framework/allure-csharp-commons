@@ -19,6 +19,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testsuiteresult context)
         {
+            context.version = AllureConfig.Version;
             context.start = AllureResultsUtils.TimeStamp;
             context.name = Name;
             context.title = Title;
