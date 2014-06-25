@@ -32,5 +32,7 @@ namespace AllureCSharpCommons.Events
             }
             set { throw new InvalidOperationException("Message"); }
         }
+
+        public override string StackTrace { get; set; }
     }
 }

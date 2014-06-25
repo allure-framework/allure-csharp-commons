@@ -3,6 +3,7 @@
 // Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
 // Date: 2014.06.05
 
+using System;
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 
@@ -14,11 +15,13 @@ namespace AllureCSharpCommons.Events
 
         protected abstract string Message { get; set; }
 
+        public abstract string StackTrace { get; set; }
+
         public override void Process(testcaseresult context)
         {
             context.status = Status;
             if (Throwable != null)
-                context.failure = Throwable == null
+                context.failure = !String.IsNullOrEmpty(Throwable.StackTrace)
                     ? new failure
                     {
                         message = Throwable.Message,
@@ -27,7 +30,9 @@ namespace AllureCSharpCommons.Events
                     : new failure
                     {
                         message = Throwable.Message,
-                        stacktrace = "There is no stack trace"
+                        stacktrace = !String.IsNullOrEmpty(StackTrace)
+                        ? StackTrace
+                        : "There is no stack trace"
                     };
             else
             {

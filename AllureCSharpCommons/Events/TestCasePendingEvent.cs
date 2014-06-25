@@ -21,5 +21,7 @@ namespace AllureCSharpCommons.Events
             get { return _message; }
             set { _message = value; }
         }
+
+        public override string StackTrace { get; set; }
     }
 }

@@ -85,7 +85,28 @@ namespace AllureCSharpCommons.Tests
         }
 
         [Test]
-        public void TestCaseFailureWithAssertionExceptionEventTest()
+        public void TestCaseFailureWithAssertionExceptionAndStackTraceEventTest()
+        {
+            _lifecycle = Allure.DefaultLifecycle;
+            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            _lifecycle.Fire(tsevt);
+            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            _lifecycle.Fire(tcsevt);
+            TestCaseFailureEvent evt = new TestCaseFailureEvent
+            {
+                Throwable = new AssertionException("assertion exception"),
+                StackTrace = "stack trace"
+            };
+            _lifecycle.Fire(evt);
+            Assert.AreEqual(status.failed, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
+            Assert.AreEqual("assertion exception",
+                _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
+            Assert.AreEqual("stack trace",
+                _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.stacktrace);
+        }
+
+        [Test]
+        public void TestCaseFailureWithAssertionExceptionWithoutStackTraceEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
             TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
@@ -100,6 +121,8 @@ namespace AllureCSharpCommons.Tests
             Assert.AreEqual(status.failed, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
             Assert.AreEqual("assertion exception",
                 _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.message);
+            Assert.AreEqual("There is no stack trace",
+                _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].failure.stacktrace);
         }
 
         [Test]

@@ -20,5 +20,7 @@ namespace AllureCSharpCommons.Events
             get { return "Test skipped with unknown reason"; }
             set { throw new InvalidOperationException("Don't set message here"); }
         }
+
+        public override string StackTrace { get; set; }
     }
 }
