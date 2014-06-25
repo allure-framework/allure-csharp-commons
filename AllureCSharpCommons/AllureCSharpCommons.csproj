@@ -77,7 +77,7 @@
     <Compile Include="Utils\AllureResultsUtils.cs" />
     <Compile Include="Utils\AttributeManager.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
-    <Compile Include="AbstractEvents\AbstractMakeAttachEvent.cs" />
+    <Compile Include="AbstractEvents\abstractmakeattachevent.cs" />
     <Compile Include="AbstractEvents\abstractmakeattachmentevent.cs" />
     <Compile Include="AbstractEvents\abstractremoveattachmentevent.cs" />
     <Compile Include="AbstractEvents\abstractstepcanceledevent.cs" />
