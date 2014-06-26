@@ -29,7 +29,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new StepFailureEvent());
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new StepStartedEvent("step with attachment"));
-            _lifecycle.Fire(new MakeAttachEvent(File.ReadAllBytes("TestData/attachment.xml"),
+            _lifecycle.Fire(new MakeAttachmentEvent(File.ReadAllBytes("TestData/attachment.xml"),
                 "XmlAttachment",
                 "application/xml"));
             _lifecycle.Fire(new StepFinishedEvent());
@@ -46,7 +46,7 @@ namespace AllureCSharpCommons.Tests
             });
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new StepStartedEvent("step with attachment"));
-            _lifecycle.Fire(new MakeAttachEvent(File.ReadAllBytes("TestData/attachment.json"),
+            _lifecycle.Fire(new MakeAttachmentEvent(File.ReadAllBytes("TestData/attachment.json"),
                 "XmlAttachment",
                 "application/json"));
             _lifecycle.Fire(new StepFinishedEvent());

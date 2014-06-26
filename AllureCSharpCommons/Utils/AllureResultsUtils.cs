@@ -30,10 +30,7 @@ namespace AllureCSharpCommons.Utils
             {
                 if (_resultsPath == null)
                 {
-                    _resultsPath = Directory.GetCurrentDirectory()
-                                   + Path.DirectorySeparatorChar
-                                   + "AllureResults"
-                                   + Path.DirectorySeparatorChar;
+                    _resultsPath = "AllureResults" + Path.DirectorySeparatorChar;
                 }
 
                 if (!File.Exists(_resultsPath))
@@ -209,7 +206,8 @@ namespace AllureCSharpCommons.Utils
 
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
-            string path = ResultsPath + GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
+            string relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
+            string path = ResultsPath + relativePath;
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))
@@ -237,7 +235,7 @@ namespace AllureCSharpCommons.Utils
             return new attachment
             {
                 title = title,
-                source = path,
+                source = relativePath,
                 type = type,
                 size = attachment.Length
             };
