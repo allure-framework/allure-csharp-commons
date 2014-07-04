@@ -6,6 +6,7 @@
 using System;
 using System.IO;
 using AllureCSharpCommons.Events;
+using AllureCSharpCommons.Utils;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -49,6 +50,9 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new MakeAttachmentEvent(File.ReadAllBytes("TestData/attachment.json"),
                 "XmlAttachment",
                 "application/json"));
+            _lifecycle.Fire(new MakeAttachmentEvent(AllureResultsUtils.TakeScreenShot(),
+                "Screenshot",
+                "image/png"));
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
 

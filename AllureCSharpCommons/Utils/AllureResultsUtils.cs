@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Windows.Forms;
 using System.Xml.Serialization;
 using AllureCSharpCommons.AllureModel;
 using log4net;
@@ -156,6 +157,15 @@ namespace AllureCSharpCommons.Utils
                 }
             }
         }
+
+        public static byte[] TakeScreenShot()
+        {
+            Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            Graphics graphics = Graphics.FromImage(bitmap);
+            graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
+            return (byte[]) new ImageConverter().ConvertTo(bitmap, typeof (byte[]));
+        }
+
 
         internal static string GenerateUid()
         {
