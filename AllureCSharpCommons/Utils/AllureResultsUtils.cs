@@ -34,10 +34,11 @@ namespace AllureCSharpCommons.Utils
                     _resultsPath = "AllureResults" + Path.DirectorySeparatorChar;
                 }
 
-                if (!File.Exists(_resultsPath))
+                if (File.Exists(_resultsPath))
                 {
-                    Directory.CreateDirectory(_resultsPath);
+                    Directory.Delete(_resultsPath, true);
                 }
+                Directory.CreateDirectory(_resultsPath);
 
                 return _resultsPath;
             }
