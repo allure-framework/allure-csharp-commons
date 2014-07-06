@@ -10,7 +10,7 @@ using log4net.Config;
 [assembly: AssemblyTitle("AllureCSharpCommons")]
 [assembly: AssemblyDescription("C-Sharp implementations of core Allure events, exceptions, lifecycle entry-points.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ilya Murzinov")]
 [assembly: AssemblyProduct("")]
 [assembly: AssemblyCopyright("Ilya Murzinov, murz42@gmail.com")]
 [assembly: AssemblyTrademark("")]
