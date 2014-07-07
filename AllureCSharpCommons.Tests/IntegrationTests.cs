@@ -48,7 +48,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new StepFinishedEvent());
             _lifecycle.Fire(new StepStartedEvent("step with attachment"));
             _lifecycle.Fire(new MakeAttachmentEvent(File.ReadAllBytes("TestData/attachment.json"),
-                "XmlAttachment",
+                "JsonAttachment",
                 "application/json"));
             _lifecycle.Fire(new MakeAttachmentEvent(AllureResultsUtils.TakeScreenShot(),
                 "Screenshot",
@@ -63,17 +63,23 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new TestCaseStartedEvent(SuiteUid, "failing test case2"));
             _lifecycle.Fire(new TestCaseFailureEvent
             {
-                Throwable = new AssertionException("assertion exception")
+                Throwable = new AssertionException("assertion exception"),
+                StackTrace = "at com.example.myproject.Book.getTitle(Book.java:16)" +
+                             "at com.example.myproject.Author.getBookTitles(Author.java:25)" +
+                             "at com.example.myproject.Bootstrap.main(Bootstrap.java:14)"
             });
             _lifecycle.Fire(new TestCaseFinishedEvent());
 
             _lifecycle.Fire(new TestCaseStartedEvent(SuiteUid, "pending test case"));
             _lifecycle.Fire(new TestCasePendingEvent
             {
-                Throwable = new NullReferenceException()
+                Throwable = new NullReferenceException(),
+                StackTrace = "в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)" + 
+                    "в System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelAsyncRequest.CompleteGetResponse(IAsyncResult result)"
             });
+            _lifecycle.Fire(new TestCaseFinishedEvent());
 
-            _lifecycle.Fire(new TestCaseStartedEvent(SuiteUid, "pending test case"));
+            _lifecycle.Fire(new TestCaseStartedEvent(SuiteUid, "pending test case 2"));
             _lifecycle.Fire(new TestCasePendingEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
 
