@@ -1,6 +1,6 @@
 AllureCSharpCommons
 =====================
-[![Build Status](https://travis-ci.org/ilya-murzinov/AllureCSharpCommons.svg?branch=master)](https://travis-ci.org/ilya-murzinov/AllureCSharpCommons)
+[![Build Status](https://travis-ci.org/allure-framework/allure-csharp-commons.svg)](https://travis-ci.org/allure-framework/allure-csharp-commons)
 
 C# implementation of Allure core classes such as event definitions, lifecycle entry point, exceptions.
 
