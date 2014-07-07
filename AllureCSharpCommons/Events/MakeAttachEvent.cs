@@ -20,7 +20,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(step context)
         {
-            context.attachments = AllureResultsUtils.Add(context.attachments, Attach);
+            context.attachments = ArraysUtils.Add(context.attachments, Attach);
         }
     }
 }

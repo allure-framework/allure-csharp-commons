@@ -19,11 +19,10 @@ namespace AllureCSharpCommons.Utils
     public static class AllureResultsUtils
     {
         private static string _resultsPath;
+        private static bool _isResultsPathDeleted;
 
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
-
-        private static XmlSerializer _serializer;
 
         public static string ResultsPath
         {
@@ -31,11 +30,12 @@ namespace AllureCSharpCommons.Utils
             {
                 if (_resultsPath == null)
                 {
-                    _resultsPath = "AllureResults" + Path.DirectorySeparatorChar;
+                    _resultsPath = Settings.Default.ResultsPath + Path.DirectorySeparatorChar;
                 }
 
-                if (File.Exists(_resultsPath))
+                if (Directory.Exists(_resultsPath) && !_isResultsPathDeleted)
                 {
+                    _isResultsPathDeleted = true;
                     Directory.Delete(_resultsPath, true);
                 }
                 Directory.CreateDirectory(_resultsPath);
@@ -44,6 +44,8 @@ namespace AllureCSharpCommons.Utils
             }
             set { _resultsPath = value; }
         }
+
+        private static XmlSerializer _serializer;
 
         private static XmlSerializer Serializer
         {
@@ -64,54 +66,7 @@ namespace AllureCSharpCommons.Utils
 
         internal static string TestSuitePath
         {
-            get { return ResultsPath + GenerateUid() + "-testsuite.xml"; }
-        }
-
-        public static T[] Add<T>(T[] array, T element)
-        {
-            if (element != null)
-            {
-                if (array == null || array.Length == 0)
-                {
-                    array = new[] {element};
-                    return array;
-                }
-                var buffer = new T[array.Length + 1];
-                for (int i = 0; i < array.Length; i++)
-                {
-                    buffer[i] = array[i];
-                }
-                buffer[array.Length] = element;
-                array = buffer;
-            }
-            return array;
-        }
-
-        public static T[] AddRange<T>(T[] array, T[] elements)
-        {
-            if (elements != null && elements.Length != 0)
-            {
-                if (array == null || array.Length == 0)
-                {
-                    array = new T[elements.Length];
-                    for (int i = 0; i < array.Length; i++)
-                    {
-                        array[i] = elements[i];
-                    }
-                    return array;
-                }
-                var buffer = new T[array.Length + elements.Length];
-                for (int i = 0; i < array.Length; i++)
-                {
-                    buffer[i] = array[i];
-                }
-                for (int i = array.Length; i < array.Length + elements.Length; i++)
-                {
-                    buffer[i] = elements[i - array.Length];
-                }
-                array = buffer;
-            }
-            return array;
+            get { return ResultsPath + Path.DirectorySeparatorChar + GenerateUid() + "-testsuite.xml"; }
         }
 
         public static string Serialize(this testsuiteresult testsuiteresult)
@@ -218,7 +173,7 @@ namespace AllureCSharpCommons.Utils
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
             string relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
-            string path = ResultsPath + relativePath;
+            string path = ResultsPath + Path.DirectorySeparatorChar + relativePath;
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))

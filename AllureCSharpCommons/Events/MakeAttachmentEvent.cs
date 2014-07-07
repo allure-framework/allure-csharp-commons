@@ -28,7 +28,7 @@ namespace AllureCSharpCommons.Events
         public override void Process(testcaseresult context)
         {
             attachment attachment = AllureResultsUtils.WriteAttachmentSafely(Attachment, Title, Type);
-            context.attachments = AllureResultsUtils.Add(context.attachments, attachment);
+            context.attachments = ArraysUtils.Add(context.attachments, attachment);
         }
     }
 }

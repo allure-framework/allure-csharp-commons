@@ -54,7 +54,7 @@ namespace AllureCSharpCommons.Utils
                 else if (x.GetType() == typeof (AllureSeverityAttribute))
                 {
                     var attr = (AllureSeverityAttribute) x;
-                    evt.Labels = AllureResultsUtils.Add(evt.Labels, new label
+                    evt.Labels = ArraysUtils.Add(evt.Labels, new label
                     {
                         name = "Severity",
                         value = attr.Value

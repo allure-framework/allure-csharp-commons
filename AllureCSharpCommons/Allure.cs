@@ -4,6 +4,7 @@
 // Date: 2014.06.05
 
 using System;
+using System.IO;
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Events;
@@ -76,7 +77,7 @@ namespace AllureCSharpCommons
                 {
                     TestSuiteStorage.Put(evt.SuiteUid);
                     TestSuiteStorage.Get(evt.SuiteUid).testcases =
-                        AllureResultsUtils.Add(TestSuiteStorage.Get(evt.SuiteUid).testcases, testcaseresult);
+                        ArraysUtils.Add(TestSuiteStorage.Get(evt.SuiteUid).testcases, testcaseresult);
                 }
             }
             else if (evt.GetType() == typeof (TestCaseFinishedEvent))
@@ -86,8 +87,8 @@ namespace AllureCSharpCommons
 
                 step root = StepStorage.PollLast();
 
-                testcaseresult.steps = AllureResultsUtils.AddRange(testcaseresult.steps, root.steps);
-                testcaseresult.attachments = AllureResultsUtils.AddRange(testcaseresult.attachments, root.attachments);
+                testcaseresult.steps = ArraysUtils.AddRange(testcaseresult.steps, root.steps);
+                testcaseresult.attachments = ArraysUtils.AddRange(testcaseresult.attachments, root.attachments);
                 StepStorage.Remove();
                 TestCaseStorage.Remove();
             }
@@ -110,7 +111,7 @@ namespace AllureCSharpCommons
             {
                 step step = StepStorage.PollLast();
                 evt.Process(step);
-                StepStorage.Last.steps = AllureResultsUtils.Add(StepStorage.Last.steps, step);
+                StepStorage.Last.steps = ArraysUtils.Add(StepStorage.Last.steps, step);
             }
             else
             {

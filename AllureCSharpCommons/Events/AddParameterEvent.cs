@@ -19,7 +19,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testcaseresult context)
         {
-            context.parameters = AllureResultsUtils.Add(context.parameters, new parameter
+            context.parameters = ArraysUtils.Add(context.parameters, new parameter
             {
                 name = Name,
                 value = Value,
