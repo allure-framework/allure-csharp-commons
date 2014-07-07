@@ -31,8 +31,8 @@ namespace AllureCSharpCommons.Events
                     {
                         message = Throwable.Message,
                         stacktrace = !String.IsNullOrEmpty(StackTrace)
-                        ? StackTrace
-                        : "There is no stack trace"
+                            ? StackTrace
+                            : "There is no stack trace"
                     };
             else
             {

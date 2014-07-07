@@ -4,7 +4,6 @@
 // Date: 2014.06.05
 
 using System;
-using System.IO;
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Events;

@@ -18,9 +18,9 @@ namespace AllureCSharpCommons.Tests
         public void SuiteFinishedTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestSuiteFinishedEvent tfevt = new TestSuiteFinishedEvent(SuiteUid);
+            var tfevt = new TestSuiteFinishedEvent(SuiteUid);
             _lifecycle.Fire(tfevt);
             Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 0);
             Assert.False(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
@@ -30,7 +30,7 @@ namespace AllureCSharpCommons.Tests
         public void SuiteStartedEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent evt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var evt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(evt);
             Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 1);
             Assert.True(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));

@@ -74,8 +74,8 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(new TestCasePendingEvent
             {
                 Throwable = new NullReferenceException(),
-                StackTrace = "в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)" + 
-                    "в System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelAsyncRequest.CompleteGetResponse(IAsyncResult result)"
+                StackTrace = "в System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)" +
+                             "в System.ServiceModel.Channels.HttpChannelFactory`1.HttpRequestChannel.HttpChannelAsyncRequest.CompleteGetResponse(IAsyncResult result)"
             });
             _lifecycle.Fire(new TestCaseFinishedEvent());
 

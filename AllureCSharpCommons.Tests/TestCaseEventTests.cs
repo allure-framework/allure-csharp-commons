@@ -20,10 +20,10 @@ namespace AllureCSharpCommons.Tests
         public void MultipleTestCasesTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
 
-            TestCaseStartedEvent evt = new TestCaseStartedEvent(SuiteUid, "test name1");
+            var evt = new TestCaseStartedEvent(SuiteUid, "test name1");
             _lifecycle.Fire(evt);
             _lifecycle.Fire(new TestCaseCanceledEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
@@ -38,7 +38,7 @@ namespace AllureCSharpCommons.Tests
             Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].steps);
             Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].stop);
 
-            TestCaseStartedEvent evt1 = new TestCaseStartedEvent(SuiteUid, "test name2");
+            var evt1 = new TestCaseStartedEvent(SuiteUid, "test name2");
             _lifecycle.Fire(evt1);
             _lifecycle.Fire(new TestCasePendingEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
@@ -53,7 +53,7 @@ namespace AllureCSharpCommons.Tests
             Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].steps);
             Assert.AreNotEqual(0, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[1].stop);
 
-            TestCaseStartedEvent evt2 = new TestCaseStartedEvent(SuiteUid, "test name3");
+            var evt2 = new TestCaseStartedEvent(SuiteUid, "test name3");
             _lifecycle.Fire(evt2);
             _lifecycle.Fire(new TestCaseFailureEvent());
             _lifecycle.Fire(new TestCaseFinishedEvent());
@@ -73,11 +73,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseCanceledEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseCanceledEvent evt = new TestCaseCanceledEvent();
+            var evt = new TestCaseCanceledEvent();
             _lifecycle.Fire(evt);
             Assert.AreEqual(status.canceled, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
             Assert.AreEqual("Test skipped with unknown reason",
@@ -88,11 +88,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFailureWithAssertionExceptionAndStackTraceEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseFailureEvent evt = new TestCaseFailureEvent
+            var evt = new TestCaseFailureEvent
             {
                 Throwable = new AssertionException("assertion exception"),
                 StackTrace = "stack trace"
@@ -109,11 +109,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFailureWithAssertionExceptionWithoutStackTraceEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseFailureEvent evt = new TestCaseFailureEvent
+            var evt = new TestCaseFailureEvent
             {
                 Throwable = new AssertionException("assertion exception")
             };
@@ -129,11 +129,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFailureWithOtherExceptionEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseFailureEvent evt = new TestCaseFailureEvent
+            var evt = new TestCaseFailureEvent
             {
                 Throwable = new NullReferenceException("null reference exception")
             };
@@ -147,11 +147,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFailureWithoutExceptionEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseFailureEvent evt = new TestCaseFailureEvent();
+            var evt = new TestCaseFailureEvent();
             _lifecycle.Fire(evt);
             Assert.AreEqual(status.broken, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
             Assert.AreEqual("Test broken with unknown reason",
@@ -162,7 +162,7 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFinishedEventAfterTestCaseCancelledEventTest()
         {
             TestCaseCanceledEventTest();
-            TestCaseFinishedEvent evt = new TestCaseFinishedEvent();
+            var evt = new TestCaseFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
             Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
@@ -179,11 +179,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseFinishedEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCaseFinishedEvent evt = new TestCaseFinishedEvent();
+            var evt = new TestCaseFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.IsNull(_lifecycle.TestCaseStorage.Value);
             Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases.Length);
@@ -198,11 +198,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCasePendingEventWithoutMessageWithExceptionTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCasePendingEvent evt = new TestCasePendingEvent
+            var evt = new TestCasePendingEvent
             {
                 Throwable = new Exception("exception")
             };
@@ -217,11 +217,11 @@ namespace AllureCSharpCommons.Tests
         public void TestCasePendingEventWithoutMessageWithoutExceptionTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            TestCasePendingEvent evt = new TestCasePendingEvent();
+            var evt = new TestCasePendingEvent();
             _lifecycle.Fire(evt);
             Assert.AreEqual(status.pending, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
             Assert.AreEqual("Test not implemented yet",
@@ -233,9 +233,9 @@ namespace AllureCSharpCommons.Tests
         public void TestCaseStartedEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent evt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var evt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(evt);
             Assert.AreEqual(true, _lifecycle.TestCaseStorage.IsValueCreated);
             Assert.AreEqual("test name", _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].name);

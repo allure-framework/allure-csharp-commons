@@ -24,6 +24,8 @@ namespace AllureCSharpCommons.Utils
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
+        private static XmlSerializer _serializer;
+
         public static string ResultsPath
         {
             get
@@ -44,8 +46,6 @@ namespace AllureCSharpCommons.Utils
             }
             set { _resultsPath = value; }
         }
-
-        private static XmlSerializer _serializer;
 
         private static XmlSerializer Serializer
         {
@@ -116,7 +116,7 @@ namespace AllureCSharpCommons.Utils
 
         public static byte[] TakeScreenShot()
         {
-            Bitmap bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            var bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             Graphics graphics = Graphics.FromImage(bitmap);
             graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
             return (byte[]) new ImageConverter().ConvertTo(bitmap, typeof (byte[]));

@@ -20,9 +20,9 @@ namespace AllureCSharpCommons.Tests
         public void MultipleStepsTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
             _lifecycle.Fire(new StepStartedEvent("step1"));
             _lifecycle.Fire(new StepFinishedEvent());
@@ -54,13 +54,13 @@ namespace AllureCSharpCommons.Tests
         public void StepFailureEventWithAssertExceptionTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            StepStartedEvent ssevt = new StepStartedEvent("step1");
+            var ssevt = new StepStartedEvent("step1");
             _lifecycle.Fire(ssevt);
-            StepFailureEvent evt = new StepFailureEvent
+            var evt = new StepFailureEvent
             {
                 Throwable = new AssertionException("assertion exception")
             };
@@ -73,13 +73,13 @@ namespace AllureCSharpCommons.Tests
         public void StepFailureEventWithOtherExceptionTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            StepStartedEvent ssevt = new StepStartedEvent("step1");
+            var ssevt = new StepStartedEvent("step1");
             _lifecycle.Fire(ssevt);
-            StepFailureEvent evt = new StepFailureEvent
+            var evt = new StepFailureEvent
             {
                 Throwable = new NullReferenceException("other exception")
             };
@@ -92,18 +92,18 @@ namespace AllureCSharpCommons.Tests
         public void StepFinishedEventAfterStepFailureEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            StepStartedEvent ssevt = new StepStartedEvent("step1");
+            var ssevt = new StepStartedEvent("step1");
             _lifecycle.Fire(ssevt);
-            StepFailureEvent sfevt = new StepFailureEvent
+            var sfevt = new StepFailureEvent
             {
                 Throwable = new NullReferenceException("other exception")
             };
             _lifecycle.Fire(sfevt);
-            StepFinishedEvent evt = new StepFinishedEvent();
+            var evt = new StepFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.AreEqual(1, _lifecycle.StepStorage.Get().Last.Value.steps.Length);
             Assert.AreEqual("step1", _lifecycle.StepStorage.Get().Last.Value.steps[0].name);
@@ -115,13 +115,13 @@ namespace AllureCSharpCommons.Tests
         public void StepFinishedEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            StepStartedEvent ssevt = new StepStartedEvent("step1");
+            var ssevt = new StepStartedEvent("step1");
             _lifecycle.Fire(ssevt);
-            StepFinishedEvent evt = new StepFinishedEvent();
+            var evt = new StepFinishedEvent();
             _lifecycle.Fire(evt);
             Assert.AreEqual(1, _lifecycle.StepStorage.Get().Last.Value.steps.Length);
             Assert.AreEqual("step1", _lifecycle.StepStorage.Get().Last.Value.steps[0].name);
@@ -133,11 +133,11 @@ namespace AllureCSharpCommons.Tests
         public void StepStartedEventTest()
         {
             _lifecycle = Allure.DefaultLifecycle;
-            TestSuiteStartedEvent tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
+            var tsevt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(tsevt);
-            TestCaseStartedEvent tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
+            var tcsevt = new TestCaseStartedEvent(SuiteUid, "test name");
             _lifecycle.Fire(tcsevt);
-            StepStartedEvent evt = new StepStartedEvent("step1");
+            var evt = new StepStartedEvent("step1");
             _lifecycle.Fire(evt);
             Assert.AreEqual(2, _lifecycle.StepStorage.Get().Count); //Root step + step1
             Assert.AreEqual("step1", _lifecycle.StepStorage.Get().Last.Value.name);
