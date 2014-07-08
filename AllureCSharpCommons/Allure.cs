@@ -10,7 +10,6 @@ using AllureCSharpCommons.Events;
 using AllureCSharpCommons.Storages;
 using AllureCSharpCommons.Utils;
 using log4net;
-using log4net.Config;
 
 namespace AllureCSharpCommons
 {
@@ -24,7 +23,7 @@ namespace AllureCSharpCommons
 
         protected Allure()
         {
-            XmlConfigurator.Configure();
+            Logger.Setup();
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();

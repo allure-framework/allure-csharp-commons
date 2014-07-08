@@ -83,6 +83,7 @@
     <Compile Include="Utils\AllureResultsUtils.cs" />
     <Compile Include="Utils\ArraysUtils.cs" />
     <Compile Include="Utils\AttributeManager.cs" />
+    <Compile Include="Utils\Logger.cs" />
     <Compile Include="Utils\MimeTypes.cs" />
     <Compile Include="AbstractEvents\abstractmakeattachevent.cs" />
     <Compile Include="AbstractEvents\abstractmakeattachmentevent.cs" />
