@@ -4,14 +4,15 @@
 // Date: 2014.06.10
 
 using System;
+using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Attributes
 {
     public class AllureSeverityAttribute : Attribute
     {
-        public AllureSeverityAttribute(string value)
+        public AllureSeverityAttribute(severitylevel value)
         {
-            Value = value;
+            Value = value.ToString();
         }
 
         public string Value { get; private set; }

@@ -56,7 +56,7 @@ namespace AllureCSharpCommons.Utils
                     var attr = (AllureSeverityAttribute) x;
                     evt.Labels = ArraysUtils.Add(evt.Labels, new label
                     {
-                        name = "Severity",
+                        name = "severity",
                         value = attr.Value
                     });
                 }

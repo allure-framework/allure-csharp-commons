@@ -34,7 +34,7 @@ namespace AllureCSharpCommons.Tests
 
         [AllureTitle("asd")]
         [AllureDescription("123", descriptiontype.text)]
-        [AllureSeverity("123")]
+        [AllureSeverity(severitylevel.critical)]
         [TestCase("txt", "text/plain")]
         [TestCase("xml", "application/xml")]
         [TestCase("html", "text/html")]
