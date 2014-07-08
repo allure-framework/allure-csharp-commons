@@ -1,9 +1,4 @@
-﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
-// E-mail: murz42@gmail.com
-// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
-// Date: 2014.06.05
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Utils;
@@ -38,8 +33,8 @@ namespace AllureCSharpCommons.Storages
 
         public step PollLast()
         {
-            LinkedList<step> queue = Get();
-            step last = queue.Last.Value;
+            var queue = Get();
+            var last = queue.Last.Value;
             queue.RemoveLast();
             if (queue.Count == 0)
             {

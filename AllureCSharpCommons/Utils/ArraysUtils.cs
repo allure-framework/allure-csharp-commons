@@ -8,11 +8,11 @@
             {
                 if (array == null || array.Length == 0)
                 {
-                    array = new[] { element };
+                    array = new[] {element};
                     return array;
                 }
                 var buffer = new T[array.Length + 1];
-                for (int i = 0; i < array.Length; i++)
+                for (var i = 0; i < array.Length; i++)
                 {
                     buffer[i] = array[i];
                 }
@@ -29,18 +29,18 @@
                 if (array == null || array.Length == 0)
                 {
                     array = new T[elements.Length];
-                    for (int i = 0; i < array.Length; i++)
+                    for (var i = 0; i < array.Length; i++)
                     {
                         array[i] = elements[i];
                     }
                     return array;
                 }
                 var buffer = new T[array.Length + elements.Length];
-                for (int i = 0; i < array.Length; i++)
+                for (var i = 0; i < array.Length; i++)
                 {
                     buffer[i] = array[i];
                 }
-                for (int i = array.Length; i < array.Length + elements.Length; i++)
+                for (var i = array.Length; i < array.Length + elements.Length; i++)
                 {
                     buffer[i] = elements[i - array.Length];
                 }

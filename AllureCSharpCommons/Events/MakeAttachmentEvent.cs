@@ -1,8 +1,3 @@
-// Author: Ilya Murzinov, https://github.com/ilya-murzinov
-// E-mail: murz42@gmail.com
-// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
-// Date: 2014.06.05
-
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Utils;
@@ -27,7 +22,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testcaseresult context)
         {
-            attachment attachment = AllureResultsUtils.WriteAttachmentSafely(Attachment, Title, Type);
+            var attachment = AllureResultsUtils.WriteAttachmentSafely(Attachment, Title, Type);
             context.attachments = ArraysUtils.Add(context.attachments, attachment);
         }
     }

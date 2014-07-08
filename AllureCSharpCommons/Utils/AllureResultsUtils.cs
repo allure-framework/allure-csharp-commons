@@ -1,9 +1,4 @@
-﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
-// E-mail: murz42@gmail.com
-// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
-// Date: 2014.06.05
-
-using System;
+﻿using System;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -82,7 +77,7 @@ namespace AllureCSharpCommons.Utils
             StreamWriter streamWriter = null;
             try
             {
-                string xmlString = testsuiteresult.Serialize();
+                var xmlString = testsuiteresult.Serialize();
                 var xmlFile = new FileInfo(fileName);
                 streamWriter = xmlFile.CreateText();
                 streamWriter.WriteLine(xmlString);
@@ -100,7 +95,7 @@ namespace AllureCSharpCommons.Utils
         public static byte[] TakeScreenShot()
         {
             var bitmap = new Bitmap(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            Graphics graphics = Graphics.FromImage(bitmap);
+            var graphics = Graphics.FromImage(bitmap);
             graphics.CopyFromScreen(0, 0, 0, 0, bitmap.Size);
             return (byte[]) new ImageConverter().ConvertTo(bitmap, typeof (byte[]));
         }
@@ -114,8 +109,8 @@ namespace AllureCSharpCommons.Utils
         internal static string GenerateSha256(byte[] data)
         {
             var crypt = new SHA256Managed();
-            string hash = String.Empty;
-            byte[] crypto = crypt.ComputeHash(data);
+            var hash = String.Empty;
+            var crypto = crypt.ComputeHash(data);
             return crypto.Aggregate(hash, (current, bit) => current + bit.ToString("x2"));
         }
 
@@ -141,7 +136,7 @@ namespace AllureCSharpCommons.Utils
 
         internal static attachment WriteAttachmentWithErrorMessage(Exception exception, string title)
         {
-            string message = exception.Message;
+            var message = exception.Message;
             try
             {
                 return WriteAttachment(Encoding.UTF8.GetBytes(message), title, "text/plain");
@@ -155,13 +150,13 @@ namespace AllureCSharpCommons.Utils
 
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
-            string relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
-            string path = Settings.Default.ResultsPath + Path.DirectorySeparatorChar + relativePath;
+            var relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
+            var path = Settings.Default.ResultsPath + Path.DirectorySeparatorChar + relativePath;
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))
                 {
-                    using (StreamWriter writer = File.AppendText(path))
+                    using (var writer = File.AppendText(path))
                     {
                         lock (AttachmentsLock)
                         {
@@ -173,7 +168,7 @@ namespace AllureCSharpCommons.Utils
                 {
                     using (var ms = new MemoryStream(attachment))
                     {
-                        Image image = Image.FromStream(ms);
+                        var image = Image.FromStream(ms);
                         lock (AttachmentsLock)
                         {
                             image.Save(path);

@@ -10,7 +10,7 @@ namespace AllureCSharpCommons.Utils
     {
         public static void Setup()
         {
-            var hierarchy = (Hierarchy)LogManager.GetRepository();
+            var hierarchy = (Hierarchy) LogManager.GetRepository();
 
             var patternLayout = new PatternLayout
             {

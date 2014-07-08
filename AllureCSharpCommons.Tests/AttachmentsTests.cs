@@ -1,9 +1,4 @@
-﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
-// E-mail: murz42@gmail.com
-// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
-// Date: 2014.06.06
-
-using System.IO;
+﻿using System.IO;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
@@ -43,7 +38,7 @@ namespace AllureCSharpCommons.Tests
         [TestCase("json", "application/json")]
         public void AttachmentsTest(string extension, string mime)
         {
-            byte[] bytes = File.ReadAllBytes(Path + "." + extension);
+            var bytes = File.ReadAllBytes(Path + "." + extension);
             _lifecycle.Fire(new MakeAttachmentEvent(bytes, extension, mime));
         }
 

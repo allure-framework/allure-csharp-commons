@@ -1,9 +1,4 @@
-﻿// Author: Ilya Murzinov, https://github.com/ilya-murzinov
-// E-mail: murz42@gmail.com
-// Project's website: https://github.com/ilya-murzinov/AllureCSharpCommons
-// Date: 2014.06.11
-
-using System;
+﻿using System;
 using System.IO;
 using AllureCSharpCommons.Events;
 using AllureCSharpCommons.Utils;
