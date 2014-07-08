@@ -8,7 +8,7 @@ namespace AllureCSharpCommons.Events
     {
         public override void Process(step context)
         {
-            var status = (Throwable != null
+            status status = (Throwable != null
                           && Throwable.GetType() == typeof (AssertionException))
                 ? status.failed
                 : status.broken;
