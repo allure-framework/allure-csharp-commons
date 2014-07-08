@@ -10,7 +10,7 @@
     <projectUrl>https://github.com/allure-framework/allure-csharp-commons</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes>First release</releaseNotes>
+    <releaseNotes>Fix severity-level and add Allure.ResultsPath</releaseNotes>
     <copyright>Copyright 2014 Murzinov Ilya</copyright>
   </metadata>
 </package>

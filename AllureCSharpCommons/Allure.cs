@@ -45,6 +45,12 @@ namespace AllureCSharpCommons
             get { return _lifecycle = new Allure(); }
         }
 
+        public string ResultsPath
+        {
+            get { return Settings.Default.ResultsPath; }
+            set { Settings.Default.ResultsPath = value; }
+        }
+
         public void Fire(ITestSuiteEvent evt)
         {
             if (evt.GetType() == typeof (TestSuiteFinishedEvent))

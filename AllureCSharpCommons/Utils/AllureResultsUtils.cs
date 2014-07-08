@@ -18,34 +18,10 @@ namespace AllureCSharpCommons.Utils
 {
     public static class AllureResultsUtils
     {
-        private static string _resultsPath;
-        private static bool _isResultsPathDeleted;
-
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
         private static XmlSerializer _serializer;
-
-        public static string ResultsPath
-        {
-            get
-            {
-                if (_resultsPath == null)
-                {
-                    _resultsPath = Settings.Default.ResultsPath + Path.DirectorySeparatorChar;
-                }
-
-                if (Directory.Exists(_resultsPath) && !_isResultsPathDeleted)
-                {
-                    _isResultsPathDeleted = true;
-                    Directory.Delete(_resultsPath, true);
-                }
-                Directory.CreateDirectory(_resultsPath);
-
-                return _resultsPath;
-            }
-            set { _resultsPath = value; }
-        }
 
         private static XmlSerializer Serializer
         {
@@ -66,7 +42,7 @@ namespace AllureCSharpCommons.Utils
 
         internal static string TestSuitePath
         {
-            get { return ResultsPath + Path.DirectorySeparatorChar + GenerateUid() + "-testsuite.xml"; }
+            get { return Settings.Default.ResultsPath + Path.DirectorySeparatorChar + GenerateUid() + "-testsuite.xml"; }
         }
 
         public static string Serialize(this testsuiteresult testsuiteresult)
@@ -173,7 +149,7 @@ namespace AllureCSharpCommons.Utils
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
             string relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
-            string path = ResultsPath + Path.DirectorySeparatorChar + relativePath;
+            string path = Settings.Default.ResultsPath + Path.DirectorySeparatorChar + relativePath;
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))
