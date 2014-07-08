@@ -42,7 +42,14 @@ namespace AllureCSharpCommons.Utils
 
         internal static string TestSuitePath
         {
-            get { return Settings.Default.ResultsPath + Path.DirectorySeparatorChar + GenerateUid() + "-testsuite.xml"; }
+            get
+            {
+                if (!Directory.Exists(Settings.Default.ResultsPath))
+                {
+                    Directory.CreateDirectory(Settings.Default.ResultsPath);
+                }
+                return Settings.Default.ResultsPath + Path.DirectorySeparatorChar + GenerateUid() + "-testsuite.xml";
+            }
         }
 
         public static string Serialize(this testsuiteresult testsuiteresult)
