@@ -5,17 +5,17 @@ using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons.Storages
 {
-    public class StepStorage
+    internal class StepStorage
     {
         private readonly ThreadLocal<LinkedList<step>> _threadLocal =
             new ThreadLocal<LinkedList<step>>();
 
-        public step Last
+        internal step Last
         {
             get { return Get().Last.Value; }
         }
 
-        public LinkedList<step> Get()
+        internal LinkedList<step> Get()
         {
             if (_threadLocal.Value == null)
             {
@@ -26,12 +26,12 @@ namespace AllureCSharpCommons.Storages
             return _threadLocal.Value;
         }
 
-        public void Put(step step)
+        internal void Put(step step)
         {
             Get().AddLast(step);
         }
 
-        public step PollLast()
+        internal step PollLast()
         {
             var queue = Get();
             var last = queue.Last.Value;
@@ -43,7 +43,7 @@ namespace AllureCSharpCommons.Storages
             return last;
         }
 
-        public step CreateRootStep()
+        internal step CreateRootStep()
         {
             var step = new step
             {
@@ -55,7 +55,7 @@ namespace AllureCSharpCommons.Storages
             return step;
         }
 
-        public void Remove()
+        internal void Remove()
         {
             _threadLocal.Value = null;
         }

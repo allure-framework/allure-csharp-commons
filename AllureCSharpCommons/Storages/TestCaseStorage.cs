@@ -3,14 +3,14 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Storages
 {
-    public class TestCaseStorage : ThreadLocal<testcaseresult>
+    internal class TestCaseStorage : ThreadLocal<testcaseresult>
     {
-        public void Put(testcaseresult testcaseresult)
+        internal void Put(testcaseresult testcaseresult)
         {
             Value = testcaseresult;
         }
 
-        public testcaseresult Get()
+        internal testcaseresult Get()
         {
             if (Value != null)
             {
@@ -19,7 +19,7 @@ namespace AllureCSharpCommons.Storages
             return Value = new testcaseresult();
         }
 
-        public void Remove()
+        internal void Remove()
         {
             Value = null;
         }
