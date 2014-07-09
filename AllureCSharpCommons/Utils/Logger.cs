@@ -6,9 +6,9 @@ using log4net.Repository.Hierarchy;
 
 namespace AllureCSharpCommons.Utils
 {
-    public class Logger
+    internal class Logger
     {
-        public static void Setup()
+        internal static void Setup()
         {
             var hierarchy = (Hierarchy) LogManager.GetRepository();
 

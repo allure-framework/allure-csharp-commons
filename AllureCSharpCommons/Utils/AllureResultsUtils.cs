@@ -49,7 +49,7 @@ namespace AllureCSharpCommons.Utils
             }
         }
 
-        public static string Serialize(this testsuiteresult testsuiteresult)
+        internal static string Serialize(this testsuiteresult testsuiteresult)
         {
             StreamReader streamReader = null;
             MemoryStream memoryStream = null;
@@ -74,7 +74,7 @@ namespace AllureCSharpCommons.Utils
             }
         }
 
-        public static void SaveToFile(this testsuiteresult testsuiteresult, string fileName)
+        internal static void SaveToFile(this testsuiteresult testsuiteresult, string fileName)
         {
             StreamWriter streamWriter = null;
             try

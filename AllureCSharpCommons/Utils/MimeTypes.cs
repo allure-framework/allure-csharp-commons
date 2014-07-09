@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace AllureCSharpCommons.Utils
 {
-    public class MimeTypes
+    internal class MimeTypes
     {
-        private static readonly Dictionary<string, string> _mimeTypes = new Dictionary<string, string>
+        private static readonly Dictionary<string, string> MimeTypesDictionary = new Dictionary<string, string>
         {
             {"txt", "text/plain"},
             {"xml", "application/xml"},
@@ -16,18 +16,18 @@ namespace AllureCSharpCommons.Utils
             {"json", "application/json"},
         };
 
-        public static string ToMime(string extension)
+        internal static string ToMime(string extension)
         {
-            if (_mimeTypes.ContainsKey(extension))
+            if (MimeTypesDictionary.ContainsKey(extension))
             {
-                return _mimeTypes[extension];
+                return MimeTypesDictionary[extension];
             }
             throw new ArgumentException("extension");
         }
 
-        public static string ToExtension(string mime)
+        internal static string ToExtension(string mime)
         {
-            var extension = _mimeTypes.First(x => x.Value == mime).Key;
+            var extension = MimeTypesDictionary.First(x => x.Value == mime).Key;
             if (extension != null)
             {
                 return extension;
