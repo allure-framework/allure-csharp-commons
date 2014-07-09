@@ -40,12 +40,12 @@ namespace AllureCSharpCommons.Utils
         {
             get
             {
-                if (!Directory.Exists(Allure.ResultsPath))
+                if (!Directory.Exists(AllureConfig.ResultsPath))
                 {
                     throw new AllureException("Results path directory doesn't exist." +
                                               "Please create results path directory.");
                 }
-                return Allure.ResultsPath + GenerateUid() + "-testsuite.xml";
+                return AllureConfig.ResultsPath + GenerateUid() + "-testsuite.xml";
             }
         }
 
@@ -153,7 +153,7 @@ namespace AllureCSharpCommons.Utils
         internal static attachment WriteAttachment(byte[] attachment, string title, string type)
         {
             var relativePath = GenerateSha256(attachment) + "-attachment." + MimeTypes.ToExtension(type);
-            var path = Allure.ResultsPath + Path.DirectorySeparatorChar + relativePath;
+            var path = AllureConfig.ResultsPath + Path.DirectorySeparatorChar + relativePath;
             if (!File.Exists(path))
             {
                 if (!type.Contains("image"))

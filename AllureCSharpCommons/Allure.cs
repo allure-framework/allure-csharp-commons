@@ -36,10 +36,6 @@ namespace AllureCSharpCommons
             get { return _lifecycle = new Allure(); }
         }
 
-        public static bool AllowEmptySuites { get; set; }
-
-        public static string ResultsPath { get; set; }
-
         public void Fire(ITestSuiteEvent evt)
         {
             if (evt.GetType() == typeof (TestSuiteFinishedEvent))
@@ -47,7 +43,7 @@ namespace AllureCSharpCommons
                 var suiteUid = evt.Uid;
                 var testsuiteresult = TestSuiteStorage.Get(suiteUid);
                 
-                if (AllowEmptySuites
+                if (AllureConfig.AllowEmptySuites
                     || (testsuiteresult.testcases != null && testsuiteresult.testcases.Length > 0))
                 {
                     evt.Process(testsuiteresult);
