@@ -25,18 +25,6 @@ namespace AllureCSharpCommons {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("AllureResults")]
-        public string ResultsPath {
-            get {
-                return ((string)(this["ResultsPath"]));
-            }
-            set {
-                this["ResultsPath"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("1.4.0")]
         public string Version {
             get {

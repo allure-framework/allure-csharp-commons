@@ -1,12 +1,7 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)"
-              GeneratedClassNamespace="AllureCSharpCommons" GeneratedClassName="Settings1">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AllureCSharpCommons" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="ResultsPath" Type="System.String" Scope="User">
-      <Value Profile="(Default)">AllureResults</Value>
-    </Setting>
     <Setting Name="Version" Type="System.String" Scope="User">
       <Value Profile="(Default)">1.4.0</Value>
     </Setting>
