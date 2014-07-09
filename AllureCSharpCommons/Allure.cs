@@ -19,6 +19,7 @@ namespace AllureCSharpCommons
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();
+            AllowEmptySuites = false;
         }
 
         internal StepStorage StepStorage { get; private set; }
@@ -36,6 +37,8 @@ namespace AllureCSharpCommons
             get { return _lifecycle = new Allure(); }
         }
 
+        public static bool AllowEmptySuites { get; set; }
+
         public static string ResultsPath { get; set; }
 
         public void Fire(ITestSuiteEvent evt)
@@ -44,9 +47,15 @@ namespace AllureCSharpCommons
             {
                 var suiteUid = evt.Uid;
                 var testsuiteresult = TestSuiteStorage.Get(suiteUid);
-                evt.Process(testsuiteresult);
+                
+                if (AllowEmptySuites
+                    || (testsuiteresult.testcases != null && testsuiteresult.testcases.Length > 0))
+                {
+                    evt.Process(testsuiteresult);
+                    testsuiteresult.SaveToFile(AllureResultsUtils.TestSuitePath);
+                }
+
                 TestSuiteStorage.Remove(suiteUid);
-                testsuiteresult.SaveToFile(AllureResultsUtils.TestSuitePath);
             }
             else
             {

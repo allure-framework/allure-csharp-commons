@@ -25,7 +25,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tsevt);
             var tfevt = new TestSuiteFinishedEvent(SuiteUid);
             _lifecycle.Fire(tfevt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 0);
+            Assert.AreEqual(0, _lifecycle.TestSuiteStorage.Map.Count);
             Assert.False(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
         }
 
@@ -35,10 +35,10 @@ namespace AllureCSharpCommons.Tests
             _lifecycle = Allure.DefaultLifecycle;
             var evt = new TestSuiteStartedEvent(SuiteUid, "suite42");
             _lifecycle.Fire(evt);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Map.Count, 1);
+            Assert.AreEqual(1, _lifecycle.TestSuiteStorage.Map.Count);
             Assert.True(_lifecycle.TestSuiteStorage.Map.ContainsKey(SuiteUid));
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).testcases, null);
-            Assert.AreEqual(_lifecycle.TestSuiteStorage.Get(SuiteUid).name, "suite42");
+            Assert.AreEqual(null, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases);
+            Assert.AreEqual("suite42", _lifecycle.TestSuiteStorage.Get(SuiteUid).name);
         }
     }
 }
