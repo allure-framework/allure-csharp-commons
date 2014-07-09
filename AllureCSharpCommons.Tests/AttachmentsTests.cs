@@ -15,6 +15,8 @@ namespace AllureCSharpCommons.Tests
         [TestFixtureSetUp]
         public void Init()
         {
+            Allure.ResultsPath = "AllureResults/";
+            Directory.CreateDirectory(Allure.ResultsPath);
             _lifecycle = Allure.Lifecycle;
             _lifecycle.Fire(new TestSuiteStartedEvent("1", "2")
             {

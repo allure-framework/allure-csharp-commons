@@ -7,6 +7,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Xml.Serialization;
 using AllureCSharpCommons.AllureModel;
+using AllureCSharpCommons.Exceptions;
 using log4net;
 
 namespace AllureCSharpCommons.Utils
@@ -39,6 +40,11 @@ namespace AllureCSharpCommons.Utils
         {
             get
             {
+                if (!Directory.Exists(Allure.ResultsPath))
+                {
+                    throw new AllureException("Results path directory doesn't exist." +
+                                              "Please create results path directory.");
+                }
                 return Allure.ResultsPath + GenerateUid() + "-testsuite.xml";
             }
         }

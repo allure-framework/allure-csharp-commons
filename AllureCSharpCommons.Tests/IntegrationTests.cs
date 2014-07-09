@@ -12,6 +12,13 @@ namespace AllureCSharpCommons.Tests
         private Allure _lifecycle;
         private const string SuiteUid = "suiteUid";
 
+        [TestFixtureSetUp]
+        public void Init()
+        {
+            Allure.ResultsPath = "AllureResults/";
+            Directory.CreateDirectory(Allure.ResultsPath);
+        }
+
         [Test]
         public void IntegrationTest()
         {

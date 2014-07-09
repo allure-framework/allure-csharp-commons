@@ -1,4 +1,5 @@
-﻿using AllureCSharpCommons.Events;
+﻿using System.IO;
+using AllureCSharpCommons.Events;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -8,6 +9,13 @@ namespace AllureCSharpCommons.Tests
     {
         private Allure _lifecycle;
         private const string SuiteUid = "suiteUid";
+
+        [TestFixtureSetUp]
+        public void Init()
+        {
+            Allure.ResultsPath = "AllureResults/";
+            Directory.CreateDirectory(Allure.ResultsPath);
+        }
 
         [Test]
         public void SuiteFinishedTest()
