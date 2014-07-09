@@ -80,7 +80,7 @@
     <Compile Include="Storages\TestCaseStorage.cs" />
     <Compile Include="Storages\TestSuiteStorage.cs" />
     <Compile Include="Storages\StepStorage.cs" />
-    <Compile Include="Utils\AllureConfig.cs" />
+    <Compile Include="AllureConfig.cs" />
     <Compile Include="Utils\AllureResultsUtils.cs" />
     <Compile Include="Utils\ArraysUtils.cs" />
     <Compile Include="Utils\AttributeManager.cs" />
