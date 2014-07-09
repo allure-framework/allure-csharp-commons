@@ -19,7 +19,6 @@ namespace AllureCSharpCommons
             StepStorage = new StepStorage();
             TestCaseStorage = new TestCaseStorage();
             TestSuiteStorage = new TestSuiteStorage();
-            AllowEmptySuites = false;
         }
 
         internal StepStorage StepStorage { get; private set; }
