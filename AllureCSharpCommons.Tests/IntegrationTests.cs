@@ -15,8 +15,8 @@ namespace AllureCSharpCommons.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            Allure.ResultsPath = "AllureResults/";
-            Directory.CreateDirectory(Allure.ResultsPath);
+            AllureConfig.ResultsPath = "AllureResults/";
+            Directory.CreateDirectory(AllureConfig.ResultsPath);
         }
 
         [Test]

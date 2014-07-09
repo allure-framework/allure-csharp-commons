@@ -2,6 +2,7 @@
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
+using AllureCSharpCommons.Utils;
 using NUnit.Framework;
 
 namespace AllureCSharpCommons.Tests
@@ -15,8 +16,8 @@ namespace AllureCSharpCommons.Tests
         [TestFixtureSetUp]
         public void Init()
         {
-            Allure.ResultsPath = "AllureResults/";
-            Directory.CreateDirectory(Allure.ResultsPath);
+            AllureConfig.ResultsPath = "AllureResults/";
+            Directory.CreateDirectory(AllureConfig.ResultsPath);
             _lifecycle = Allure.Lifecycle;
             _lifecycle.Fire(new TestSuiteStartedEvent("1", "2")
             {
