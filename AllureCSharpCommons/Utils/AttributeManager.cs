@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
@@ -29,6 +30,26 @@ namespace AllureCSharpCommons.Utils
                     var attr = (AllureDescriptionAttribute) x;
                     evt.Description = attr.Value;
                 }
+                else if (x.GetType() == typeof(AllureStoriesAttributes))
+                {
+                    var attr = (AllureStoriesAttributes) x;
+                    var labels = attr.Stories.Select(y => new label
+                    {
+                        name = "story",
+                        value = y
+                    }).ToArray();
+                    evt.Labels = ArraysUtils.AddRange(evt.Labels, labels);
+                }
+                else if (x.GetType() == typeof(AllureFeatureAttribute))
+                {
+                    var attr = (AllureFeatureAttribute)x;
+                    var labels = attr.Features.Select(y => new label
+                    {
+                        name = "feature",
+                        value = y
+                    }).ToArray();
+                    evt.Labels = ArraysUtils.AddRange(evt.Labels, labels);
+                }
             });
         }
 
@@ -45,6 +66,26 @@ namespace AllureCSharpCommons.Utils
                 {
                     var attr = (AllureDescriptionAttribute) x;
                     evt.Description = attr.Value;
+                }
+                else if (x.GetType() == typeof(AllureStoriesAttributes))
+                {
+                    var attr = (AllureStoriesAttributes)x;
+                    var labels = attr.Stories.Select(y => new label
+                    {
+                        name = "story",
+                        value = y
+                    }).ToArray();
+                    evt.Labels = ArraysUtils.AddRange(evt.Labels, labels);
+                }
+                else if (x.GetType() == typeof(AllureFeatureAttribute))
+                {
+                    var attr = (AllureFeatureAttribute)x;
+                    var labels = attr.Features.Select(y => new label
+                    {
+                        name = "feature",
+                        value = y
+                    }).ToArray();
+                    evt.Labels = ArraysUtils.AddRange(evt.Labels, labels);
                 }
                 else if (x.GetType() == typeof (AllureSeverityAttribute))
                 {

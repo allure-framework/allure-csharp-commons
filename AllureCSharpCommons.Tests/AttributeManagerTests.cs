@@ -50,6 +50,32 @@ namespace AllureCSharpCommons.Tests
         }
 
         [Test]
+        public void TestCaseFeaturesAttributeTest()
+        {
+            var evt = new TestCaseStartedEvent("1", "testcase with title");
+            var manager = new AttributeManager(new List<Attribute>
+            {
+                new AllureFeatureAttribute("Awesome feature")
+            });
+            manager.Update(evt);
+            Assert.AreEqual("feature", evt.Labels[0].name);
+            Assert.AreEqual("Awesome feature", evt.Labels[0].value);
+        }
+
+        [Test]
+        public void TestCaseStroiesAttributeTest()
+        {
+            var evt = new TestCaseStartedEvent("1", "testcase with title");
+            var manager = new AttributeManager(new List<Attribute>
+            {
+                new AllureStoriesAttributes("Awesome story")
+            });
+            manager.Update(evt);
+            Assert.AreEqual("story", evt.Labels[0].name);
+            Assert.AreEqual("Awesome story", evt.Labels[0].value);
+        }
+
+        [Test]
         public void TestSuiteTitleAttributeTest()
         {
             var evt = new TestSuiteStartedEvent("1", "testsuite with title");
@@ -72,6 +98,32 @@ namespace AllureCSharpCommons.Tests
             manager.Update(evt);
             Assert.AreEqual("Awesome description", evt.Description.Value);
             Assert.AreEqual(descriptiontype.text, evt.Description.type);
+        }
+
+        [Test]
+        public void TestSuiteFeaturesAttributeTest()
+        {
+            var evt = new TestSuiteStartedEvent("1", "testsuite with title");
+            var manager = new AttributeManager(new List<Attribute>
+            {
+                new AllureFeatureAttribute("Awesome feature")
+            });
+            manager.Update(evt);
+            Assert.AreEqual("feature", evt.Labels[0].name);
+            Assert.AreEqual("Awesome feature", evt.Labels[0].value);
+        }
+
+        [Test]
+        public void TestSuiteStroiesAttributeTest()
+        {
+            var evt = new TestSuiteStartedEvent("1", "testsuite with title");
+            var manager = new AttributeManager(new List<Attribute>
+            {
+                new AllureStoriesAttributes("Awesome story")
+            });
+            manager.Update(evt);
+            Assert.AreEqual("story", evt.Labels[0].name);
+            Assert.AreEqual("Awesome story", evt.Labels[0].value);
         }
     }
 }

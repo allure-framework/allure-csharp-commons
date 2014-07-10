@@ -3,6 +3,7 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Attributes
 {
+    [AttributeUsage(AttributeTargets.Method)]
     public class AllureSeverityAttribute : Attribute
     {
         public AllureSeverityAttribute(severitylevel value)
