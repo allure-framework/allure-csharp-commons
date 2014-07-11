@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Attributes;
 using AllureCSharpCommons.Events;
@@ -140,13 +139,13 @@ namespace AllureCSharpCommons.Tests
         [Test]
         public void TestSuiteSeverityAttributeTest()
         {
-            var evt = new TestCaseStartedEvent("1", "testsuite with severity");
+            var evt = new TestSuiteStartedEvent("1", "testsuite with severity");
             var manager = new AttributeManager(new List<Attribute>
             {
                 new AllureSeverityAttribute(severitylevel.critical)
             });
             manager.Update(evt);
-            Assert.AreEqual(0, evt.Labels.Length);
+            Assert.IsNull(evt.Labels);
         }
 
         [Test]
