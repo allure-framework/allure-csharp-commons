@@ -33,9 +33,9 @@ namespace AllureCSharpCommons.Utils
                     var attr = (AllureStoriesAttribute)x;
                     evt.Labels = ArraysUtils.AddLabels(evt.Labels, "story", attr.Stories);
                 }
-                else if (x.GetType() == typeof(AllureFeatureAttribute))
+                else if (x.GetType() == typeof(AllureFeaturesAttribute))
                 {
-                    var attr = (AllureFeatureAttribute)x;
+                    var attr = (AllureFeaturesAttribute)x;
                     evt.Labels = ArraysUtils.AddLabels(evt.Labels, "feature", attr.Features);
                 }
             });
@@ -60,9 +60,9 @@ namespace AllureCSharpCommons.Utils
                     var attr = (AllureStoriesAttribute)x;
                     evt.Labels = ArraysUtils.AddLabels(evt.Labels, "story", attr.Stories);
                 }
-                else if (x.GetType() == typeof(AllureFeatureAttribute))
+                else if (x.GetType() == typeof(AllureFeaturesAttribute))
                 {
-                    var attr = (AllureFeatureAttribute)x;
+                    var attr = (AllureFeaturesAttribute)x;
                     evt.Labels = ArraysUtils.AddLabels(evt.Labels, "feature", attr.Features);
                 }
                 else if (x.GetType() == typeof (AllureSeverityAttribute))

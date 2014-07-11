@@ -55,7 +55,7 @@ namespace AllureCSharpCommons.Tests
             var evt = new TestCaseStartedEvent("1", "testcase with title");
             var manager = new AttributeManager(new List<Attribute>
             {
-                new AllureFeatureAttribute("Awesome feature")
+                new AllureFeaturesAttribute("Awesome feature")
             });
             manager.Update(evt);
             Assert.AreEqual("feature", evt.Labels[0].name);
@@ -84,7 +84,7 @@ namespace AllureCSharpCommons.Tests
                 new AllureTitleAttribute("Awesome title"),
                 new AllureDescriptionAttribute("Awesome description", descriptiontype.text),
                 new AllureSeverityAttribute(severitylevel.critical),
-                new AllureFeatureAttribute("Awesome feature", "Another awesome feature", "Awesome feature2", "New awesome feature"),
+                new AllureFeaturesAttribute("Awesome feature", "Another awesome feature", "Awesome feature2", "New awesome feature"),
                 new AllureStoriesAttribute("Awesome story", "Another awesome story", "Awesome story2", "New awesome story")
             });
             manager.Update(evt);
@@ -154,7 +154,7 @@ namespace AllureCSharpCommons.Tests
             var evt = new TestSuiteStartedEvent("1", "testsuite with title");
             var manager = new AttributeManager(new List<Attribute>
             {
-                new AllureFeatureAttribute("Awesome feature")
+                new AllureFeaturesAttribute("Awesome feature")
             });
             manager.Update(evt);
             Assert.AreEqual("feature", evt.Labels[0].name);
@@ -183,7 +183,7 @@ namespace AllureCSharpCommons.Tests
                 new AllureTitleAttribute("Awesome title"),
                 new AllureDescriptionAttribute("Awesome description", descriptiontype.text),
                 new AllureSeverityAttribute(severitylevel.critical),
-                new AllureFeatureAttribute("Awesome feature", "Another awesome feature", "Awesome feature2", "New awesome feature"),
+                new AllureFeaturesAttribute("Awesome feature", "Another awesome feature", "Awesome feature2", "New awesome feature"),
                 new AllureStoriesAttribute("Awesome story", "Another awesome story", "Awesome story2", "New awesome story")
             });
             manager.Update(evt);
