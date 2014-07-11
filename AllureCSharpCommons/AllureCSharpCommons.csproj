@@ -50,7 +50,7 @@
     <Compile Include="Attributes\AllureFeatureAttribute.cs" />
     <Compile Include="Attributes\AllureSeverityAttribute.cs" />
     <Compile Include="Attributes\AllureDescriptionAttribute.cs" />
-    <Compile Include="Attributes\AllureStoriesAttributes.cs" />
+    <Compile Include="Attributes\AllureStoriesAttribute.cs" />
     <Compile Include="Attributes\AllureTitleAttribute.cs" />
     <Compile Include="Events\TestCaseStatusChangedEvent.cs" />
     <Compile Include="Events\TestSuiteFinishedEvent.cs" />
