@@ -100,5 +100,8 @@
     <Compile Include="AbstractEvents\abstracttestcasestatuschangeevent.cs" />
     <Compile Include="AbstractEvents\abstracttestsuitestartedevent.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
