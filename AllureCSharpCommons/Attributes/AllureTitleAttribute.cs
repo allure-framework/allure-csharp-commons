@@ -2,6 +2,7 @@
 
 namespace AllureCSharpCommons.Attributes
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AllureTitleAttribute : Attribute
     {
         public AllureTitleAttribute(string value)

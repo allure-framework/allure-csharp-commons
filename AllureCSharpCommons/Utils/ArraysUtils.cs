@@ -1,4 +1,7 @@
-﻿namespace AllureCSharpCommons.Utils
+﻿using System.Linq;
+using AllureCSharpCommons.AllureModel;
+
+namespace AllureCSharpCommons.Utils
 {
     internal static class ArraysUtils
     {
@@ -47,6 +50,27 @@
                 array = buffer;
             }
             return array;
+        }
+
+        internal static label[] AddLabel(label[] labels, string name, string value)
+        {
+            labels = Add(labels, new label
+            {
+                name = name,
+                value = value
+            });
+            return labels;
+        }
+
+        internal static label[] AddLabels(label[] labels, string name, string[] values)
+        {
+            var newLabels = values.Select(x => new label
+            {
+                name = name,
+                value = x
+            }).ToArray();
+            labels = AddRange(labels, newLabels);
+            return labels;
         }
     }
 }

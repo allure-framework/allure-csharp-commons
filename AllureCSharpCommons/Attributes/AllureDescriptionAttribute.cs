@@ -3,6 +3,7 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Attributes
 {
+    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
     public class AllureDescriptionAttribute : Attribute
     {
         public AllureDescriptionAttribute(string value, descriptiontype type)
