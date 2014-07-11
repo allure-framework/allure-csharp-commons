@@ -74,11 +74,6 @@
     <Compile Include="Events\ITestCaseEvent.cs" />
     <Compile Include="Events\IStepEvent.cs" />
     <Compile Include="Events\AddParameterEvent.cs" />
-    <Compile Include="Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-      <DependentUpon>Settings.settings</DependentUpon>
-    </Compile>
     <Compile Include="Storages\TestCaseStorage.cs" />
     <Compile Include="Storages\TestSuiteStorage.cs" />
     <Compile Include="Storages\StepStorage.cs" />
@@ -106,12 +101,4 @@
     <Compile Include="AbstractEvents\abstracttestsuitestartedevent.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
-    <None Include="Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
 </Project>
