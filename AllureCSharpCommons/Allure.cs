@@ -7,6 +7,10 @@ using AllureCSharpCommons.Utils;
 
 namespace AllureCSharpCommons
 {
+    /// <summary>
+    /// Allure C# API.
+    /// Used to access Allure lifecycle.
+    /// </summary>
     public class Allure
     {
         private static Allure _lifecycle;
@@ -25,17 +29,32 @@ namespace AllureCSharpCommons
         internal TestCaseStorage TestCaseStorage { get; private set; }
         internal TestSuiteStorage TestSuiteStorage { get; private set; }
 
+        /// <summary>
+        /// Allure lifecycle.
+        /// Use this to process events.
+        /// </summary>
         public static Allure Lifecycle
         {
             get { return _lifecycle ?? DefaultLifecycle; }
             set { _lifecycle = value; }
         }
 
-        public static Allure DefaultLifecycle
+        /// <summary>
+        /// Create new Allure instance.
+        /// For tests only.
+        /// </summary>
+        internal static Allure DefaultLifecycle
         {
             get { return _lifecycle = new Allure(); }
         }
 
+        /// <summary>
+        /// Processes all testsuite events.
+        /// When processes TestSuiteFinishedEvent serializes it to xml file.
+        /// <see cref="AllureCSharpCommons.Events.TestSuiteStartedEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.TestSuiteFinishedEvent"/>
+        /// </summary>
+        /// <param name="evt">event to process</param>
         public void Fire(ITestSuiteEvent evt)
         {
             if (evt.GetType() == typeof (TestSuiteFinishedEvent))
@@ -60,6 +79,14 @@ namespace AllureCSharpCommons
             }
         }
 
+        /// <summary>
+        /// Processes all testcase events.
+        /// <see cref="AllureCSharpCommons.Events.TestCaseStartedEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.TestCasePendingEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.TestCaseCanceledEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.TestCaseFinishedEvent"/>
+        /// </summary>
+        /// <param name="evt">event to process</param>
         public void Fire(ITestCaseEvent evt)
         {
             if (evt.GetType() == typeof (TestCaseStartedEvent))
@@ -83,8 +110,8 @@ namespace AllureCSharpCommons
 
                 var root = StepStorage.PollLast();
 
-                testcaseresult.steps = ArraysUtils.AddRange(testcaseresult.steps, root.steps);
-                testcaseresult.attachments = ArraysUtils.AddRange(testcaseresult.attachments, root.attachments);
+                testcaseresult.steps = ArraysUtils.AddAll(testcaseresult.steps, root.steps);
+                testcaseresult.attachments = ArraysUtils.AddAll(testcaseresult.attachments, root.attachments);
                 StepStorage.Remove();
                 TestCaseStorage.Remove();
             }
@@ -95,6 +122,13 @@ namespace AllureCSharpCommons
             }
         }
 
+        /// <summary>
+        /// Processes all step events.
+        /// <see cref="AllureCSharpCommons.Events.StepStartedEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.StepCanceledEvent"/>
+        /// <see cref="AllureCSharpCommons.Events.StepFinishedEvent"/>
+        /// </summary>
+        /// <param name="evt">event to process</param>
         public void Fire(IStepEvent evt)
         {
             if (evt.GetType() == typeof (StepStartedEvent))
@@ -116,11 +150,19 @@ namespace AllureCSharpCommons
             }
         }
 
+        /// <summary>
+        /// Clear current step context
+        /// </summary>
+        /// <param name="evt"></param>
         public void Fire(ClearStepStorageEvent evt)
         {
             StepStorage.Remove();
         }
 
+        /// <summary>
+        /// Clear current testcase context
+        /// </summary>
+        /// <param name="evt"></param>
         public void Fire(ClearTestStorageEvent evt)
         {
             TestCaseStorage.Remove();

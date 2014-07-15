@@ -3,8 +3,19 @@ using AllureCSharpCommons.AllureModel;
 
 namespace AllureCSharpCommons.Utils
 {
+    /// <summary>
+    /// Provides methods to work with arrays.
+    /// </summary>
     internal static class ArraysUtils
     {
+        /// <summary>
+        /// Add element to array.
+        /// <example>array = ArraysUtils.Add(array, element);</example>
+        /// </summary>
+        /// <typeparam name="T">original array type</typeparam>
+        /// <param name="array">original array</param>
+        /// <param name="element">new element</param>
+        /// <returns>original array with new element</returns>
         internal static T[] Add<T>(T[] array, T element)
         {
             if (element != null)
@@ -25,7 +36,15 @@ namespace AllureCSharpCommons.Utils
             return array;
         }
 
-        internal static T[] AddRange<T>(T[] array, T[] elements)
+        /// <summary>
+        /// Add element to array
+        /// <example>array = ArraysUtils.AddAll(array, elements);</example>
+        /// </summary>
+        /// <typeparam name="T">original array type</typeparam>
+        /// <param name="array">original array</param>
+        /// <param name="elements">new element</param>
+        /// <returns>original array with new elements</returns>
+        internal static T[] AddAll<T>(T[] array, T[] elements)
         {
             if (elements != null && elements.Length != 0)
             {
@@ -52,6 +71,14 @@ namespace AllureCSharpCommons.Utils
             return array;
         }
 
+        /// <summary>
+        /// Add new label with specified name to labels array.
+        /// <example>labels = ArraysUtils.AddLabel(labels, "newLabel", "newValue");</example>
+        /// </summary>
+        /// <param name="labels">original labels array</param>
+        /// <param name="name">label name</param>
+        /// <param name="value">label value</param>
+        /// <returns></returns>
         internal static label[] AddLabel(label[] labels, string name, string value)
         {
             labels = Add(labels, new label
@@ -61,7 +88,15 @@ namespace AllureCSharpCommons.Utils
             });
             return labels;
         }
-
+        
+        /// <summary>
+        /// Add new label with specified name to labels array.
+        /// <example>labels = ArraysUtils.AddLabel(labels, "newLabel", "newValue", "newValue2", "newValue3");</example>
+        /// </summary>
+        /// <param name="labels">original labels array</param>
+        /// <param name="name">label name</param>
+        /// <param name="values">label values</param>
+        /// <returns></returns>
         internal static label[] AddLabels(label[] labels, string name, string[] values)
         {
             var newLabels = values.Select(x => new label
@@ -69,7 +104,7 @@ namespace AllureCSharpCommons.Utils
                 name = name,
                 value = x
             }).ToArray();
-            labels = AddRange(labels, newLabels);
+            labels = AddAll(labels, newLabels);
             return labels;
         }
     }
