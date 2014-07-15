@@ -23,6 +23,7 @@ namespace AllureCSharpCommons.Storages
             if (!_map.ContainsKey(uid))
             {
                 _map.Add(uid, new testsuiteresult());
+                return true;
             }
             return false;
         }

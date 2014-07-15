@@ -43,7 +43,7 @@ namespace AllureCSharpCommons.Storages
             return last;
         }
 
-        internal step CreateRootStep()
+        private static step CreateRootStep()
         {
             var step = new step
             {

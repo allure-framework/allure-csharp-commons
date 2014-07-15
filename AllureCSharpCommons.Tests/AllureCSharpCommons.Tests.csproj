@@ -48,6 +48,7 @@
     <Compile Include="AttributeManagerTests.cs" />
     <Compile Include="IntegrationTests.cs" />
     <Compile Include="StepEventTests.cs" />
+    <Compile Include="StoragesTests.cs" />
     <Compile Include="TestCaseEventTests.cs" />
     <Compile Include="TestSuiteEventTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
