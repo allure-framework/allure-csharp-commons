@@ -19,13 +19,19 @@ namespace AllureCSharpCommons.Storages
         /// This step is marked broken.
         /// <see cref="AllureCSharpCommons.AllureModel.step"/>
         /// </summary>
-        private static readonly step RootStep = new step
+        private static step RootStep
         {
-            name = "Root step",
-            title = "Allure step processing error: if you see this step something went wrong.",
-            start = AllureResultsUtils.TimeStamp,
-            status = status.broken
-        };
+            get
+            {
+                return new step
+                {
+                    name = "Root step",
+                    title = "Allure step processing error: if you see this step something went wrong.",
+                    start = AllureResultsUtils.TimeStamp,
+                    status = status.broken
+                };
+            }
+        }
 
         /// <summary>
         /// Retrieves last element of current thread's list without removing it.
