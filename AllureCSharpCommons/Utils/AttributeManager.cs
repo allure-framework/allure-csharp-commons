@@ -5,15 +5,29 @@ using AllureCSharpCommons.Events;
 
 namespace AllureCSharpCommons.Utils
 {
+    /// <summary>
+    /// Provides methods to update testcase and testsuite results based on their attributes.
+    /// <see cref="AllureCSharpCommons.Attributes"/>
+    /// </summary>
     public class AttributeManager
     {
         private readonly List<Attribute> _attributes;
 
+        /// <summary>
+        /// Create new attribute manager based on list of attributes.
+        /// <see cref="AllureCSharpCommons.Attributes"/>
+        /// </summary>
+        /// <param name="attributes">list of attributes</param>
         public AttributeManager(List<Attribute> attributes)
         {
             _attributes = attributes;
         }
 
+        /// <summary>
+        /// Updates TestSuiteStartedEvent based on attributes.
+        /// <see cref="AllureCSharpCommons.Attributes"/>
+        /// </summary>
+        /// <param name="evt"></param>
         public void Update(TestSuiteStartedEvent evt)
         {
             _attributes.ForEach(x =>
@@ -41,6 +55,10 @@ namespace AllureCSharpCommons.Utils
             });
         }
 
+        /// <summary>
+        /// Updates TestCaseStartedEvent based on attributes.
+        /// <see cref="AllureCSharpCommons.Attributes"/>
+        /// </summary>
         public void Update(TestCaseStartedEvent evt)
         {
             _attributes.ForEach(x =>

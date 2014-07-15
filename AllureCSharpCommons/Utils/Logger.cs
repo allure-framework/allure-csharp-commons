@@ -8,6 +8,9 @@ namespace AllureCSharpCommons.Utils
 {
     internal class Logger
     {
+        /// <summary>
+        /// Setup Log4NET logger.
+        /// </summary>
         internal static void Setup()
         {
             var hierarchy = (Hierarchy) LogManager.GetRepository();
