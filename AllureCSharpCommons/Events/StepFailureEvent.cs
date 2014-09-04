@@ -1,6 +1,6 @@
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
-using NUnit.Framework;
+using AllureCSharpCommons.Exceptions;
 
 namespace AllureCSharpCommons.Events
 {
