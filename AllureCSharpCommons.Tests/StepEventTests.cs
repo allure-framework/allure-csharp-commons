@@ -57,7 +57,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(ssevt);
             var evt = new StepFailureEvent
             {
-                Throwable = new AssertionException("assertion exception")
+                Throwable = new Exceptions.AssertionException("assertion exception")
             };
             _lifecycle.Fire(evt);
             Assert.AreEqual(2, _lifecycle.StepStorage.Get().Count); //Root step + step1

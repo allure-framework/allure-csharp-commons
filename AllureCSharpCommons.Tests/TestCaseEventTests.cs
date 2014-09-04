@@ -89,7 +89,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tcsevt);
             var evt = new TestCaseFailureEvent
             {
-                Throwable = new AssertionException("assertion exception"),
+                Throwable = new Exceptions.AssertionException("assertion exception"),
                 StackTrace = "stack trace"
             };
             _lifecycle.Fire(evt);
@@ -110,7 +110,7 @@ namespace AllureCSharpCommons.Tests
             _lifecycle.Fire(tcsevt);
             var evt = new TestCaseFailureEvent
             {
-                Throwable = new AssertionException("assertion exception")
+                Throwable = new Exceptions.AssertionException("assertion exception")
             };
             _lifecycle.Fire(evt);
             Assert.AreEqual(status.failed, _lifecycle.TestSuiteStorage.Get(SuiteUid).testcases[0].status);
