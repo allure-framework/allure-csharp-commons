@@ -8,7 +8,7 @@ namespace AllureCSharpCommons.Events
         public override void Process(step context)
         {
             status status = (Throwable != null
-				&& Throwable.GetType().ToString().Contains("Assertion"))
+				&& Throwable.GetType().ToString().Contains("Assert"))
                 ? status.failed
                 : status.broken;
             context.status = status;

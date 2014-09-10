@@ -10,7 +10,7 @@ namespace AllureCSharpCommons.Events
             get
             {
                 return (Throwable == null
-					|| !Throwable.GetType().ToString().Contains("Assertion"))
+					|| !Throwable.GetType().ToString().Contains("Assert"))
                     ? status.broken
                     : status.failed;
             }
