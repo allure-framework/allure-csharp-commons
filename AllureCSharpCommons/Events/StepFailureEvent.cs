@@ -1,6 +1,5 @@
 using AllureCSharpCommons.AbstractEvents;
 using AllureCSharpCommons.AllureModel;
-using NUnit.Framework;
 
 namespace AllureCSharpCommons.Events
 {
@@ -9,7 +8,7 @@ namespace AllureCSharpCommons.Events
         public override void Process(step context)
         {
             status status = (Throwable != null
-                          && Throwable.GetType() == typeof (AssertionException))
+				&& Throwable.GetType().ToString().Contains("Assertion"))
                 ? status.failed
                 : status.broken;
             context.status = status;

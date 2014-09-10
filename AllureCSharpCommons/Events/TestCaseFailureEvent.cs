@@ -1,6 +1,5 @@
 using System;
 using AllureCSharpCommons.AllureModel;
-using NUnit.Framework;
 
 namespace AllureCSharpCommons.Events
 {
@@ -11,7 +10,7 @@ namespace AllureCSharpCommons.Events
             get
             {
                 return (Throwable == null
-                        || Throwable.GetType() != typeof (AssertionException))
+					|| !Throwable.GetType().ToString().Contains("Assertion"))
                     ? status.broken
                     : status.failed;
             }
