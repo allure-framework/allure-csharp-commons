@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>$id$</id>
-    <version>0.1.0</version>
+    <version>0.2.0</version>
     <title>$title$</title>
     <authors>$author$</authors>
     <owners>$author$</owners>
@@ -10,7 +10,9 @@
     <projectUrl>https://github.com/allure-framework/allure-csharp-commons</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
-    <releaseNotes></releaseNotes>
+    <releaseNotes>
+  		Moved config to separate class, hid some public API, added stories and features attributes, improved documentation, removed dependency on NUnit
+  	</releaseNotes>
     <copyright>Copyright 2014 Murzinov Ilya</copyright>
   </metadata>
 </package>
