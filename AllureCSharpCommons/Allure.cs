@@ -57,7 +57,7 @@ namespace AllureCSharpCommons
         /// <param name="evt">event to process</param>
         public void Fire(ITestSuiteEvent evt)
         {
-            if (evt.GetType() == typeof (TestSuiteFinishedEvent))
+            if (typeof (TestSuiteFinishedEvent).IsAssignableFrom(evt.GetType()))
             {
                 var suiteUid = evt.Uid;
                 var testsuiteresult = TestSuiteStorage.Get(suiteUid);
@@ -89,7 +89,7 @@ namespace AllureCSharpCommons
         /// <param name="evt">event to process</param>
         public void Fire(ITestCaseEvent evt)
         {
-            if (evt.GetType() == typeof (TestCaseStartedEvent))
+            if (typeof (TestCaseStartedEvent).IsAssignableFrom(evt.GetType()))
             {
                 StepStorage.Get();
 
@@ -103,7 +103,7 @@ namespace AllureCSharpCommons
                         ArraysUtils.Add(TestSuiteStorage.Get(evt.SuiteUid).testcases, testcaseresult);
                 }
             }
-            else if (evt.GetType() == typeof (TestCaseFinishedEvent))
+            else if (typeof (TestCaseFinishedEvent).IsAssignableFrom(evt.GetType()))
             {
                 var testcaseresult = TestCaseStorage.Get();
                 evt.Process(testcaseresult);
@@ -131,13 +131,13 @@ namespace AllureCSharpCommons
         /// <param name="evt">event to process</param>
         public void Fire(IStepEvent evt)
         {
-            if (evt.GetType() == typeof (StepStartedEvent))
+            if (typeof (StepStartedEvent).IsAssignableFrom(evt.GetType()))
             {
                 var step = new step();
                 evt.Process(step);
                 StepStorage.Put(step);
             }
-            else if (evt.GetType() == typeof (StepFinishedEvent))
+            else if (typeof (StepFinishedEvent).IsAssignableFrom(evt.GetType()))
             {
                 var step = StepStorage.PollLast();
                 evt.Process(step);
