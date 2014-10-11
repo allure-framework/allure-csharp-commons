@@ -9,7 +9,7 @@ namespace AllureCSharpCommons.Events
         public TestSuiteStartedEvent(string uid, string name)
         {
             Uid = uid;
-            Name = name;
+            Name = (name != null) ? name : string.Empty;
         }
 
         public override void Process(testsuiteresult context)
