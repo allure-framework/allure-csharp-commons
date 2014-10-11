@@ -65,6 +65,9 @@ namespace AllureCSharpCommons.AllureModel
     {
         public failure() { }
 
+        public failure(string message)
+            : this(message, null) { }
+
         public failure(string message, string stacktrace)
         {
             messageField = message;

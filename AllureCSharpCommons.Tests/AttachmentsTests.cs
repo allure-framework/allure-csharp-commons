@@ -21,11 +21,11 @@ namespace AllureCSharpCommons.Tests
             _lifecycle = Allure.Lifecycle;
             _lifecycle.Fire(new TestSuiteStartedEvent("1", "2")
             {
-                Labels = new[] {new label {name = "1", value = "1"}}
+                    Labels = new[] {new label("1", "1") }
             });
             _lifecycle.Fire(new TestCaseStartedEvent("1", "2")
             {
-                Labels = new[] {new label {name = "1", value = "1"}}
+                    Labels = new[] {new label("1", "1") }
             });
             _lifecycle.Fire(new StepStartedEvent("1"));
         }

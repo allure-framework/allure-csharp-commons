@@ -23,13 +23,11 @@ namespace AllureCSharpCommons.Storages
         {
             get
             {
-                return new step
-                {
-                    name = "Root step",
-                    title = "Allure step processing error: if you see this step something went wrong.",
-                    start = AllureResultsUtils.TimeStamp,
-                    status = status.broken
-                };
+                return new step(
+                    "Root step", 
+                    "Allure step processing error: if you see this step something went wrong.",
+                    AllureResultsUtils.TimeStamp,
+                    status.broken);
             }
         }
 
