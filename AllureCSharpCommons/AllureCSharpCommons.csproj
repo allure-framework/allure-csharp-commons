@@ -93,6 +93,7 @@
     <Compile Include="AbstractEvents\Pattern.cs" />
     <Compile Include="AbstractEvents\AbstractTestCaseStatusChangeEvent.cs" />
     <Compile Include="AbstractEvents\AbstractTestSuiteStartedEvent.cs" />
+    <Compile Include="AllureModel\AllureModelExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

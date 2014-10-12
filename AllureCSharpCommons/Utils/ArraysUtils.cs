@@ -81,11 +81,7 @@ namespace AllureCSharpCommons.Utils
         /// <returns></returns>
         internal static label[] AddLabel(label[] labels, string name, string value)
         {
-            labels = Add(labels, new label
-            {
-                name = name,
-                value = value
-            });
+            labels = Add(labels, new label(name, value));
             return labels;
         }
         
@@ -99,11 +95,7 @@ namespace AllureCSharpCommons.Utils
         /// <returns></returns>
         internal static label[] AddLabels(label[] labels, string name, string[] values)
         {
-            var newLabels = values.Select(x => new label
-            {
-                name = name,
-                value = x
-            }).ToArray();
+            var newLabels = values.Select(x => new label(name, x)).ToArray();
             labels = AddAll(labels, newLabels);
             return labels;
         }

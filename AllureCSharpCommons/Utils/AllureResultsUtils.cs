@@ -178,13 +178,7 @@ namespace AllureCSharpCommons.Utils
                     }
                 }
             }
-            return new attachment
-            {
-                title = title,
-                source = relativePath,
-                type = type,
-                size = attachment.Length
-            };
+            return new attachment(title, relativePath, type, attachment.Length);
         }
     }
 }

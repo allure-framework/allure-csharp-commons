@@ -8,11 +8,7 @@ namespace AllureCSharpCommons.Attributes
     {
         public AllureDescriptionAttribute(string value, descriptiontype type)
         {
-            Value = new description
-            {
-                type = type,
-                Value = value
-            };
+            Value = new description(type, value);
         }
 
         public description Value { get; private set; }
