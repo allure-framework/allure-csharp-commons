@@ -9,6 +9,7 @@ using System.Xml.Serialization;
 using AllureCSharpCommons.AllureModel;
 using AllureCSharpCommons.Exceptions;
 using log4net;
+using System.Xml;
 
 namespace AllureCSharpCommons.Utils
 {
@@ -17,15 +18,30 @@ namespace AllureCSharpCommons.Utils
         private static readonly Object AttachmentsLock = new Object();
         private static readonly ILog Log = LogManager.GetLogger(typeof (Allure));
 
+        private static readonly Object _serializerLock = new Object();
         private static XmlSerializer _serializer;
-
+        
+        private static XmlWriterSettings _xmlWriterSettings;
+        
         private static XmlSerializer Serializer
         {
             get
             {
-                if ((_serializer == null))
+                if (_serializer == null)
                 {
-                    _serializer = new XmlSerializer(typeof (testsuiteresult));
+                    lock (_serializerLock)
+                    {
+                        if (_serializer == null)
+                        {
+                            _xmlWriterSettings = new XmlWriterSettings();
+                            _xmlWriterSettings.Encoding = new UTF8Encoding(false, true);
+                            _xmlWriterSettings.CloseOutput = true;
+                            _xmlWriterSettings.OmitXmlDeclaration = false;
+                            _xmlWriterSettings.Indent = true;
+                        
+                            _serializer = new XmlSerializer(typeof(testsuiteresult));
+                        }
+                    }
                 }
                 return _serializer;
             }
@@ -49,49 +65,13 @@ namespace AllureCSharpCommons.Utils
             }
         }
 
-        internal static string Serialize(this testsuiteresult testsuiteresult)
-        {
-            StreamReader streamReader = null;
-            MemoryStream memoryStream = null;
-            try
-            {
-                memoryStream = new MemoryStream();
-                Serializer.Serialize(memoryStream, testsuiteresult);
-                memoryStream.Seek(0, SeekOrigin.Begin);
-                streamReader = new StreamReader(memoryStream);
-                return streamReader.ReadToEnd();
-            }
-            finally
-            {
-                if ((streamReader != null))
-                {
-                    streamReader.Dispose();
-                }
-                if ((memoryStream != null))
-                {
-                    memoryStream.Dispose();
-                }
-            }
-        }
-
         internal static void SaveToFile(this testsuiteresult testsuiteresult, string fileName)
         {
-            StreamWriter streamWriter = null;
-            try
+            using (XmlWriter xmlWriter = XmlWriter.Create(fileName, _xmlWriterSettings))
             {
-                var xmlString = testsuiteresult.Serialize();
-                var xmlFile = new FileInfo(fileName);
-                streamWriter = xmlFile.CreateText();
-                streamWriter.WriteLine(xmlString);
-                streamWriter.Close();
-            }
-            finally
-            {
-                if ((streamWriter != null))
-                {
-                    streamWriter.Dispose();
-                }
-            }
+                Serializer.Serialize(xmlWriter, testsuiteresult);
+                xmlWriter.Flush();
+            } 
         }
 
         public static byte[] TakeScreenShot()
