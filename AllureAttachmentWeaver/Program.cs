@@ -102,8 +102,19 @@ namespace AllureAttachmentWeaver
                 ilProcessor.Append(Instruction.Create(OpCodes.Box, method.ReturnType));
             }
 
-            // load null as the context
-            ilProcessor.Append(Instruction.Create(OpCodes.Ldnull));
+            Instruction loadContextInstruction;
+            if (method.IsStatic)
+            {
+                loadContextInstruction = Instruction.Create(OpCodes.Ldnull);
+            }
+            else
+            {
+                // arg0 is the argument used to pass the instance referenced by 'this'
+                loadContextInstruction = Instruction.Create(OpCodes.Ldarg_0);
+            }
+
+            ilProcessor.Append(loadContextInstruction);
+            
             //PrintMessage(ilProcessor, "About to call Add...");
             ilProcessor.Append(Instruction.Create(OpCodes.Call, addAttachment));
             ilProcessor.Append(Instruction.Create(OpCodes.Ret));
