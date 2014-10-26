@@ -1,11 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{6176CF09-5F47-4DB3-AF50-2E7C224066B5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>AllureAttachmentwWeaver</RootNamespace>
+    <RootNamespace>AllureAttachmentWeaver</RootNamespace>
     <AssemblyName>AllureAttachmentWeaver</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -45,6 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Behaviors\MultiWeaver.cs" />
+    <Compile Include="Behaviors\AttachmentWeaver.cs" />
+    <Compile Include="IMethodWeaver.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
