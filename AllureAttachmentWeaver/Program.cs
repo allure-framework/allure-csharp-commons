@@ -67,19 +67,29 @@ namespace AllureAttachmentWeaver
             // user arguments array is 1 based.
             string fileName = args[1];
 
-            string newFileName = GetFileNameForGeneratedAssembly(fileName);
+            string backup = GetFileNameWithKeyword(fileName, "original");
+            string generated = GetFileNameWithKeyword(fileName, "generated");
+            
+            logger.Debug("Saving assembly to: " + fileName);
 
-            logger.Debug("Saving assembly to: " + newFileName);
+            if (File.Exists(generated))
+                File.Delete(generated);
 
-            assembly.Write(newFileName);
+            if (File.Exists(backup))
+                File.Delete(backup);
 
-            logger.Info("Assembly saved to: " + newFileName);
+            assembly.Write(generated);
+
+            File.Move(fileName, backup);
+            File.Move(generated, fileName);
+
+            logger.Info("Assembly saved to: " + fileName);
         }
 
-        private static string GetFileNameForGeneratedAssembly(string filePath)
+        private static string GetFileNameWithKeyword(string filePath, string keyword)
         {
-            string newFileName = Path.GetFileNameWithoutExtension(filePath) + ".generated" + Path.GetExtension(filePath);
-            return Path.Combine(Path.GetDirectoryName(filePath), newFileName);
+            string backup = Path.GetFileNameWithoutExtension(filePath) + "." + keyword + Path.GetExtension(filePath);
+            return Path.Combine(Path.GetDirectoryName(filePath), backup);
         }
     }
 }
