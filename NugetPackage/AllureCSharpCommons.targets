@@ -1,0 +1,8 @@
+﻿<Project DefaultTargets="RunAllureWeaver" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+	<Target Name="RunAllureWeaver" BeforeTargets="Build">
+		<Message Text="Running the Allure weaver... " />
+		<Exec Command="..\packages\AllureCSharpCommons.1.0\tools\AllureAttachmentWeaver.exe &quot;$(TargetPath)&quot; " />
+	</Target>
+
+</Project>
