@@ -9,7 +9,7 @@ namespace AllureCSharpCommons
         
         public static event EventHandler<AttachmentAddedEventArgs> Added;
 
-        public static void Add(object attachment, object context)
+        public static bool OnAdded(string mimeType, string title, object attachment, object context)
         {
             EventHandler<AttachmentAddedEventArgs> added = Added;
             
@@ -17,12 +17,12 @@ namespace AllureCSharpCommons
             
             if (added != null)
             {
-                added(null, new AttachmentAddedEventArgs(attachment, context));
+                added(null, new AttachmentAddedEventArgs(mimeType, title, attachment, context));
+                return true;
             }
-            else
-            {
-                logger.Debug("The Added event was empty.");
-            }
+            
+            logger.Debug("The Added event was empty.");
+            return false;
         }
     }
 }
