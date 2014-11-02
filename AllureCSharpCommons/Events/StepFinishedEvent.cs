@@ -14,6 +14,8 @@ namespace AllureCSharpCommons.Events
             mFinished = finished;
         }
         
+        public StepFinishedEvent() { }
+        
         public override void Process(step context)
         {
             context.stop = mFinished.HasValue ? mFinished.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
