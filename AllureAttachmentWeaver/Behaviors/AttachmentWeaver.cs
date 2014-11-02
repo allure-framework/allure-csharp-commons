@@ -19,6 +19,9 @@ namespace AllureAttachmentWeaver.Behaviors
     public class AttachmentWeaver : IMethodWeaver
     {
         private ILog mLogger = LogManager.GetLogger(typeof(AttachmentWeaver));
+        
+        const int INDEX_OF_MIMETYPE_ARGUMENT = 0;
+        const int INDEX_OF_TITLE_ARGUMENT = 1;
 
         private bool ShouldWeaveMethod(Mono.Cecil.MethodDefinition method)
         {
@@ -77,10 +80,10 @@ namespace AllureAttachmentWeaver.Behaviors
             ILProcessor ilProcessor = method.Body.GetILProcessor();
             // the module already uses the 'AllureAttachmentAttribute' so there is no need to import it into the module
             MethodInfo addAttachmentMethod = typeof(Attachments).GetMethod(
-                "Add",
+                "OnAdded",
                 BindingFlags.Public | BindingFlags.Static,
                 null,
-                new Type[] { typeof(object), typeof(object) },
+                new Type[] { typeof(string), typeof(string), typeof(object), typeof(object) },
                 null);
 
             MethodReference addAttachment = method.Module.Import(addAttachmentMethod);
@@ -120,7 +123,23 @@ namespace AllureAttachmentWeaver.Behaviors
         private static void LoadContext(MethodDefinition method)
         {
             ILProcessor ilProcessor = method.Body.GetILProcessor();
-
+  
+            CustomAttribute attachmentAttribute = method.CustomAttributes.First(_ => _.AttributeType.FullName == typeof(AllureAttachmentAttribute).FullName);
+            
+            Collection<CustomAttributeArgument> constructorArguments = attachmentAttribute.ConstructorArguments;
+            
+            string mimeType = (string)constructorArguments[INDEX_OF_MIMETYPE_ARGUMENT] ?? String.Empty;
+            
+            string title = String.Empty;
+            
+            if (constructorArguments.Count > INDEX_OF_TITLE_ARGUMENT)
+            {
+                title = constructorArguments[INDEX_OF_TITLE_ARGUMENT] ?? String.Empty;
+            }
+            
+            ilProcessor.Append(Instruction.Create(OpCodes.Ldstr, mimeType));
+            ilProcessor.Append(Instruction.Create(OpCodes.Ldstr, title));            
+            
             if (method.ReturnType.IsValueType)
             {
                 ilProcessor.Append(Instruction.Create(OpCodes.Box, method.ReturnType));
@@ -141,6 +160,24 @@ namespace AllureAttachmentWeaver.Behaviors
             ilProcessor.Append(loadContextInstruction);
         }
 
+        private static T GetAllureAttachmentArgument<T>(MethodDefinition method, int argumentPosition)
+        {
+            CustomAttribute attachmentAttribute = method.CustomAttributes.First(_ => _.AttributeType.FullName == typeof(AllureAttachmentAttribute).FullName);
+
+            Collection<CustomAttributeArgument> constructorArguments = attachmentAttribute.ConstructorArguments;
+
+            // this argument wasn't supplied.
+            if (constructorArguments.Count <= argumentPosition)
+                return null;
+            
+            CustomAttributeArgument argument = constructorArguments[argumentPosition];
+            
+            if (argument.Type != method.Module.Import(typeof(T)))
+                return null;
+            
+            return (T)argument.Value;
+        }
+        
         private static void EmitPrintMessage(ILProcessor ilProcessor, string message)
         {
             // this should probably be use the Trace class...
