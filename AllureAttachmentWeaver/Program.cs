@@ -10,7 +10,6 @@ using AllureCSharpCommons;
 using Mono.Collections.Generic;
 using System.Reflection;
 using System.Linq;
-using AllureAttachmentWeaver.Behaviors;
 
 namespace AllureAttachmentWeaver
 {
@@ -33,9 +32,9 @@ namespace AllureAttachmentWeaver
 
             AssemblyDefinition assembly = AssemblyDefinition.ReadAssembly(fileName);
 
-            IMethodWeaver behavior = new MultiWeaver(new IMethodWeaver[] { new AttachmentWeaver() });
+            IMethodWeaver weaver = new AttachmentWeaver();
 
-            Weave(assembly, behavior);
+            Weave(assembly, weaver);
 
             Save(assembly);
         }
