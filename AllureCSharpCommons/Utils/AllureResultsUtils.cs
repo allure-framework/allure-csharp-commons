@@ -51,6 +51,11 @@ namespace AllureCSharpCommons.Utils
         {
             get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }
         }
+        
+        public static long ToUnixEpochTime(this DateTime time)
+        {
+            return (long) (time.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc)).TotalMilliseconds;
+        }
 
         internal static string TestSuitePath
         {
