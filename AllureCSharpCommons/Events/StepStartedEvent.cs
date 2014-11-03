@@ -7,12 +7,12 @@ namespace AllureCSharpCommons.Events
 {
     public class StepStartedEvent : AbstractStepStartedEvent
     {
-        private DateTime? mStarted;
+        private DateTime? _started;
         
         public StepStartedEvent(string name, DateTime started)
             : this(name)
         {
-            mStarted = started;
+            _started = started;
         }
         
         public StepStartedEvent(string name)
@@ -24,7 +24,7 @@ namespace AllureCSharpCommons.Events
         {
             context.name = Name;
             context.status = status.passed;
-            context.start = mStarted.HasValue ? mStarted.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
+            context.start = _started.HasValue ? _started.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
             context.title = Title;
         }
     }

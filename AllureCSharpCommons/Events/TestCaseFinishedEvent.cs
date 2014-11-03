@@ -7,18 +7,18 @@ namespace AllureCSharpCommons.Events
 {
     public class TestCaseFinishedEvent : AbstractTestCaseFinishedEvent
     {
-        private DateTime? mFinished;
+        private DateTime? _finished;
         
         public TestCaseFinishedEvent(DateTime finished)
         {
-            mFinished = finished;
+            _finished = finished;
         }
         
         public TestCaseFinishedEvent() { }
         
         public override void Process(testcaseresult context)
         {
-            context.stop = mFinished.HasValue ? mFinished.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
+            context.stop = _finished.HasValue ? _finished.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
         }
     }
 }

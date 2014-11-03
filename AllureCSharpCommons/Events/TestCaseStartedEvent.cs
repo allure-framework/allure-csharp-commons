@@ -7,12 +7,12 @@ namespace AllureCSharpCommons.Events
 {
     public class TestCaseStartedEvent : AbstractTestCaseStartedEvent
     {
-        private DateTime? mStarted;
+        private DateTime? _started;
         
         public TestCaseStartedEvent(string suiteUid, string name, DateTime started)
             : this (suiteUid, name)
         {
-            mStarted = started;
+            _started = started;
         }
         
         public TestCaseStartedEvent(string suiteUid, string name)
@@ -23,7 +23,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testcaseresult context)
         {
-            context.start = mStarted.HasValue ? mStarted.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
+            context.start = _started.HasValue ? _started.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
             context.status = status.passed;
             context.name = Name;
             context.title = Title;

@@ -7,12 +7,12 @@ namespace AllureCSharpCommons.Events
 {
     public class TestSuiteFinishedEvent : AbstractTestSuiteFinishedEvent
     {
-        private DateTime? mFinished;
+        private DateTime? _finished;
         
         public TestSuiteFinishedEvent(string uid, DateTime finished)
             : this(uid)
         {
-            mFinished = finished;
+            _finished = finished;
         }
         
         public TestSuiteFinishedEvent(string uid)
@@ -22,7 +22,7 @@ namespace AllureCSharpCommons.Events
 
         public override void Process(testsuiteresult context)
         {
-            context.stop = mFinished.HasValue ? mFinished.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
+            context.stop = _finished.HasValue ? _finished.Value.ToUnixEpochTime() : AllureResultsUtils.TimeStamp;
         }
     }
 }
