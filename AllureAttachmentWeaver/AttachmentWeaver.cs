@@ -35,7 +35,7 @@ namespace AllureAttachmentWeaver
 
             mLogger.Debug("Found method '" + method.FullName + "'");
 
-            foreach (CustomAttribute methodAttribute in method.CustomAttributes)
+            foreach (CustomAttribute methodAttribute in method.CustomAttributes.ToList())
             {
                 mLogger.Debug("Found attribute '" + methodAttribute.AttributeType.FullName + "'");
 

@@ -46,7 +46,6 @@ namespace AllureAttachmentWeaver
                 writeFile = method.Module.Import(typeof(Attachments).GetMethod("WriteBinary", new[] { typeof(byte[]), typeof(string) }));
                 il.Append(Instruction.Create(OpCodes.Ldstr, mimeType));
             }
-            
 
             il.Append(Instruction.Create(OpCodes.Call, writeFile));
 
@@ -61,11 +60,6 @@ namespace AllureAttachmentWeaver
             il.Append(Instruction.Create(OpCodes.Callvirt, addResultFile));
         }
 
-        private void WriteBinaryAttachment(ILProcessor il)
-        {
-
-        }
-
         private MethodReference GetAddResultFileMethodReference(ModuleDefinition usedModule)
         {
             TypeDefinition testContextType = mTestContextType.Resolve();
@@ -74,7 +68,7 @@ namespace AllureAttachmentWeaver
 
         private PropertyDefinition GetTestContextProperty(TypeDefinition type)
         {
-            foreach (PropertyDefinition property in type.Properties)
+            foreach (PropertyDefinition property in type.Properties.ToList())
             {
                 if (property.PropertyType.FullName == "Microsoft.VisualStudio.TestTools.UnitTesting.TestContext")
                     return property;
@@ -90,7 +84,6 @@ namespace AllureAttachmentWeaver
             testContextProperty.GetMethod = AddGetMethod(type, name, field);
             testContextProperty.SetMethod = AddSetMethod(type, name, field);
             type.Properties.Add(testContextProperty);
-            type.Module.Import(mTestContextType);
             return testContextProperty;
         }
                 
@@ -134,7 +127,7 @@ namespace AllureAttachmentWeaver
             
             mUnitTestingAssembly = assemblyResolver.Resolve(assemblyNameReference);
 
-            mTestContextType = mUnitTestingAssembly.MainModule.GetTypes().First<TypeDefinition>(_ => _.FullName == "Microsoft.VisualStudio.TestTools.UnitTesting.TestContext");
+            mTestContextType = module.Import(mUnitTestingAssembly.MainModule.GetTypes().First<TypeDefinition>(_ => _.FullName == "Microsoft.VisualStudio.TestTools.UnitTesting.TestContext"));
         }
     }
 }

@@ -41,16 +41,18 @@ namespace AllureAttachmentWeaver
 
         private static void Weave(AssemblyDefinition assembly, IMethodWeaver weaver)
         {
-            foreach (ModuleDefinition module in assembly.Modules)
+            // because we might be adding types/methods the enumerations must be eager.
+            foreach (ModuleDefinition module in assembly.Modules.ToList())
             {
-                foreach (TypeDefinition type in module.Types)
+                foreach (TypeDefinition type in module.Types.ToList())
                 {
                     if (type.FullName == "<Module>")
                         continue;
 
                     logger.Debug("Found type: " + type.FullName);
 
-                    foreach (MethodDefinition method in type.Methods)
+                            
+                    foreach (MethodDefinition method in type.Methods.ToList())
                     {
                         weaver.Weave(method);
                     }
