@@ -2,12 +2,15 @@
 using log4net;
 using System.IO;
 using AllureCSharpCommons.Utils;
+using System.Text;
 
 namespace AllureCSharpCommons
 {
     public static class Attachments
     {
         private static ILog logger = LogManager.GetLogger(typeof(Attachments));
+        
+        private static Encoding defaultTextEncoding = new UTF8Encoding(false);
         
         public static event EventHandler<AttachmentAddedEventArgs> Added;
 
@@ -27,20 +30,12 @@ namespace AllureCSharpCommons
             return false;
         }
         
-        // we are not using overloads so when we read the generated IL
-        // the used method will be clear
-
-        public static string WriteText(string text, string mimeType)
+        public static string Write(string text, string mimeType)
         {
-            string path = GetFileName() + MimeTypes.ToExtension(mimeType);
-
-            File.WriteAllText(path, text);
-
-            return path;
+            return Write(defaultTextEncoding.GetBytes(text), mimeType);
         }
 
-
-        public static string WriteBinary(byte[] bytes, string mimeType)
+        public static string Write(byte[] bytes, string mimeType)
         {
             string path = GetFileName() + "." + MimeTypes.ToExtension(mimeType);
 
