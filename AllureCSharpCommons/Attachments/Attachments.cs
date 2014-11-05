@@ -26,10 +26,13 @@ namespace AllureCSharpCommons
             logger.Debug("The Added event was empty.");
             return false;
         }
+        
+        // we are not using overloads so when we read the generated IL
+        // the used method will be clear
 
-        public static string WriteText(string text)
+        public static string WriteText(string text, string mimeType)
         {
-            string path = GetFileName() + ".txt";
+            string path = GetFileName() + MimeTypes.ToExtension(mimeType);
 
             File.WriteAllText(path, text);
 
@@ -48,6 +51,8 @@ namespace AllureCSharpCommons
 
         private static string GetFileName()
         {
+            // generate a short hash for file names because too long hashs might
+            // reach the limit of windows paths.
             return Guid.NewGuid().ToString().Substring(0, 8);
         }
     }
