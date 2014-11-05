@@ -4,9 +4,14 @@ using System.Linq;
 
 namespace AllureCSharpCommons.Utils
 {
-    internal class MimeTypes
+    public static class MimeTypes
     {
-        private static readonly Dictionary<string, string> MimeTypesDictionary = new Dictionary<string, string>
+        private static readonly ISet<string> TextMimeTypes = new HashSet<string>(
+            new [] { "text/plain", "application/xml", "text/html", "application/json" },
+            StringComparer.OrdinalIgnoreCase
+        );
+        
+        private static readonly Dictionary<string, string> ExtensionToMimeType = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
         {
             {"txt", "text/plain"},
             {"xml", "application/xml"},
@@ -15,24 +20,35 @@ namespace AllureCSharpCommons.Utils
             {"jpg", "image/jpeg"},
             {"json", "application/json"},
         };
+        
+        private static readonly Dictionary<string, string> MimeTypeToExtension = 
+            ExtensionToMimeType
+                .Select(_ => new { Key = _.Value, Value = _.Key})
+                .ToDictionary(_ => _.Key, _ => _.Value, StringComparer.OrdinalIgnoreCase);
 
-        internal static string ToMime(string extension)
+        public static string ToMime(string extension)
         {
-            if (MimeTypesDictionary.ContainsKey(extension))
+            string mimeType;
+            if (ExtensionToMimeType.TryGetValue(extension, out mimeType))
             {
-                return MimeTypesDictionary[extension];
+                return mimeType;
             }
             throw new ArgumentException("extension");
         }
 
-        internal static string ToExtension(string mime)
+        public static string ToExtension(string mime)
         {
-            var extension = MimeTypesDictionary.First(x => x.Value == mime).Key;
-            if (extension != null)
+            string extension;
+            if (MimeTypeToExtension.TryGetValue(mime, out extension))
             {
                 return extension;
             }
             throw new ArgumentException("mime");
+        }
+        
+        public static bool IsText(string mimeType)
+        {
+            return TextMimeTypes.Contains(mimeType);
         }
     }
 }
