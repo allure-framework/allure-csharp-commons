@@ -30,9 +30,14 @@ namespace AllureCSharpCommons
             return false;
         }
         
+        public static byte[] ToBinary(string text)
+        {
+            return defaultTextEncoding.GetBytes(text);
+        }
+        
         public static string Write(string text, string mimeType)
         {
-            return Write(defaultTextEncoding.GetBytes(text), mimeType);
+            return Write(ToBinary(text), mimeType);
         }
 
         public static string Write(byte[] bytes, string mimeType)

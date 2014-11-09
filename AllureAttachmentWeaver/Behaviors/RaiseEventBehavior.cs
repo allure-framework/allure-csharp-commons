@@ -15,6 +15,14 @@ namespace AllureAttachmentWeaver
             CallAddMethod(method);
         }
         
+        public override string AssemblyName
+        {
+            get
+            {
+                return "Raising Event Behavior";
+            }
+        }
+        
         private void CallAddMethod(MethodDefinition method)
         {
             ILProcessor ilProcessor = method.Body.GetILProcessor();

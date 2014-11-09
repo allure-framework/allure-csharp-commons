@@ -15,6 +15,21 @@ namespace AllureAttachmentWeaver
         
         public abstract void Weave(MethodDefinition method);
         
+        public abstract string AssemblyName { get; }
+        
+        protected AssemblyNameReference GetTestingAssemblyNameReference(ModuleDefinition module)
+        {
+            // assemlby names should be treated as case sensative. 
+            // http://msdn.microsoft.com/en-us/library/k8xx4k69.aspx
+            
+            return module.AssemblyReferences.FirstOrDefault<AssemblyNameReference>(_ => _.Name == AssemblyName );
+        }
+        
+        protected void PopUnusedReturnValue(MethodDefinition method)
+        {
+            method.Body.GetILProcessor().Append(Instruction.Create(OpCodes.Pop));   
+        }
+        
         protected string GetAttachmentMimeType(MethodDefinition method)
         {
             return GetAllureAttachmentArgument<string>(method, INDEX_OF_MIMETYPE_ARGUMENT);

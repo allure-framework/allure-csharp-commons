@@ -13,9 +13,18 @@ namespace AllureAttachmentWeaver
         private TypeReference mTestContextType;
         private MethodReference mAddResultFileMethodReference = null;
 
+        public override string AssemblyName
+        {
+            get { return "Microsoft.VisualStudio.QualityTools.UnitTestFramework"; }
+        }
+        
         public override void Weave(MethodDefinition method)
         {
-            LoadUnitTestingAssembly(method.Module);
+            if (!LoadUnitTestingAssembly(method.Module))
+            {
+                PopUnusedReturnValue(method);                    
+                return;
+            }
 
             PropertyDefinition testContextProperty = GetTestContextProperty(method.DeclaringType);
 
@@ -38,21 +47,11 @@ namespace AllureAttachmentWeaver
             MethodReference writeFile;
 
             string mimeType = GetAttachmentMimeType(method);            
-            string methodName;
             Type argumentType;
             
-            if (MimeTypes.IsText(mimeType))
-            {
-                methodName = "WriteText";
-                argumentType = typeof(string);
-            }
-            else
-            {
-                methodName = "WriteBinary";
-                argumentType = typeof(byte[]);
-            }
+            argumentType = MimeTypes.IsText(mimeType) ? typeof(string) : typeof(byte[]);
             
-            writeFile = method.Module.Import(typeof(Attachments).GetMethod(methodName, new[] { argumentType, typeof(string) }));
+            writeFile = method.Module.Import(typeof(Attachments).GetMethod("Write", new[] { argumentType, typeof(string) }));
             
             il.Append(Instruction.Create(OpCodes.Ldstr, mimeType));
             il.Append(Instruction.Create(OpCodes.Call, writeFile));
@@ -88,15 +87,21 @@ namespace AllureAttachmentWeaver
             
             return null;
         }
-
-        private void LoadUnitTestingAssembly(ModuleDefinition module)
+        
+        private bool LoadUnitTestingAssembly(ModuleDefinition module)
         {
-            AssemblyNameReference assemblyNameReference = module.AssemblyReferences.FirstOrDefault<AssemblyNameReference>(_ => _.Name == "Microsoft.VisualStudio.QualityTools.UnitTestFramework");
+            AssemblyNameReference assemblyNameReference = GetTestingAssemblyNameReference(module);
+            
+            if (assemblyNameReference == null)
+                return false;
+            
             DefaultAssemblyResolver assemblyResolver = new DefaultAssemblyResolver();
             
             mUnitTestingAssembly = assemblyResolver.Resolve(assemblyNameReference);
 
             mTestContextType = module.Import(mUnitTestingAssembly.MainModule.GetTypes().First<TypeDefinition>(_ => _.FullName == "Microsoft.VisualStudio.TestTools.UnitTesting.TestContext"));
+            
+            return true;
         }
         
         private class TestContextWeaver
