@@ -5,4 +5,5 @@ build_script:
   - msbuild AllureCSharpCommons/AllureCSharpCommons.csproj /p:Configuration=Debug /t:Rebuild
   
 test_script:
-  - msbuild AllureCSharpCommons.Tests/AllureCSharpCommons.Tests.csproj /t:TestAll /p:Configuration=Debug /p:ResultFormat=nunit2 /p:ContinueOnFailure=ErrorAndContinue
+  - nunit-console AllureCSharpCommons.Tests/bin/Debug/net40/AllureCSharpCommons.Tests.dll
+  
