@@ -5,5 +5,5 @@ build_script:
   - msbuild AllureCSharpCommons/AllureCSharpCommons.csproj /p:Configuration=Debug /t:Rebuild
   
 test_script:
-  - nunit-console AllureCSharpCommons.Tests/bin/Debug/net40/AllureCSharpCommons.Tests.dll
+  - nunit-console AllureCSharpCommons.Tests/bin/Debug/AllureCSharpCommons.Tests.dll
   
