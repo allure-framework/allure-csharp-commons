@@ -2,7 +2,7 @@
 
 	<Target Name="RunAllureWeaver" BeforeTargets="Build">
 		<Message Text="Running the Allure weaver... " />
-		<Exec Command="..\packages\AllureCSharpCommons.1.0\tools\AllureAttachmentWeaver.exe &quot;$(TargetPath)&quot; " />
+		<Exec Command="$(ProjectDir)..\packages\AllureCSharpCommons.1.0\tools\AllureAttachmentWeaver.exe &quot;$(TargetPath)&quot; " WorkingDirectory="$(OutDir)" />
 	</Target>
 
 </Project>
