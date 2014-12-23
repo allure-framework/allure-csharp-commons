@@ -35,16 +35,16 @@ namespace AllureCSharpCommons
             return defaultTextEncoding.GetBytes(text);
         }
         
-        public static string Write(string text, string mimeType)
+        public static string Write(string text, string mimeType, string path)
         {
-            return Write(ToBinary(text), mimeType);
+            return Write(ToBinary(text), mimeType, path);
         }
 
-        public static string Write(byte[] bytes, string mimeType)
+        public static string Write(byte[] bytes, string mimeType, string path)
         {
-            string path = GetFileName() + "." + MimeTypes.ToExtension(mimeType);
+            string fullName = Path.Combine(path, GetFileName() + "." + MimeTypes.ToExtension(mimeType));
 
-            File.WriteAllBytes(path, bytes);
+            File.WriteAllBytes(fullName, bytes);
 
             return path;
         }

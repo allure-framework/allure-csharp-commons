@@ -4,6 +4,7 @@ using Mono.Cecil;
 using Mono.Cecil.Cil;
 using AllureCSharpCommons;
 using AllureCSharpCommons.Utils;
+using System.IO;
 
 namespace AllureAttachmentWeaver
 {
@@ -12,7 +13,8 @@ namespace AllureAttachmentWeaver
         private AssemblyDefinition mUnitTestingAssembly;
         private TypeReference mTestContextType;
         private MethodReference mAddResultFileMethodReference = null;
-
+        private MethodReference mTestResultsDirectoryGetter = null;
+        
         public override string AssemblyName
         {
             get { return "Microsoft.VisualStudio.QualityTools.UnitTestFramework"; }
@@ -39,33 +41,58 @@ namespace AllureAttachmentWeaver
 
         private void WriteResultFile(MethodDefinition method, MethodReference testContextGetter)
         {
-            VariableDefinition filePath = new VariableDefinition("filePath" + DateTime.Now.Ticks.ToString(), method.Module.Import(typeof(string)));
-            method.Body.Variables.Add(filePath);
-
+            // there's a bug with calling AddResultFile in parallel:
+            // https://connect.microsoft.com/VisualStudio/feedback/details/1062039/value-cannot-be-null-parameter-name-path-in-test-result-when-running-tests-in-parallel-and-adding-files-to-the-test-context-using-addresultfile
+            // so instead of calling AddResultFile the file is written directly to TestResultsDirectory
+                                    
+            //VariableDefinition filePath = new VariableDefinition("filePath" + DateTime.Now.Ticks.ToString(), method.Module.Import(typeof(string)));
+            //method.Body.Variables.Add(filePath);
+            
             ILProcessor il = method.Body.GetILProcessor();
 
             MethodReference writeFile;
-
+            MethodReference createDirectory = method.Module.Import(typeof(Directory).GetMethod("CreateDirectory", new [] { typeof(string)}));
+            MethodReference getTestResultsDirectory = GetTestResultsDirectoryGetter(method.Module);
             string mimeType = GetAttachmentMimeType(method);            
             Type argumentType;
             
             argumentType = MimeTypes.IsText(mimeType) ? typeof(string) : typeof(byte[]);
             
-            writeFile = method.Module.Import(typeof(Attachments).GetMethod("Write", new[] { argumentType, typeof(string) }));
-            
-            il.Append(Instruction.Create(OpCodes.Ldstr, mimeType));
-            il.Append(Instruction.Create(OpCodes.Call, writeFile));
-            il.Append(Instruction.Create(OpCodes.Stloc, filePath));
+            writeFile = method.Module.Import(typeof(Attachments).GetMethod("Write", new[] { argumentType, typeof(string), typeof(string) }));
 
             il.Append(Instruction.Create(OpCodes.Ldarg_0));
             il.Append(Instruction.Create(OpCodes.Call, testContextGetter));
-            il.Append(Instruction.Create(OpCodes.Ldloc, filePath));
+            il.Append(Instruction.Create(OpCodes.Callvirt, getTestResultsDirectory));
+            il.Append(Instruction.Create(OpCodes.Call, createDirectory));
+            il.Append(Instruction.Create(OpCodes.Pop));
             
-            MethodReference addResultFile = GetAddResultFileMethodReference(method.Module);
+            il.Append(Instruction.Create(OpCodes.Ldstr, mimeType));
+            il.Append(Instruction.Create(OpCodes.Ldarg_0));
+            il.Append(Instruction.Create(OpCodes.Call, testContextGetter));
+            il.Append(Instruction.Create(OpCodes.Callvirt, getTestResultsDirectory));
+            il.Append(Instruction.Create(OpCodes.Call, writeFile));
+            il.Append(Instruction.Create(OpCodes.Pop));
+            //il.Append(Instruction.Create(OpCodes.Stloc, filePath));
 
-            il.Append(Instruction.Create(OpCodes.Callvirt, addResultFile));
+            //il.Append(Instruction.Create(OpCodes.Ldarg_0));
+            //il.Append(Instruction.Create(OpCodes.Call, testContextGetter));
+            //il.Append(Instruction.Create(OpCodes.Ldloc, filePath));
+            
+            //MethodReference addResultFile = GetAddResultFileMethodReference(method.Module);
+            //il.Append(Instruction.Create(OpCodes.Callvirt, addResultFile));
         }
 
+        private MethodReference GetTestResultsDirectoryGetter(ModuleDefinition usedModule)
+        {
+            if (mTestResultsDirectoryGetter == null)
+            {
+                TypeDefinition textContextType = mTestContextType.Resolve();
+                mTestResultsDirectoryGetter = usedModule.Import(textContextType.Properties.First<PropertyDefinition>(_ => _.Name == "TestResultsDirectory").GetMethod);
+            }
+            
+            return mTestResultsDirectoryGetter;
+        }
+        
         private MethodReference GetAddResultFileMethodReference(ModuleDefinition usedModule)
         {
             if (mAddResultFileMethodReference == null)
