@@ -1,0 +1,9 @@
+before_build:
+  - nuget restore AllureCSharpCommons.sln
+
+build_script: 
+  - msbuild AllureCSharpCommons.sln /p:Configuration=Debug /t:Rebuild
+  
+test_script:
+  - nunit-console AllureCSharpCommons.Tests/bin/Debug/AllureCSharpCommons.Tests.dll
+  
