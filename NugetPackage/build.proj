@@ -1,11 +1,16 @@
 <Project DefaultTargets="Package" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 	<PropertyGroup>
-	  <SolutionFile>..\AllureAttachmentWeaver\AllureAttachmentWeaver.csproj</SolutionFile>
+	  <SolutionFile>..\AllureCSharpCommons.sln</SolutionFile>
+	  <ProjectFile>..\AllureAttachmentWeaver\AllureAttachmentWeaver.csproj</ProjectFile>
 	  <NuspecFile>AllureCSharpCommons.nuspec</NuspecFile>
 	</PropertyGroup>
 
-	<Target Name="Compile">
-		<MSBuild Projects="$(SolutionFile)" Properties="Configuration=Release;OutputPath=..\NugetPackage\bin\" />
+	<Target Name="Restore">
+	  <Exec Command="nuget.exe restore $(SolutionFile)" />
+	</Target>
+	
+	<Target Name="Compile" DependsOnTargets="Restore">
+		<MSBuild Projects="$(ProjectFile)" Properties="Configuration=Release;OutputPath=..\NugetPackage\bin\" />
 	</Target>
 
 	<Target Name="Package" DependsOnTargets="Compile">
