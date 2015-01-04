@@ -10,6 +10,9 @@ using AllureCSharpCommons;
 using Mono.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using log4net.Core;
+using log4net.Appender;
+using log4net.Layout;
 
 namespace AllureAttachmentWeaver
 {
@@ -19,8 +22,7 @@ namespace AllureAttachmentWeaver
         
         public static void Main(string[] args)
         {
-            // vNext should use XmlConfigurator with a logger.config file or app.config.
-            BasicConfigurator.Configure();
+            Level loggingLevel = Level.Info;
             
             if (args.Length == 0)
             {
@@ -28,15 +30,30 @@ namespace AllureAttachmentWeaver
                 return;
             }
             
+            if (args.Length > 1 && args.Contains("-v"))
+            {
+                loggingLevel = Level.Debug;
+            }
+            
+            // vNext should use XmlConfigurator with a logger.config file or app.config.
+            SetupLogging(loggingLevel);
+            
             string fileName = args[0];
 
             AssemblyDefinition assembly = AssemblyDefinition.ReadAssembly(fileName);
 
             IMethodWeaver weaver = new AttachmentWeaver();
 
-            Weave(assembly, weaver);
+            try
+            {
+                Weave(assembly, weaver);
 
-            Save(assembly);
+                Save(assembly);
+            }
+            catch(Exception e)
+            {
+                logger.Error("Error writing assembly.", e);
+            }
         }
 
         private static void Weave(AssemblyDefinition assembly, IMethodWeaver weaver)
@@ -91,6 +108,14 @@ namespace AllureAttachmentWeaver
         {
             string backup = Path.GetFileNameWithoutExtension(filePath) + "." + keyword + Path.GetExtension(filePath);
             return Path.Combine(Path.GetDirectoryName(filePath), backup);
+        }
+        
+        private static void SetupLogging(Level level)
+        {
+            ConsoleAppender appender = new ConsoleAppender();
+            appender.Layout = new SimpleLayout();
+            appender.Threshold = level;
+            BasicConfigurator.Configure(appender);
         }
     }
 }
