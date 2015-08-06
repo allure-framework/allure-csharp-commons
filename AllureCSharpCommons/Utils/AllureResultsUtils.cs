@@ -49,7 +49,7 @@ namespace AllureCSharpCommons.Utils
 
         internal static long TimeStamp
         {
-            get { return (long) (DateTime.Now - new DateTime(1970, 1, 1)).TotalMilliseconds; }
+            get { return DateTime.Now.ToUnixEpochTime(); }
         }
         
         public static long ToUnixEpochTime(this DateTime time)
