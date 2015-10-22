@@ -20,9 +20,14 @@ namespace AllureCSharpCommons.Utils
 
         private static readonly Object _serializerLock = new Object();
         private static XmlSerializer _serializer;
-        
-        private static XmlWriterSettings _xmlWriterSettings;
-        
+
+        private static XmlWriterSettings _xmlWriterSettings = new XmlWriterSettings {
+            Encoding = new UTF8Encoding(false, true),
+            CloseOutput = true,
+            OmitXmlDeclaration = false,
+            Indent = true
+        };
+
         private static XmlSerializer Serializer
         {
             get
@@ -32,13 +37,7 @@ namespace AllureCSharpCommons.Utils
                     lock (_serializerLock)
                     {
                         if (_serializer == null)
-                        {
-                            _xmlWriterSettings = new XmlWriterSettings();
-                            _xmlWriterSettings.Encoding = new UTF8Encoding(false, true);
-                            _xmlWriterSettings.CloseOutput = true;
-                            _xmlWriterSettings.OmitXmlDeclaration = false;
-                            _xmlWriterSettings.Indent = true;
-                        
+                        {                        
                             _serializer = new XmlSerializer(typeof(testsuiteresult));
                         }
                     }
