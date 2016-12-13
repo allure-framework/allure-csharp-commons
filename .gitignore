@@ -107,4 +107,4 @@ packages
 build
 
 Thumbs.db
-/AllureCSharpCommons/*.nupkg
+/AllureCSharpCommons/**/*.nupkg

@@ -94,9 +94,15 @@
     <Compile Include="AbstractEvents\AbstractTestCaseStatusChangeEvent.cs" />
     <Compile Include="AbstractEvents\AbstractTestSuiteStartedEvent.cs" />
     <Compile Include="AllureModel\AllureModelExtensions.cs" />
+    <Compile Include="Attachments\AllureAttachmentAttribute.cs" />
+    <Compile Include="Attachments\Attachments.cs" />
+    <Compile Include="Attachments\AttachmentAddedEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <Folder Include="Attachments\" />
+  </ItemGroup>
 </Project>
