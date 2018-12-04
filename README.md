@@ -1,3 +1,5 @@
+# [DEPRICATED]
+## Please follow https://github.com/allure-framework/allure-csharp
 AllureCSharpCommons
 =====================
 [![Travis build Status](https://travis-ci.org/allure-framework/allure-csharp-commons.svg)](https://travis-ci.org/allure-framework/allure-csharp-commons)
